@@ -1,55 +1,53 @@
 import { useRef, useEffect, useState } from "react";
 export const AboutPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [ctx, setCtx] = useState<any>();
-  console.log("rerender");
+  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+
   useEffect(() => {
-    if (canvasRef.current) {
-      const canvas = canvasRef.current;
-      const context = canvasRef.current.getContext("2d");
-      setCtx(context);
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const handleResize = () => {
+      if (canvasRef.current) {
+        const canvas = canvasRef.current;
+        setCanvasSize({ width: window.innerWidth, height: window.innerHeight });
+        drawImageOnCanvas(canvas);
+      }
+    };
 
-      const img = new Image();
-      img.src = "/images/image.jpg";
-      img.onload = () => {
+    const drawImageOnCanvas = (canvas: HTMLCanvasElement) => {
+      const ctx = canvas.getContext("2d");
+      const image = new Image();
+      image.src = "/images/image.jpg";
+
+      image.onload = () => {
         if (ctx) {
-          const ratio = img.width / img.height;
-
-          ctx.drawImage(
-            img,
-            0,
-            0,
-            window.innerHeight,
-            window.innerHeight * ratio
-          );
+          const ratio = image.height / image.width;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(image, 0, 0, canvas.width, canvas.width * ratio);
         }
       };
-    }
-  }, [ctx]);
+    };
 
-  const canvasEventListener = (event: any, type: string) => {
-    if (type === "scroll") {
-      console.log(event.deltaY);
-    } else {
-      console.log(event, type);
-    }
-  };
+    window.addEventListener("resize", handleResize);
+    handleResize(); // 초기 로드 시에도 적용
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // 가상의 이미지 비율
+  // const originalImageWidth = 800;
+  // const originalImageHeight = 800;
 
   return (
-    <div className="h-[2000px] w-full">
+    <div className="h-[2000px]">
       <canvas
+        className="sticky top-0 left-0"
         ref={canvasRef}
-        onWheel={(event) => canvasEventListener(event, "scroll")}
-        onMouseDown={(event) => canvasEventListener(event, "down")}
-        onMouseUp={(event) => canvasEventListener(event, "up")}
-        className="sticky top-0 left-0 h-screen w-screen bg-red-200"
+        width={canvasSize.width}
+        height={canvasSize.height}
       >
-        <img src="/images/image.jpg" alt="" className="w-full h-full" />
+        Your browser does not support the HTML5 canvas element.
       </canvas>
-
-      <p>About 입니다</p>
     </div>
   );
 };
