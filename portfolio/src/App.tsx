@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="root">
       <Header />
-      <div>
+      <div className="flex flex-col">
         <IntroPage />
         <AboutPage />
         <ProjectsPage />
