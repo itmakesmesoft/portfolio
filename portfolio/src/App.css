@@ -1,4 +1,10 @@
 .root {
   position: relative;
-  height: 100vh;
+  background-color: #000;
+  color: white;
+  font-weight: 100;
+}
+
+.textstroke {
+  text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
 }

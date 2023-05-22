@@ -1,18 +1,22 @@
 import "./App.css";
 import { Header } from "./Components/Header";
+import { IntroPage } from "./Sections/IntroPage";
 import { AboutPage } from "./Sections/AboutPage";
 import { ProjectsPage } from "./Sections/ProjectsPage";
 import { ContactPage } from "./Sections/ContactPage";
+import { Footer } from "./Components/Footer";
 
 function App() {
   return (
     <div className="root">
       <Header />
-      <div className="mt-[60px] h-[calc(100%-60px)]">
+      <div>
+        <IntroPage />
         <AboutPage />
         <ProjectsPage />
         <ContactPage />
       </div>
+      <Footer />
     </div>
   );
 }
