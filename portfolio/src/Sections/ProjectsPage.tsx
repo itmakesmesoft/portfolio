@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -27,7 +26,7 @@ export const ProjectsPage = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="h-screen overflow-hidden flex flex-col justify-center items-center font-['Shadows_Into_Light']">
+    <div className="h-screen overflow-hidden flex flex-col justify-center items-center">
       <h1 className="text-3xl">Projects</h1>
       <Slider {...settings} className="max-w-[1300px] w-[80%] mt-5 pb-5">
         {list.map((content: any, index: number) => {
@@ -37,7 +36,7 @@ export const ProjectsPage = () => {
                 <img
                   src={content.src}
                   alt=""
-                  className="w-[500px] h-[500px] mx-auto opacity-80 hover:opacity-100 rounded-xl"
+                  className="w-[500px] mx-auto opacity-80 hover:opacity-100 rounded-xl"
                 />
               </a>
             </div>
