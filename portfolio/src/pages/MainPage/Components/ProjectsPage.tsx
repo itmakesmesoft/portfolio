@@ -26,7 +26,10 @@ export const ProjectsPage = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="h-screen overflow-hidden flex flex-col justify-center items-center">
+    <div
+      id="project"
+      className="h-screen overflow-hidden flex flex-col justify-center items-center"
+    >
       <h1 className="text-3xl">Projects</h1>
       <Slider {...settings} className="max-w-[1300px] w-[80%] mt-5 pb-5">
         {list.map((content: any, index: number) => {

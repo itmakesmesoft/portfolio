@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { MyInfo } from "./Components/MyInfo";
-import { MyExperience } from "./Components/MyExperience";
+import { MyInfo } from "./MyInfo";
+import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
 
 export const AboutPage = () => {
   return (
-    <div className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10">
+    <div
+      id="about"
+      className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
+    >
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[3rem] lg:pr-[6rem] z-50">
         <div className="sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#00000010] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none p-2 sm:p-0 shadow-3xl sm:shadow-none">
           <div
