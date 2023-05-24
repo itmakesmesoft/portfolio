@@ -1,7 +1,7 @@
 import { HashLink as Link } from "react-router-hash-link";
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-10">
+    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50">
       <div className="flex flex-row justify-between items-center w-full z-40 h-[60px] max-w-[1300px] px-4">
         <Link
           to="/#"

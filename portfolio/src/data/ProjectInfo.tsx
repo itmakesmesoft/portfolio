@@ -1,13 +1,5 @@
 import styled from "styled-components";
-
-type InfoType = {
-  title: string;
-  description: string;
-  period: string;
-  memberInfo: string;
-  mainFunction: string[];
-  tech: string[];
-};
+import { InfoType } from "../util/share";
 
 const ProjectInfo = (props: { info: InfoType }) => {
   const info = props.info;
@@ -50,17 +42,17 @@ const SubTitle = styled.h2`
   color: black;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   font-size: 1rem;
   padding-bottom: 10px;
   color: #696969;
 `;
-const Period = styled.p`
+const Period = styled.div`
   font-size: 1rem;
   margin-top: 20px;
   color: #696969;
 `;
-const Members = styled.p`
+const Members = styled.div`
   font-size: 1rem;
   margin-top: 10px;
   color: #696969;
@@ -72,7 +64,7 @@ const Function = styled.div`
     font-size: 1rem;
   }
 `;
-const Tech = styled.p`
+const Tech = styled.div`
   margin-top: 10px;
   max-width: 70%;
   display: flex;
