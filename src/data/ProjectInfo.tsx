@@ -5,7 +5,9 @@ const ProjectInfo = (props: { info: InfoType }) => {
   const info = props.info;
   return (
     <>
-      <Title>{info.title}</Title>
+      <Title className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem]">
+        {info.title}
+      </Title>
       <Description>{info.description}</Description>
       <div>
         <Period>
@@ -33,7 +35,6 @@ const ProjectInfo = (props: { info: InfoType }) => {
 };
 
 const Title = styled.h1`
-  font-size: 3rem;
   font-weight: 700;
 `;
 const SubTitle = styled.h2`

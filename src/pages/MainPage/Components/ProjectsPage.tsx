@@ -1,6 +1,3 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
 const list = [
@@ -10,42 +7,23 @@ const list = [
 ];
 
 export const ProjectsPage = () => {
-  const settings = {
-    customPaging: function (index: number) {
-      return (
-        <a>
-          <img src={list[index].src} alt="" className="rounded-sm" />
-        </a>
-      );
-    },
-    dots: true,
-    infinite: true,
-    dotsClass: "slick-dots slick-thumb",
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  const width = 100 / list.length;
   return (
-    <div
-      id="project"
-      className="h-screen overflow-hidden flex flex-col justify-center items-center"
-    >
-      <h1 className="text-3xl">Projects</h1>
-      <Slider {...settings} className="max-w-[1300px] w-[80%] mt-5 pb-5">
+    <div id="project" className="h-screen w-full flex flex-col items-center">
+      <h1 className="text-[4.5rem] text-center font-['Bangers']">Projects</h1>
+      <div className="w-full max-w-[1300px] h-full flex flex-row justify-center items-center">
         {list.map((content: any, index: number) => {
           return (
-            <div key={index} className="py-10">
-              <Link to={content.path}>
-                <img
-                  src={content.src}
-                  alt=""
-                  className="w-[500px] mx-auto opacity-100 hover:opacity-90 rounded-md shadow-lg"
-                />
-              </Link>
-            </div>
+            <Link
+              key={index}
+              to={content.path}
+              className={`h-full w-[${width}%] bg-black px-4 bg-[url(${content.src})]`}
+            >
+              <img src={content.src} alt={content.alt} className="" />
+            </Link>
           );
         })}
-      </Slider>
+      </div>
     </div>
   );
 };
