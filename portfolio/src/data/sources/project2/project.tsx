@@ -2,10 +2,15 @@ import ProjectInfo from "../../ProjectInfo";
 
 const info = {
   title: "MOIDA: 모이다",
-  description: "간략한 소개",
+  description:
+    "야생동물과의 상생을 위한 블록체인 기반 기부, 봉사 및 NFT 보상 플랫폼",
   period: "23.02.28 ~ 23.04.07 (6주)",
   memberInfo: "6명 (프론트엔드 3명, 백엔드 3명)",
-  mainFunction: ["기능1", "기능2", "기능3"],
+  mainFunction: [
+    "블록 체인을 활용한 기부",
+    "카카오페이를 통한 포인트 충전",
+    "기부 또는 봉사 시 NFT 보상 제공",
+  ],
   tech: ["React.js", "ReactQuery", "JavaScript"],
 };
 
@@ -30,7 +35,7 @@ const project = () => {
         <img
           src={require("./img/2.png")}
           alt=""
-          className="w-full h-full max-w-[1300px]"
+          className="w-full h-full max-w-[1000px]"
         />
         <img
           src={require("./img/4.png")}

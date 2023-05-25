@@ -1,12 +1,12 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const list = [
-  { src: "/images/image.jpg", alt: "list1" },
-  { src: "/images/logo.png", alt: "list1" },
-  { src: "/images/image.jpg", alt: "list1" },
-  { src: "/images/image.jpg", alt: "list1" },
+  { src: "/images/OPENER.png", alt: "OPENER", path: "/project/1" },
+  { src: "/images/moida.png", alt: "모이다", path: "/project/2" },
+  { src: "/images/ssily.png", alt: "ssily project", path: "/project/3" },
 ];
 
 export const ProjectsPage = () => {
@@ -34,14 +34,14 @@ export const ProjectsPage = () => {
       <Slider {...settings} className="max-w-[1300px] w-[80%] mt-5 pb-5">
         {list.map((content: any, index: number) => {
           return (
-            <div key={index}>
-              <a href="">
+            <div key={index} className="py-10">
+              <Link to={content.path}>
                 <img
                   src={content.src}
                   alt=""
-                  className="w-[500px] mx-auto opacity-80 hover:opacity-100 rounded-xl"
+                  className="w-[500px] mx-auto opacity-100 hover:opacity-90 rounded-md shadow-lg"
                 />
-              </a>
+              </Link>
             </div>
           );
         })}

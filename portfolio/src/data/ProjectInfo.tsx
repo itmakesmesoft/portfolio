@@ -65,7 +65,7 @@ const Function = styled.div`
   }
 `;
 const Tech = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   max-width: 70%;
   display: flex;
   flex-direction: row;

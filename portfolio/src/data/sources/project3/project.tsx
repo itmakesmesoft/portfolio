@@ -1,30 +1,17 @@
 import ProjectInfo from "../../ProjectInfo";
 
 const info = {
-  title: "OPENER",
-  description:
-    "OpenAI를 이용한 인공지능 3D 캐릭터와의 채팅, 미드 립싱크 챌린지 및 Youtube 영어 쉐도잉 학습 반응형 웹서비스",
-  period: "23.04.10 ~ 23.05.19 (6주)",
+  title: "PROJECT SSILY",
+  description: "WebRTC 기반 몸짓과 그림으로 소통하고, ai가 이를 맞추는 웹 게임",
+  period: "23.01.09 ~ 23.02.17 (6주)",
   memberInfo: "6명 (프론트엔드 3명, 백엔드 3명)",
   mainFunction: [
-    "쉐도잉 영상 구간 반복 재생",
-    "영상 북마크",
-    "발음 체크 및 평가 점수 제공",
-    "협업 필터링 기반 문장 추천",
-    "학습 로드맵 제공",
-    "영상 촬영 및 립싱크 챌린지 제작 기능",
-    "선택한 주제와 관련된 AI 영어 채팅",
-    "유저들과의 영어 채팅 게임",
+    "그림판 기능",
+    "openvidu를 이용한 화상 채팅",
+    "실시간 문자 소통",
+    "방 생성 및 나가기",
   ],
-  tech: [
-    "Next.js",
-    "TypeScript",
-    "SWR",
-    "Azure",
-    "OpenAi",
-    "Three.js",
-    "FastApi",
-  ],
+  tech: ["Vue.js", "WebRTC", "OpenVidu", "JavaScript"],
 };
 
 const project = () => {
@@ -34,7 +21,7 @@ const project = () => {
         <div className="flex flex-col sm:flex-row max-w-[1300px]">
           <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
             <img
-              src={require("./img/1.png")}
+              src={require("./img/2.png")}
               alt=""
               className="w-full h-auto"
             />
@@ -44,11 +31,11 @@ const project = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="w-full flex flex-col items-center">
         <img
-          src={require("./img/2.png")}
+          src={require("./img/1.png")}
           alt=""
-          className="w-full h-full max-w-[1200px]"
+          className="w-full h-full max-w-[1300px]"
         />
       </section>
     </div>
