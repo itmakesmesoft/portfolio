@@ -16,6 +16,9 @@ const Information = () => {
         <MdEmail className="icon" />
         dmsgur7112@naver.com
       </Phrase>
+      <p className="mt-8 text-sm">
+        Copyright 2023. Eunhyeok Lee. All rights reserved.
+      </p>
     </div>
   );
 };

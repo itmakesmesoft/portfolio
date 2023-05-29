@@ -1,4 +1,6 @@
+import WhatIDid from "../../WhatIDid";
 import ProjectInfo from "../../ProjectInfo";
+import UsedTech from "../../UsedTech";
 
 const info = {
   title: "MOIDA: 모이다",
@@ -11,7 +13,8 @@ const info = {
     "카카오페이를 통한 포인트 충전",
     "기부 또는 봉사 시 NFT 보상 제공",
   ],
-  tech: ["React.js", "ReactQuery", "JavaScript"],
+  tech: ["Reactjs", "ReactQuery", "JavaScript"],
+  whatIDid: ["1", "2", "3", "4"],
 };
 
 const project = () => {
@@ -42,6 +45,11 @@ const project = () => {
           alt=""
           className="w-full h-full max-w-[1300px]"
         />
+      </section>
+      <section className="w-full bg-[#fbfbfb] pt-[7rem]">
+        <UsedTech tech={info.tech} />
+        <WhatIDid info={info.whatIDid} />
+        {/* <p>{info.takeAway}</p> */}
       </section>
     </div>
   );

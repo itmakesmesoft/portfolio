@@ -1,4 +1,6 @@
 import ProjectInfo from "../../ProjectInfo";
+import WhatIDid from "../../WhatIDid";
+import UsedTech from "../../UsedTech";
 
 const info = {
   title: "OPENER",
@@ -17,15 +19,28 @@ const info = {
     "유저들과의 영어 채팅 게임",
   ],
   tech: [
-    "Next.js",
+    "Nextjs",
     "TypeScript",
     "SWR",
     "Azure",
     "OpenAi",
-    "Three.js",
+    "Threejs",
     "FastApi",
   ],
-  whatIDid: ["1", "2", "3", "4"],
+  whatIDid: [
+    "쉐도잉 페이지 개발을 담당했습니다.",
+    "webvtt형식의 자막을 파싱하고 RequestAnimationFrame API를 이용하여 실시간으로 자막을 표시하였습니다.",
+    "SWR을 이용해 최신 데이터를 불러오는 무한스크롤 기능을 구현하였습니다.",
+    "Azure의 Cognitive recognition API를 이용하여 발음평가 기능을 만들고, LTS 알고리즘을 적용하여 정확도를 개선하였습니다.",
+    "THREE.js를 이용하여 3D 모델에 애니메이션을 적용하고, 페이지에 삽입하였습니다.",
+    "로드맵 페이지를 제작하고 회원 여부에 따라 학습 가능한 Step을 표시하였습니다.",
+    "피그마를 이용하여 UI 목업을 제작하였습니다.",
+    "피드백을 듣고, UX를 지속적으로 개선하였습니다.",
+  ],
+  takeAway: [
+    "SPA에서 메모리 관리의 중요성을 깨달았습니다. 다만, 6주라는 짧은 시간 탓에 메모리 누수를 해결하지 못한 부분이 있어 조금 아쉬웠습니다.",
+    "무한스크롤을 구현하면서 단순히 클릭 시 데이터가 추가되도록 구현하였는데, 추후 프로젝트에서는 리스트 가상화를 통해 모든 데이터를 렌더링 하지 않고 무한스크롤을 구현해보고 싶습니다.",
+  ],
 };
 
 const project = () => {
@@ -45,41 +60,17 @@ const project = () => {
           </div>
         </div>
       </section>
-      <section className="w-full min-h-[100vh] bg-white">
-        <div className="w-full h-full max-w-[1000px] mx-auto flex flex-row flex-wrap justify-between py-[7rem]">
-          <div className="w-[50%] h-[250px] p-4 flex flex-col justify-center">
-            <p className="text-[2rem] text-center font-extrabold ">
-              What I did
-            </p>
-          </div>
-          <div className="w-[50%] h-[250px] p-4">
-            <div
-              className={`w-full h-full rounded-xl shadow-xl border bg-center bg-cover bg-[url('https://cdn.pixabay.com/photo/2020/03/13/08/22/brain-4927267_1280.jpg')]`}
-            ></div>
-          </div>
-          {info.whatIDid.map((content, index) => {
-            return (
-              <div key={index} className="w-[50%] h-[250px] p-4">
-                <div
-                  className={`w-full h-full rounded-xl shadow-xl p-4 flex flex-col justify-center text-center ${
-                    index % 3 === 0
-                      ? "bg-[#c5c5c5] text-white border-none"
-                      : "bg-[#f8f8f8] border"
-                  }`}
-                >
-                  <p>{content}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
       <section>
         <img
           src={require("./img/2.png")}
           alt=""
           className="w-full h-full max-w-[1200px]"
         />
+      </section>
+      <section className="w-full bg-[#fbfbfb] pt-[7rem]">
+        <UsedTech tech={info.tech} />
+        <WhatIDid info={info.whatIDid} />
+        <p>{info.takeAway}</p>
       </section>
     </div>
   );

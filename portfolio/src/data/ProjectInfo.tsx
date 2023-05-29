@@ -24,11 +24,11 @@ const ProjectInfo = (props: { info: InfoType }) => {
             return <p key={index}>{func}</p>;
           })}
         </Function>
-        <Tech>
+        {/* <Tech>
           {info.tech.map((stack, index) => {
             return <span key={index}>{stack}</span>;
           })}
-        </Tech>
+        </Tech> */}
       </div>
     </>
   );
@@ -65,20 +65,20 @@ const Function = styled.div`
     font-size: 1rem;
   }
 `;
-const Tech = styled.div`
-  margin-top: 20px;
-  max-width: 70%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  & > span {
-    font-size: 0.75rem;
-    background-color: #797979;
-    border-radius: 10px;
-    padding: 3px 10px;
-    color: white;
-    margin-right: 3px;
-    margin-bottom: 3px;
-  }
-`;
+// const Tech = styled.div`
+//   margin-top: 20px;
+//   max-width: 70%;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   & > span {
+//     font-size: 0.75rem;
+//     background-color: #797979;
+//     border-radius: 10px;
+//     padding: 3px 10px;
+//     color: white;
+//     margin-right: 3px;
+//     margin-bottom: 3px;
+//   }
+// `;
 export default ProjectInfo;

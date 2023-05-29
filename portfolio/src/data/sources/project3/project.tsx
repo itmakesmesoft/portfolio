@@ -1,4 +1,6 @@
+import WhatIDid from "../../WhatIDid";
 import ProjectInfo from "../../ProjectInfo";
+import UsedTech from "../../UsedTech";
 
 const info = {
   title: "PROJECT SSILY",
@@ -11,7 +13,13 @@ const info = {
     "실시간 문자 소통",
     "방 생성 및 나가기",
   ],
-  tech: ["Vue.js", "WebRTC", "OpenVidu", "JavaScript"],
+  tech: ["Vuejs", "WebRTC", "OpenVidu", "JavaScript"],
+  whatIDid: [
+    "세션을 생성하고, 토큰을 발급하는 기능을 구현했습니다",
+    "그림판을 제작하고, 생성된 그림을 쿠렌토 미디어서버를 통해 상대방에게 전달하는 기능을 구현했습니다.",
+    "피그마를 이용해 목업을 제작하고 이를 똑같이 구현했습니다.",
+    "피드백을 듣고, UX를 지속적으로 개선하였습니다.",
+  ],
 };
 
 const project = () => {
@@ -37,6 +45,16 @@ const project = () => {
           alt=""
           className="w-full h-full max-w-[1300px]"
         />
+        <img
+          src={require("./img/3.png")}
+          alt=""
+          className="w-full h-full max-w-[700px] rounded-xl mb-10"
+        />
+      </section>
+      <section className="w-full bg-[#fbfbfb] pt-[7rem]">
+        <UsedTech tech={info.tech} />
+        <WhatIDid info={info.whatIDid} />
+        {/* <p>{info.takeAway}</p> */}
       </section>
     </div>
   );

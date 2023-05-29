@@ -5,11 +5,11 @@ export const MyInfo = () => {
   const birthdate = new Date("1994-05-06");
   let age = today.getFullYear() - birthdate.getFullYear();
   if (
-    today.getMonth() > birthdate.getMonth() ||
+    today.getMonth() < birthdate.getMonth() ||
     (today.getMonth() === birthdate.getMonth() &&
-      today.getDay() >= birthdate.getDay())
+      today.getDate() < birthdate.getDate())
   ) {
-    age += 1;
+    age -= 1;
   }
   return (
     <div className="h-[77%] w-full">
