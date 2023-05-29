@@ -14,7 +14,12 @@ const info = {
     "기부 또는 봉사 시 NFT 보상 제공",
   ],
   tech: ["Reactjs", "ReactQuery", "JavaScript"],
-  whatIDid: ["1", "2", "3", "4"],
+  whatIDid: [
+    "메인페이지, 기부/봉사 목록페이지, 기부/봉사 상세페이지, 마이페이지 제작을 담당하였습니다.",
+    "css변수와 animation delay를 이용해 메인 페이지의 스크롤 이벤트를 구현하였습니다.",
+    "피그마를 이용하여 UI 목업을 제작하였습니다.",
+    "피드백을 듣고, UX를 지속적으로 개선하였습니다.",
+  ],
 };
 
 const project = () => {

@@ -19,13 +19,24 @@ export const Header = () => {
           <ul className="flex flex-row">
             <li className="mr-6 cursor-pointer">
               <Link
+                to="/#"
+                scroll={(el) =>
+                  el.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+                className="hover:text-[#45c0bb]"
+              >
+                INTRO
+              </Link>
+            </li>
+            <li className="mr-6 cursor-pointer">
+              <Link
                 to="/#about"
                 scroll={(el) =>
                   el.scrollIntoView({ behavior: "smooth", block: "start" })
                 }
                 className="hover:text-[#45c0bb]"
               >
-                About
+                ABOUT
               </Link>
             </li>
             <li className="mr-6 cursor-pointer">
@@ -36,7 +47,7 @@ export const Header = () => {
                 }
                 className="hover:text-[#45c0bb]"
               >
-                Projects
+                PROJECTS
               </Link>
             </li>
             <li className="cursor-pointer">
@@ -47,7 +58,7 @@ export const Header = () => {
                 }
                 className="hover:text-[#45c0bb]"
               >
-                Contact
+                CONTACT
               </Link>
             </li>
           </ul>
