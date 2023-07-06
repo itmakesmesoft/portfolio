@@ -25,7 +25,7 @@ const info = {
 const project = () => {
   return (
     <div className="w-full flex flex-col items-center">
-      <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] py-10">
+      <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] pb-10">
         <div className="flex flex-col sm:flex-row max-w-[1300px]">
           <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
             <img
@@ -34,7 +34,7 @@ const project = () => {
               className="w-full h-auto"
             />
           </div>
-          <div className="flex-none w-full sm:w-[350px] lg:w-[450px] px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem] flex flex-col justify-center items-center sm:items-start">
+          <div className="flex-none w-full sm:w-[350px] lg:w-[450px] px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem] flex flex-col justify-center items-start">
             <ProjectInfo info={info} />
           </div>
         </div>
@@ -51,10 +51,9 @@ const project = () => {
           className="w-full h-full max-w-[1300px]"
         />
       </section>
-      <section className="w-full bg-[#fbfbfb] pt-[7rem]">
+      <section className="w-full bg-[#fbfbfb]">
         <UsedTech tech={info.tech} />
         <WhatIDid info={info.whatIDid} />
-        {/* <p>{info.takeAway}</p> */}
       </section>
     </div>
   );

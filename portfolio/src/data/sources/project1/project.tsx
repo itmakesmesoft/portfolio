@@ -37,16 +37,12 @@ const info = {
     "피그마를 이용하여 UI 목업을 제작하였습니다.",
     "피드백을 듣고, UX를 지속적으로 개선하였습니다.",
   ],
-  // takeAway: [
-  //   "SPA에서 메모리 관리의 중요성을 깨달았습니다. 다만, 6주라는 짧은 시간 탓에 메모리 누수를 해결하지 못한 부분이 있어 조금 아쉬웠습니다.",
-  //   "무한스크롤을 구현하면서 단순히 클릭 시 데이터가 추가되도록 구현하였는데, 추후 프로젝트에서는 리스트 가상화를 통해 모든 데이터를 렌더링 하지 않고 무한스크롤을 구현해보고 싶습니다.",
-  // ],
 };
 
 const project = () => {
   return (
     <div className="w-full flex flex-col items-center">
-      <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] py-10">
+      <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] pb-10">
         <div className="flex flex-col sm:flex-row max-w-[1300px]">
           <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
             <img
@@ -55,7 +51,7 @@ const project = () => {
               className="w-full h-auto"
             />
           </div>
-          <div className="flex-none w-full sm:w-[350px] lg:w-[450px] px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem] flex flex-col justify-center items-center sm:items-start">
+          <div className="flex-none w-full sm:w-[350px] lg:w-[450px] px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem] flex flex-col justify-center items-start">
             <ProjectInfo info={info} />
           </div>
         </div>
@@ -67,10 +63,9 @@ const project = () => {
           className="w-full h-full max-w-[1200px]"
         />
       </section>
-      <section className="w-full bg-[#fbfbfb] pt-[7rem]">
+      <section className="w-full bg-[#fbfbfb]">
         <UsedTech tech={info.tech} />
         <WhatIDid info={info.whatIDid} />
-        {/* <p>{info.takeAway}</p> */}
       </section>
     </div>
   );

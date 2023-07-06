@@ -5,7 +5,7 @@ import { ContactPage } from "./Components/ContactPage";
 
 export const MainPage = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col text-sm sm:text-base">
       <IntroPage />
       <AboutPage />
       <ProjectsPage />

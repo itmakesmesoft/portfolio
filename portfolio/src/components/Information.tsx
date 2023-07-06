@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Information = () => {
   return (
-    <div className="mt-[1.5rem]">
+    <div className="mt-[1.5rem] text-sm sm:text-base">
       <Phrase>
         <MdFace className="icon" />
         이은혁
@@ -16,9 +16,7 @@ const Information = () => {
         <MdEmail className="icon" />
         dmsgur7112@naver.com
       </Phrase>
-      <p className="mt-8 text-sm">
-        Copyright 2023. Eunhyeok Lee. All rights reserved.
-      </p>
+      <p className="mt-8">Copyright 2023. Eunhyeok Lee. All rights reserved.</p>
     </div>
   );
 };
@@ -27,9 +25,8 @@ const Phrase = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 0.5rem;
-  font-weight: 600;
-
+  margin-top: 0.125rem;
+  color: #616161;
   & .icon {
     margin-right: 0.5rem;
   }

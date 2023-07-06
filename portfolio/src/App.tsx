@@ -6,6 +6,27 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 function App() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+  // 모바일 브라우저 주소창을 고려한 css height 설정
+  let timer: any = null;
+  let raf: number | null = null;
+  window.addEventListener("resize", () => {
+    if (!timer) resize(); // 디바운스 적용
+    else clearTimeout(timer); // timer 삭제 후 재할당
+    timer = setTimeout(() => {
+      timer = null;
+      if (raf) cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    }, 1000);
+  });
+  const resize = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`); // css 변수 변경
+    raf = requestAnimationFrame(resize);
+  };
+
   return (
     <div className="root">
       <Header />

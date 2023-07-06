@@ -6,7 +6,7 @@ export const ContactPage = () => {
       className="h-[50vh] w-full flex flex-col justify-center items-center bg-[#ffffff3c] py-10"
     >
       <div className="inline-block">
-        <h1 className="text-3xl">CONTACT</h1>
+        <h1 className="text-2xl sm:text-3xl">CONTACT</h1>
         <Information />
       </div>
     </div>

@@ -10,7 +10,7 @@ export const AboutPage = () => {
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[3rem] lg:pr-[6rem] z-10">
-        <div className="sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#00000010] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none p-2 sm:p-0 shadow-3xl sm:shadow-none">
+        <div className="sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">
           <div
             className="w-[2.5rem] h-[2.5rem] sm:w-[250px] sm:h-[350px] bg-top bg-cover z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0"
             style={{ backgroundImage: "url(/images/daniel.jpg)" }}

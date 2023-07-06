@@ -29,7 +29,9 @@ export const ProjectsPage = () => {
       id="project"
       className="h-screen w-full flex flex-col justify-center items-center"
     >
-      <h1 className="text-[4.5rem] text-center font-['Bangers']">Projects</h1>
+      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 text-center font-['Bangers']">
+        Projects
+      </h1>
       <div className="w-full sm:w-[90%] lg:w-[70%] max-w-[1000px] mt-[2rem] h-[50vh] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0">
         {list.map((content: contentType, index: number) => {
           return (

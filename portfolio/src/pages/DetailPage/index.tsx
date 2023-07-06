@@ -1,22 +1,31 @@
 import { useParams } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Information from "../../components/Information";
 
 export const DetailPage = () => {
   const params = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const projectId = params.id;
   const Component = lazy(
     () => import(`../../data/sources/project${projectId}/project`)
   );
 
   return (
-    <div className="w-full min-h-screen pt-[60px]">
-      <Suspense fallback={<div></div>}>
+    <div className="w-full min-h-[calc(var(--vh,1vh)*100)] pt-[60px]">
+      <Suspense
+        fallback={
+          <div className="h-screen w-screen flex flex-col justify-center">
+            <p className="text-center">Loading...</p>
+          </div>
+        }
+      >
         <Component />
       </Suspense>
       <div className="min-h-[50vh] w-full p-4 flex flex-col justify-center items-center bg-[#fbfbfb] border-t border-[#d2d2d2]">
         <div className="inline-block ">
-          <h1 className="text-center text-[2rem] font-extralight">
+          <h1 className="text-2xl sm:text-[2rem] text-start sm:text-center font-extralight">
             방문해주셔서 감사합니다.
           </h1>
           <Information />

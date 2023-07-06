@@ -1,13 +1,14 @@
 import { HashLink as Link } from "react-router-hash-link";
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50">
+    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50 text-sm sm:text-base backdrop-blur-lg bg-[#eaeaea70]">
       <div className="flex flex-row justify-between items-center w-full z-40 h-[60px] max-w-[1300px] px-4">
         <Link
           to="/#"
           scroll={(el) =>
             el.scrollIntoView({ behavior: "smooth", block: "start" })
           }
+          className="flex-none"
         >
           <img
             src="/images/image.jpg"
@@ -17,7 +18,7 @@ export const Header = () => {
         </Link>
         <div>
           <ul className="flex flex-row">
-            <li className="mr-6 cursor-pointer">
+            <li className="mr-6 cursor-pointer hidden sm:block">
               <Link
                 to="/#"
                 scroll={(el) =>

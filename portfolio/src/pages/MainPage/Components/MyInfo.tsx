@@ -13,7 +13,7 @@ export const MyInfo = () => {
   }
   return (
     <div className="h-[77%] w-full">
-      <h1 className="text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left tracking-wide leading-none">
+      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left leading-none">
         About Me
       </h1>
       <div>
@@ -44,7 +44,6 @@ export const MyInfo = () => {
 const P = styled.p`
   margin-bottom: 1.2rem;
   font-weight: 300;
-  font-size: 1rem;
   color: #818181;
   font-weight: 500;
 `;

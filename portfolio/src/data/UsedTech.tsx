@@ -20,10 +20,8 @@ const UsedTech = (props: { tech: string[] }) => {
     SWR: "Swr.svg",
   };
   return (
-    <div className="mx-auto max-w-[1000px] pb-[7rem] border-b border-[#d2d2d2]">
-      <h1 className="text-center text-[2rem] font-extrabold">
-        사용한 기술 스택
-      </h1>
+    <div className="mx-auto max-w-[1000px] border-b border-[#d2d2d2] py-[4rem] sm:py-[7rem]">
+      <h1 className="text-center text-[2rem] font-extrabold">What I used</h1>
       <div className="flex flex-row justify-center items-end flex-wrap mt-8">
         {tech.map((t: string, index: number) => {
           return (
@@ -32,7 +30,7 @@ const UsedTech = (props: { tech: string[] }) => {
                 <img
                   src={require(`/public/icons/${filename[t]}`)}
                   alt={t}
-                  className="w-[4.5rem] h-[4.5rem]"
+                  className="w-[4.5rem] h-[4.5rem] mx-auto"
                 />
               ) : (
                 ""
