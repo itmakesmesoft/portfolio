@@ -6,6 +6,15 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 function App() {
+  document.documentElement.style.setProperty("--scrolled", "0");
+  window.addEventListener("scroll", () => {
+    if (window.innerHeight < window.scrollY) {
+      document.documentElement.style.setProperty("--scrolled", "1");
+    } else {
+      document.documentElement.style.setProperty("--scrolled", "0");
+    }
+  });
+
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 

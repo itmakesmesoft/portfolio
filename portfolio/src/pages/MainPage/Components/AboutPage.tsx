@@ -13,7 +13,7 @@ export const AboutPage = () => {
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
       <div
-        className={`h-screen w-screen z-50 fixed top-0 left-0 flex flex-col justify-center bg-[#00000090] backdrop-blur-sm
+        className={`h-[calc(var(--vh,1vh)*100)] w-screen z-50 fixed top-0 left-0 flex flex-col justify-center bg-[#00000090] backdrop-blur-sm cursor-pointer
         ${isOpen ? "" : "hidden"}
         `}
         ref={modal}
@@ -22,7 +22,7 @@ export const AboutPage = () => {
         }}
       >
         <div
-          className="w-[80%] sm:w-auto sm:h-[80%] bg-cover aspect-5/7 mx-auto z-70 rounded-lg shadow-2xl"
+          className="w-[80%] sm:w-auto sm:h-[80%] bg-cover aspect-5/7 mx-auto z-70 rounded-lg shadow-2xl cursor-default"
           style={{ backgroundImage: "url(/images/daniel.jpg)" }}
         />
       </div>
@@ -30,7 +30,7 @@ export const AboutPage = () => {
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[2rem] lg:pr-[6rem] z-10">
         <div className="sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">
           <div
-            className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] bg-top bg-cover z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0"
+            className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] bg-top bg-cover z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl active:shadow-none"
             style={{ backgroundImage: "url(/images/daniel.jpg)" }}
             onClick={() => setIsOpen(true)}
           />
@@ -60,14 +60,14 @@ export const AboutPage = () => {
       </div>
       {/* 오른쪽 */}
       <div className="flex flex-col h-full w-full px-4 sm:px-0">
-        <div className="h-[130vh] w-full relative">
-          <Sticky>
+        <div className="h-full sm:h-[130vh] w-full relative">
+          <Sticky className="sm:sticky h-full sm:h-screen">
             <MyInfo />
           </Sticky>
         </div>
         <div className="flex flex-col h-full w-full">
-          <div className="h-[130vh] w-full relative">
-            <Sticky>
+          <div className="h-full sm:h-[130vh] w-full relative">
+            <Sticky className="sm:sticky h-full sm:h-screen">
               <MyExperience />
             </Sticky>
           </div>
@@ -83,13 +83,11 @@ const A = styled.a`
 `;
 
 const Sticky = styled.div`
-  position: sticky;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
   top: 0;
   left: 0;
 `;

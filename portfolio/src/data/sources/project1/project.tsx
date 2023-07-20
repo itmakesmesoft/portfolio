@@ -63,6 +63,15 @@ const project = () => {
           className="w-full h-full max-w-[1200px]"
         />
       </section>
+      <section className="w-full h-full py-20 px-4 border bg-[#fbfbfb]">
+        <iframe
+          className="w-full aspect-video mx-auto max-w-[1000px]"
+          src="https://www.youtube.com/embed/e5zKhZFMLA4"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </section>
       <section className="w-full bg-[#fbfbfb]">
         <UsedTech tech={info.tech} />
         <WhatIDid info={info.whatIDid} />
