@@ -4,7 +4,7 @@ const Simulation = (props: { data: string[][] }) => {
   const imageSrc: string[][] = props.data;
 
   return (
-    <div className="w-[95%] max-w-[700px] py-[10rem] px-4 grid grid-cols-2">
+    <div className="w-full h-full max-w-[700px] py-[10rem] px-8 grid grid-cols-2">
       {imageSrc.map((src: string[], i: number) => (
         <WrapCard key={i} className="">
           <Inner className="rounded-lg lg:rounded-xl w-[calc(100%-1rem)] h-[calc(100%-1rem)] sm:w-[calc(100%-1.5rem)] sm:h-[calc(100%-1.5rem)] lg:w-[calc(100%-2rem)] lg:h-[calc(100%-2rem)]">

@@ -1,7 +1,6 @@
 import WhatIDid from "../../WhatIDid";
 import ProjectInfo from "../../ProjectInfo";
 import UsedTech from "../../UsedTech";
-import styled from "styled-components";
 import Simulation from "../../Simulation";
 
 const info = {
