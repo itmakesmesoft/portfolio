@@ -22,7 +22,7 @@ const info = {
   ],
 };
 
-const project = () => {
+const Project = () => {
   return (
     <div className="w-full flex flex-col items-center">
       <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] pb-10">
@@ -30,7 +30,9 @@ const project = () => {
           <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
             <img
               src={require("./img/2.png")}
-              alt=""
+              alt="thumbnail"
+              width="1300"
+              height="1000"
               className="w-full h-auto"
             />
           </div>
@@ -43,6 +45,8 @@ const project = () => {
         <img
           src={require("./img/1.png")}
           alt=""
+          width="1300"
+          height="1000"
           className="w-full h-full max-w-[1300px]"
         />
         <img
@@ -59,4 +63,4 @@ const project = () => {
   );
 };
 
-export default project;
+export default Project;

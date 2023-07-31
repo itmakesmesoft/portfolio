@@ -9,7 +9,7 @@ export const DetailPage = () => {
   }, []);
   const projectId = params.id;
   const Component = lazy(
-    () => import(`../../data/sources/project${projectId}/project`)
+    () => import(`../../data/sources/project${projectId}/Project`)
   );
 
   return (

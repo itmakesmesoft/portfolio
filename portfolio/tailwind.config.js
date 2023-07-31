@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       aspectRatio: {
         "5/7": "5 / 7",
+        "16/10": "16 / 10",
       },
     },
   },
