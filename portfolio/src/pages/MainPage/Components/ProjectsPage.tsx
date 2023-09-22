@@ -47,7 +47,7 @@ export const ProjectsPage = () => {
                   backgroundPosition: "center",
                 }}
               >
-                <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[100] drop-shadow-lg text-white">
+                <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[200] drop-shadow-lg text-white">
                   {index + 1}
                 </p>
               </div>
