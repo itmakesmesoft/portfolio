@@ -18,7 +18,7 @@ export const AboutPage = () => {
         <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">
           <div
             className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] bg-top bg-cover z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl active:shadow-none"
-            style={{ backgroundImage: "url(/images/daniel.jpg)" }}
+            style={{ backgroundImage: "url(/images/daniel_regular.jpg)" }}
             onClick={() => setIsOpen(true)}
           />
           <div className="text-base sm:mt-5 flex flex-row lg:flex-col sm:justify-center sm:w-full">
