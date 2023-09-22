@@ -52,22 +52,22 @@ export const MyExperience = () => {
     ],
     certificates: [
       {
-        date: "2021",
-        name: "OPIC IH",
-      },
-      {
         date: "2022",
         name: "SQLD",
+      },
+      {
+        date: "2023",
+        name: "OPIC IM1",
       },
     ],
     awards: [
       {
         date: "2022",
-        name: "SSAFY 관통 우수상",
+        name: "삼성 청년 SW아카데미 우수상",
       },
       {
         date: "2023",
-        name: "SSAFY 특화 우수상",
+        name: "삼성 청년 SW아카데미 우수상",
       },
     ],
     experiences: [
@@ -85,7 +85,7 @@ export const MyExperience = () => {
       },
       {
         date: "2022-2023",
-        name: "SSAFY 8기",
+        name: "삼성 청년 SW아카데미 8기",
       },
     ],
   };

@@ -28,7 +28,7 @@ export const MyInfo = () => {
           <span className="block">참고로 게임에는 관심이 없습니다(TMI).</span>
         </P>
         <P>
-          <Bold>SSAFY 8기</Bold>에 입과하여{" "}
+          <Bold>삼성 청년 SW아카데미 8기</Bold>에 입과하여{" "}
           <Bold>Python과 Django, Vue, React 등을 학습</Bold>하였습니다. 그동안
           학습해 온 것들을 Notion과 GitHub에 기록하고 있습니다.
         </P>

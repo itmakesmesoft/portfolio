@@ -2,30 +2,17 @@ import styled from "styled-components";
 import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
-import { useState, useRef } from "react";
+import useModal from "../../../components/useImageModal";
 
 export const AboutPage = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const modal = useRef<HTMLDivElement>(null);
+  const { Modal, setIsOpen } = useModal();
   return (
     <div
       id="about"
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
-      <div
-        className={`h-[calc(var(--vh,1vh)*100)] w-screen z-50 fixed top-0 left-0 flex flex-col justify-center bg-[#00000090] backdrop-blur-sm cursor-pointer
-        ${isOpen ? "" : "hidden"}
-        `}
-        ref={modal}
-        onClick={(event) => {
-          event.target === modal.current && setIsOpen(false);
-        }}
-      >
-        <div
-          className="w-[80%] sm:w-auto sm:h-[80%] bg-cover aspect-5/7 mx-auto z-70 rounded-lg shadow-2xl cursor-default"
-          style={{ backgroundImage: "url(/images/daniel.jpg)" }}
-        />
-      </div>
+      <Modal children={<img src="/images/daniel.jpg" alt="" />} />
+
       {/* 왼쪽 */}
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[2rem] lg:pr-[6rem] z-10">
         <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">

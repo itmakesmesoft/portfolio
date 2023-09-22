@@ -29,9 +29,9 @@ const info = {
   ],
   whatIDid: [
     "쉐도잉 페이지 개발을 담당했습니다.",
-    "webvtt형식의 자막을 파싱하고 RequestAnimationFrame API를 이용하여 실시간으로 자막을 표시하였습니다.",
+    "webVTT형식의 자막을 파싱하고 requestAnimationFrame API를 이용하여 실시간으로 자막을 표시하였습니다.",
     "SWR을 이용해 최신 데이터를 불러오는 무한스크롤 기능을 구현하였습니다.",
-    "Azure의 Cognitive recognition API를 이용하여 발음평가 기능을 만들고, LTS 알고리즘을 적용하여 정확도를 개선하였습니다.",
+    "Azure의 Cognitive recognition API를 이용하여 발음평가 기능을 만들고, LCS 알고리즘을 이용하여 발음한 어휘가 강조되도록 구현하였습니다.",
     "THREE.js를 이용하여 3D 모델에 애니메이션을 적용하고, 페이지에 삽입하였습니다.",
     "로드맵 페이지를 제작하고 회원 여부에 따라 학습 가능한 Step을 표시하였습니다.",
     "피그마를 이용하여 UI 목업을 제작하였습니다.",
