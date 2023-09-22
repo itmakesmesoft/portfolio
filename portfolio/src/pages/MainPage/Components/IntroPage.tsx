@@ -17,7 +17,11 @@ export const IntroPage = () => {
               el.scrollIntoView({ behavior: "smooth", block: "start" })
             }
           >
-            <img className="bounce" src="./icons/arrow.svg" alt="scroll" />
+            <img
+              className="bounce"
+              src="./icons/arrow.svg"
+              alt="아래 방향 스크롤"
+            />
           </Link>
         </div>
       </div>

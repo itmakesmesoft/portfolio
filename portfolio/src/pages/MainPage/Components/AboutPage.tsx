@@ -11,16 +11,20 @@ export const AboutPage = () => {
       id="about"
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
-      <Modal children={<img src="/images/daniel.jpg" alt="" />} />
+      <Modal
+        children={<img src="/images/daniel.jpg" alt="증명 사진 자세히 보기" />}
+      />
 
       {/* 왼쪽 */}
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[2rem] lg:pr-[6rem] z-10">
         <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">
-          <div
-            className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] bg-top bg-cover z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl active:shadow-none"
-            style={{ backgroundImage: "url(/images/daniel_regular.jpg)" }}
-            onClick={() => setIsOpen(true)}
-          />
+          <div className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl overflow-hidden active:shadow-none">
+            <img
+              src="/images/daniel_regular.jpg"
+              alt="증명 사진"
+              onClick={() => setIsOpen(true)}
+            />
+          </div>
           <div className="text-base sm:mt-5 flex flex-row lg:flex-col sm:justify-center sm:w-full">
             <p className="sm:mb-2">
               <A href="mailto:dmsgur7112@naver.com">
