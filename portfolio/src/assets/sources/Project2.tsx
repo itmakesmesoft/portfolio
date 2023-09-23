@@ -24,7 +24,7 @@ const Project = (props: { info: contentType }) => {
           </div>
         </div>
       </section>
-      <section className="bg-[#a0c846] w-full flex flex-col items-center border">
+      <section className="bg-[#a0c846] w-full flex flex-col items-center">
         <img
           src={require("assets/img/project2_2.webp")}
           alt=""
