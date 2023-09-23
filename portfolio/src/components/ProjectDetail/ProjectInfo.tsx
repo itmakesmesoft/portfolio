@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InfoType } from "../util/share";
+import { InfoType } from "types/common";
 
 const ProjectInfo = (props: { info: InfoType }) => {
   const info = props.info;

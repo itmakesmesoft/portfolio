@@ -1,14 +1,7 @@
 import styled from "styled-components";
 import useGuage from "../../../components/Level";
-type SkillType = {
-  title: string;
-  content: string;
-  level: number;
-};
-type ContentType = {
-  date: string;
-  name: string;
-};
+import { SkillType, ExperienceType } from "types/common";
+
 export const MyExperience = () => {
   const { LevelGuage } = useGuage();
   const info = {
@@ -107,7 +100,7 @@ export const MyExperience = () => {
           </Box>
           <Box>
             <H1>CERTIFICATES</H1>
-            {info.certificates.map((cert: ContentType, index: number) => (
+            {info.certificates.map((cert: ExperienceType, index: number) => (
               <P key={index}>
                 <Sub>{cert.date}</Sub>
                 {cert.name}
@@ -118,7 +111,7 @@ export const MyExperience = () => {
         <div className="w-full">
           <Box>
             <H1>AWARDS</H1>
-            {info.awards.map((award: ContentType, index: number) => (
+            {info.awards.map((award: ExperienceType, index: number) => (
               <P key={index}>
                 <Sub>{award.date}</Sub>
                 {award.name}
@@ -127,7 +120,7 @@ export const MyExperience = () => {
           </Box>
           <Box>
             <H1>EXPERIENCES</H1>
-            {info.experiences.map((exp: ContentType, index: number) => (
+            {info.experiences.map((exp: ExperienceType, index: number) => (
               <P key={index}>
                 <Sub>{exp.date}</Sub>
                 {exp.name}

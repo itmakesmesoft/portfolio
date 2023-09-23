@@ -5,16 +5,18 @@ const Simulation = (props: { data: string[][] }) => {
 
   return (
     <div className="w-full max-w-[700px] py-[5rem] lg:py-[10rem] px-12 sm:px-20 grid gap-4 md:gap-6 grid-cols-2 content-center">
-      {imageSrc.map((src: string[], i: number) => (
-        <WrapCard key={i} className="rounded-lg sm:rounded-xl">
-          <Img src={src[1]} alt={`simulationImage_${i + 1}`} />
-          <Img
-            src={src[0]}
-            className="hovered"
-            alt={`simulationImage_${i + 1}`}
-          />
-        </WrapCard>
-      ))}
+      {imageSrc.map((src: string[], i: number) => {
+        return (
+          <WrapCard key={i} className="rounded-lg sm:rounded-xl">
+            <Img src={src[1]} alt={`simulationImage_${i + 1}`} />
+            <Img
+              src={src[0]}
+              className="hovered"
+              alt={`simulationImage_${i + 1}`}
+            />
+          </WrapCard>
+        );
+      })}
     </div>
   );
 };

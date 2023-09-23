@@ -1,15 +1,17 @@
 import { useParams } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
-import Information from "../../components/Information";
+import Information from "components/Information";
+import projects from "assets/projectInfo";
 
 export const DetailPage = () => {
-  const params = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const projectId = params.id;
+  const params = useParams();
+  const projectId: string | undefined = params.id;
+
   const Component = lazy(
-    () => import(`../../data/sources/project${projectId}/Project`)
+    () => import(`../../assets/sources/Project${projectId}`)
   );
 
   return (
@@ -21,8 +23,11 @@ export const DetailPage = () => {
           </div>
         }
       >
-        <Component />
+        {projectId && (
+          <Component info={projects.list[parseInt(projectId) - 1]} />
+        )}
       </Suspense>
+
       <div className="min-h-[50vh] w-full p-4 flex flex-col justify-center items-center bg-[#fbfbfb] border-t border-[#d2d2d2]">
         <div className="inline-block ">
           <h1 className="text-2xl sm:text-[2rem] text-start sm:text-center font-extralight">

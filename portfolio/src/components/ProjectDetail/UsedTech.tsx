@@ -26,14 +26,12 @@ const UsedTech = (props: { tech: string[] }) => {
         {tech.map((t: string, index: number) => {
           return (
             <div key={index} className="p-4 mx-4">
-              {filename[t] ? (
+              {filename[t] && (
                 <img
                   src={require(`/public/icons/${filename[t]}`)}
                   alt={t}
                   className="w-[4.5rem] h-[4.5rem] mx-auto"
                 />
-              ) : (
-                ""
               )}
               <p className="mt-4 text-center">{t}</p>
             </div>

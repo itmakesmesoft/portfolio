@@ -11,7 +11,7 @@ export const Header = () => {
           className="flex-none"
         >
           <img
-            src="/images/image.jpg"
+            src="/images/logo.jpg"
             className="w-[40px] h-[40px] rounded-full cursor-pointer"
             alt="logo"
           />
