@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
-import useModal from "../../../components/useImageModal";
+import useModal from "components/useModal";
 
 export const AboutPage = () => {
   const { Modal, setIsOpen } = useModal();
