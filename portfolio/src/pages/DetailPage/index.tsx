@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect } from "react";
 import Information from "components/Information";
 import projects from "assets/projectInfo";
 
-export const DetailPage = () => {
+const DetailPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,3 +39,5 @@ export const DetailPage = () => {
     </div>
   );
 };
+
+export default DetailPage;

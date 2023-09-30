@@ -1,6 +1,7 @@
 import "./App.css";
-import { MainPage } from "./pages/MainPage/index";
-import { DetailPage } from "./pages/DetailPage/index";
+// import { MainPage } from "./pages/MainPage/index";
+// import { DetailPage } from "./pages/DetailPage/index";
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -38,13 +39,19 @@ function App() {
     raf = requestAnimationFrame(resize);
   };
 
+  // 코드 스플리팅 적용
+  const MainPage = lazy(() => import("./pages/MainPage/index"));
+  const DetailPage = lazy(() => import("./pages/DetailPage/index"));
+
   return (
     <div className="root">
       <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/project/:id" element={<DetailPage />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/project/:id" element={<DetailPage />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </div>
   );

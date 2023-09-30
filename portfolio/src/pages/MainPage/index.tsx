@@ -3,7 +3,7 @@ import { AboutPage } from "./Components/AboutPage";
 import { ProjectsPage } from "./Components/ProjectsPage";
 import { ContactPage } from "./Components/ContactPage";
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <div className="flex flex-col text-sm sm:text-base">
       <IntroPage />
@@ -13,3 +13,5 @@ export const MainPage = () => {
     </div>
   );
 };
+
+export default MainPage;
