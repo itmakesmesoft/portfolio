@@ -1,49 +1,43 @@
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import useObserver from "components/useObserver";
+import useDebounce from "components/useDebounce";
+const durations: number[] = [13000, 3200, 2000, 5000, 5500, 9000]; // gif 길이 배열
 
 const Simulation = (props: { data: string[][] }) => {
-  const showCard = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
+  const [index, setIndex] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
+  const imageSrc: string[][] = props.data;
+  console.log("update");
+  // 디바운스 적용
+  const { status, setStatus } = useDebounce(
+    () => setIndex(index < durations.length - 1 ? index + 1 : 0),
+    1000
+  );
+
+  useEffect(() => {
+    if (status === 0) {
+      const animPlaying = setTimeout(() => {
+        setIndex(index < durations.length - 1 ? index + 1 : 0);
+      }, durations[index]);
+      return () => {
+        clearTimeout(animPlaying);
+      };
+    }
+  }, [index, status]);
+
+  const showCard = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
-        console.log("IntersectionObserver 동작");
-        observer.unobserve(entry.target);
-        console.log("1회 동작 후 관찰 중지");
+        // observer.unobserve(entry.target); // 1회성 동작 시
+        setStatus(0);
         setIndex(0);
+      } else {
+        setStatus(-2);
+        setIndex(-1);
       }
     });
   };
-
-  const options = {
-    threshold: 0.7,
-  };
-  // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동-----------------
-  const targetRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(showCard, options);
-    observer.observe(targetRef.current as Element);
-    return () => {
-      observer && observer.disconnect(); // unmounted 시 IntersectionObserver 종료
-    };
-  }, []);
-
-  // -------------------------------------------------------------
-
-  const [index, setIndex] = useState(-2); // -2: IntersectionObserver 동작 전, -1: standby, 0~N: 호버링 인덱스 번호
-  useEffect(() => {
-    if (index === -1) {
-      const debounce = setTimeout(() => {
-        // 디바운스 적용
-        setIndex(0);
-      }, 1000);
-      return () => {
-        clearTimeout(debounce); // 항상 가장 마지막 setTimeout만 작동
-      };
-    }
-  }, [index]);
-  const imageSrc: string[][] = props.data;
+  const [targetRef] = useObserver(showCard, 0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
   return (
     <div
@@ -57,8 +51,14 @@ const Simulation = (props: { data: string[][] }) => {
               index === i ? "active" : ""
             }`}
             key={i}
-            onMouseOver={() => setIndex(i)}
-            onMouseLeave={() => setIndex(-1)}
+            onMouseOver={() => {
+              setStatus(1);
+              setIndex(i);
+            }}
+            onMouseLeave={() => {
+              setStatus(-1);
+              setIndex(-1);
+            }}
           >
             <Img src={src[1]} alt={`simulationImage_${i + 1}`} />
             <Img
