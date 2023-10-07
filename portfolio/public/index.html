@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- 아래는 FOUT(Flash of Unstyled Text) 방지하기 위해 font 파일 preload -->
+    <link rel="preload" href="/fonts/Bangers-Regular.woff" as="font" type="font/woff" crossorigin/>
+    <!-- ------------------ -->
     <link rel="icon" href="%PUBLIC_URL%/icons/DanielLEE_192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -25,6 +28,27 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Eunhyeok's Portfolio</title>
+    <style>
+      @font-face {
+        font-family: 'Bangers';
+        src: url('/fonts/Bangers-Regular.woff') format('woff');
+        font-weight: 400;
+        font-display: block; /* Flash of Unstyled Text 방지하기 위함 */
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Montserrat Alternates';
+        src: url('/fonts/MontserratAlternates-ExtraLight.woff') format('woff');
+        font-weight: 200;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('/fonts/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
