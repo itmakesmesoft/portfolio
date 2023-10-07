@@ -1,29 +1,27 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useObserver from "components/useObserver";
 import useDebounce from "components/useDebounce";
-const durations: number[] = [13000, 3200, 2000, 5000, 5500, 9000]; // gif 길이 배열
-
 const Simulation = (props: { data: string[][] }) => {
   const [index, setIndex] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
   const imageSrc: string[][] = props.data;
-  console.log("update");
+
+  const playNext = useCallback(() => {
+    // 여기서 useCallback은 useEffect로 인해 불필요한 재렌더링이 발생되는 것을 막기 위해 사용
+    setIndex(index < imageSrc.length - 1 ? index + 1 : 0);
+  }, [imageSrc.length, index]);
+
   // 디바운스 적용
-  const { status, setStatus } = useDebounce(
-    () => setIndex(index < durations.length - 1 ? index + 1 : 0),
-    1000
-  );
+  const { status, setStatus } = useDebounce(playNext, 1000);
 
   useEffect(() => {
     if (status === 0) {
-      const animPlaying = setTimeout(() => {
-        setIndex(index < durations.length - 1 ? index + 1 : 0);
-      }, durations[index]);
+      const animPlaying = setTimeout(playNext, 3000);
       return () => {
         clearTimeout(animPlaying);
       };
     }
-  }, [index, status]);
+  }, [index, playNext, status]);
 
   const showCard = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
