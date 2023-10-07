@@ -4,12 +4,9 @@ import Information from "components/Information";
 import projects from "assets/projectInfo";
 
 const DetailPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => window.scrollTo(0, 0), []);
   const params = useParams();
   const projectId: string | undefined = params.id;
-
   const Component = lazy(
     () => import(`../../assets/sources/Project${projectId}`)
   );
@@ -18,7 +15,7 @@ const DetailPage = () => {
     <div className="w-full min-h-screen pt-[60px]">
       <Suspense
         fallback={
-          <div className="h-screen w-screen flex flex-col justify-center">
+          <div className="h-screen w-full flex flex-col justify-center">
             <p className="text-center">Loading...</p>
           </div>
         }

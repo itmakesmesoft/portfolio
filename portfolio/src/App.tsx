@@ -1,6 +1,4 @@
 import "./App.css";
-// import { MainPage } from "./pages/MainPage/index";
-// import { DetailPage } from "./pages/DetailPage/index";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
@@ -46,7 +44,7 @@ function App() {
   return (
     <div className="root">
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className="w-screen h-screen">Loading...</div>}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/project/:id" element={<DetailPage />} />
