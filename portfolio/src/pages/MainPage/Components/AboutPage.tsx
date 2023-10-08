@@ -3,6 +3,7 @@ import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
 import useModal from "components/useModal";
+import ModalPortal from "components/Portal";
 
 export const AboutPage = () => {
   const { Modal, setIsOpen } = useModal();
@@ -11,9 +12,9 @@ export const AboutPage = () => {
       id="about"
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
-      <Modal
-        children={<img src="/images/daniel.jpg" alt="증명 사진 자세히 보기" />}
-      />
+      <ModalPortal>
+        <Modal children={<img src="/images/daniel.jpg" alt="증명 사진" />} />
+      </ModalPortal>
 
       {/* 왼쪽 */}
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[2rem] lg:pr-[6rem] z-10">
