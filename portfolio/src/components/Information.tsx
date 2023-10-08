@@ -4,7 +4,7 @@ import { HashLink as Link } from "react-router-hash-link";
 
 const Information = () => {
   return (
-    <div className="mt-[1.5rem] text-sm sm:text-base">
+    <div className="mt-[1.5rem] text-sm sm:text-base flex items-start flex-col">
       <Link
         to="/#about"
         scroll={(el) =>
@@ -28,19 +28,24 @@ const Information = () => {
           dmsgur7112@naver.com
         </Phrase>
       </a>
-      <p className="mt-8">Copyright 2023. Eunhyeok Lee. All rights reserved.</p>
+      <p className="mt-8">
+        Copyright 2023. Eunhyeok Lee. All rights reserved.
+        <span className="ms-3 text-neutral-400 underline cursor-pointer">
+          updated at 23.10.09
+        </span>
+      </p>
     </div>
   );
 };
 
-const Phrase = styled.p`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+const Phrase = styled.span`
   margin-top: 0.125rem;
   color: #616161;
   & .icon {
     margin-right: 0.5rem;
+  }
+  & svg {
+    display: inline-block;
   }
   &:hover {
     color: #45c0bb;
