@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 function App() {
+  // 메인화면에서 screen height 만큼 스크롤 시 --scrolled css변수 변경
   document.documentElement.style.setProperty("--scrolled", "0");
   window.addEventListener("scroll", () => {
     if (window.innerHeight < window.scrollY) {
@@ -13,9 +14,6 @@ function App() {
       document.documentElement.style.setProperty("--scrolled", "0");
     }
   });
-
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   // 모바일 브라우저 주소창을 고려한 css height 설정
   let timer: ReturnType<typeof setTimeout> | null = null;
@@ -30,6 +28,9 @@ function App() {
       timer = null;
     }, 1000);
   });
+
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   const resize = () => {
     const vh = window.innerHeight * 0.01;

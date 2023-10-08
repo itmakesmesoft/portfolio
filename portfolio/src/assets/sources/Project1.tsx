@@ -1,6 +1,6 @@
-import ProjectInfo from "components/ProjectDetail/ProjectInfo";
-import WhatIDid from "components/ProjectDetail/WhatIDid";
-import UsedTech from "components/ProjectDetail/UsedTech";
+import ProjectInfo from "pages/DetailPage/components/ProjectInfo";
+import WhatIDid from "pages/DetailPage/components/WhatIDid";
+import UsedTech from "pages/DetailPage/components/UsedTech";
 import { contentType } from "types/common";
 
 const Project = (props: { info: contentType }) => {

@@ -1,7 +1,7 @@
-import WhatIDid from "components/ProjectDetail/WhatIDid";
-import ProjectInfo from "components/ProjectDetail/ProjectInfo";
-import UsedTech from "components/ProjectDetail/UsedTech";
-import Simulation from "components/ProjectDetail/Simulation";
+import WhatIDid from "pages/DetailPage/components/WhatIDid";
+import ProjectInfo from "pages/DetailPage/components/ProjectInfo";
+import UsedTech from "pages/DetailPage/components/UsedTech";
+import Simulation from "pages/DetailPage/components/Simulation";
 import { contentType } from "types/common";
 
 const Project = (props: { info: contentType }) => {
