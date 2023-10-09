@@ -7,7 +7,7 @@ const Project = (props: { info: contentType }) => {
   const info = props.info;
   return (
     <div className="w-full flex flex-col items-center">
-      <section className="flex flex-col justify-center min-h-[calc(100vh-60px)] pb-10">
+      <section className="flex flex-col justify-center min-h-[calc(100vh-45px)] pb-10">
         <div className="flex flex-col sm:flex-row max-w-[1300px]">
           <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
             <img

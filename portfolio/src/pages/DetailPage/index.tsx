@@ -12,7 +12,7 @@ const DetailPage = () => {
   );
 
   return (
-    <div className="w-full min-h-screen pt-[60px]">
+    <div className="w-full min-h-screen pt-[45px]">
       <Suspense
         fallback={
           <div className="h-screen w-full flex flex-col justify-center">
