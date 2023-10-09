@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
 import styled from "styled-components";
+import ModalPortal from "components/Portal";
 
 const useModal = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -23,7 +24,7 @@ const useModal = () => {
 
   const Modal = ({ children }: { children: ReactNode }) => {
     return (
-      <>
+      <ModalPortal>
         <ModalOverlay isOpen={isOpen} />
         <ModalWrapper
           isOpen={isOpen}
@@ -32,13 +33,13 @@ const useModal = () => {
             event.target === modal.current && setIsOpen(false);
           }}
         >
-          <ModalInner>{children}</ModalInner>
+          {children}
         </ModalWrapper>
-      </>
+      </ModalPortal>
     );
   };
 
-  return { Modal, setIsOpen };
+  return { Modal, isOpen, setIsOpen };
 };
 
 const ModalWrapper = styled.div<{ isOpen: boolean }>`
@@ -51,6 +52,7 @@ const ModalWrapper = styled.div<{ isOpen: boolean }>`
   display: ${(props) => (props.isOpen ? "flex" : "none")};
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
@@ -64,17 +66,6 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   background-color: #00000090;
   backdrop-filter: blur(10px);
   display: ${(props) => (props.isOpen ? "block" : "none")};
-`;
-
-const ModalInner = styled.div`
-  max-height: 70%;
-  max-width: 80%;
-  aspect-ratio: 5 / 7;
-  margin: 0 auto;
-  z-index: 200;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: default;
 `;
 
 export default useModal;

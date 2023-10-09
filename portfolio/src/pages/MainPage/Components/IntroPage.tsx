@@ -12,7 +12,7 @@ export const IntroPage = () => {
         <div className="absolute bottom-4 w-full flex flex-row justify-center">
           <Link
             to="/#about"
-            className="p-4 z-50"
+            className="p-4 z-20"
             scroll={(el) =>
               el.scrollIntoView({ behavior: "smooth", block: "start" })
             }

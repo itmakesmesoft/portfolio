@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
 
-const useObserver = (callback: any, threshold: number) => {
+const useObserver = (
+  callback: (entries: IntersectionObserverEntry[]) => unknown,
+  threshold: number
+) => {
   const targetRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (targetRef) {
+    if (targetRef.current) {
       const observer = new IntersectionObserver(callback, {
         threshold: threshold,
       });
