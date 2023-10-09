@@ -13,9 +13,8 @@ const Project = (props: { info: contentType }) => {
             <img
               src={require("assets/img/project1_1.webp")}
               alt="thumbnail"
-              width="1300"
-              height="1000"
-              className="w-full h-auto"
+              width="770px"
+              height="592.3px"
             />
           </div>
           <div className="flex-none w-full sm:w-[350px] lg:w-[450px] px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem] flex flex-col justify-center items-start">
