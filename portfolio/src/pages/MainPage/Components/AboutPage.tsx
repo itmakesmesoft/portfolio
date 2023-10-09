@@ -3,7 +3,7 @@ import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
 import useModal from "components/useModal";
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef } from "react";
 
 export const AboutPage = () => {
   const lazyImageRef = useRef<HTMLImageElement>(null);
