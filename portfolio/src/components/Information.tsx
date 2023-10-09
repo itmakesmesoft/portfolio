@@ -3,6 +3,29 @@ import styled from "styled-components";
 import { HashLink as Link } from "react-router-hash-link";
 import useModal from "./useModal";
 
+const updateLog = [
+  {
+    date: "2023.10.08",
+    content: [
+      "웹폰트 preload 적용",
+      "font-face 속성 변경",
+      "애니메이션 전환 interval 고정값으로 변경",
+      "불필요한 코드 제거",
+    ],
+  },
+  {
+    date: "2023.10.09",
+    content: [
+      "Portal을 사용한 useModal hook 제작",
+      "css 일부 수정",
+      "페이지 하단 업데이트 기록 제공",
+      "저화질 이미지 placeholder lazyloading 적용",
+      "이미지 로드 시 레이아웃 밀리는 문제 개선",
+      "헤더 푸터 height 조정",
+    ],
+  },
+];
+
 const Information = () => {
   const { Modal, setIsOpen } = useModal();
   return (
@@ -42,11 +65,17 @@ const Information = () => {
       <Modal
         children={
           <MyModal>
-            <h1>업데이트 기록</h1>
-            <p>
-              <b>2023.10.09</b> - Portal을 사용한 useModal hook 제작, css 일부
-              수정, 페이지 하단 업데이트 기록 제공
-            </p>
+            <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
+            <ul>
+              {updateLog.map((mylog: { date: string; content: string[] }) => (
+                <li className="mb-2">
+                  <b>{mylog.date}</b>
+                  {mylog.content.map((text: string) => (
+                    <p>- {text}</p>
+                  ))}
+                </li>
+              ))}
+            </ul>
           </MyModal>
         }
       />
@@ -76,6 +105,7 @@ const MyModal = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 2rem 3rem;
+  cursor: default;
 `;
 
 export default Information;
