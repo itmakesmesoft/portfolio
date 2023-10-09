@@ -3,23 +3,44 @@ import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
 import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
 import useModal from "components/useModal";
-import ModalPortal from "components/Portal";
+import { useEffect, useRef, ReactNode } from "react";
 
 export const AboutPage = () => {
-  const { Modal, setIsOpen } = useModal();
+  const lazyImageRef = useRef<HTMLImageElement>(null);
+  const { Modal, isOpen, setIsOpen } = useModal();
+
+  // 이미지 Lazy Loading
+  useEffect(() => {
+    if (isOpen && lazyImageRef.current?.dataset.src) {
+      // data-src를 img.src에 대입
+      lazyImageRef.current.src = lazyImageRef.current.dataset.src;
+    }
+  }, [isOpen]);
+
   return (
     <div
       id="about"
       className="max-w-[1100px] mx-auto w-full flex flex-col sm:flex-row sm:px-10"
     >
-      <ModalPortal>
-        <Modal children={<img src="/images/daniel.jpg" alt="증명 사진" />} />
-      </ModalPortal>
+      <Modal
+        children={
+          <ModalInner>
+            <img
+              ref={lazyImageRef}
+              src="/images/daniel_low.jpg"
+              data-src="/images/daniel.jpg" // 이미지 Lazy Loading을 위해 dataset 사용
+              alt="증명 사진"
+              width="400px"
+              height="500px"
+            />
+          </ModalInner>
+        }
+      />
 
       {/* 왼쪽 */}
       <div className="fixed sm:sticky bottom-0 sm:top-0 left-0 sm:h-screen w-full sm:w-auto flex flex-col justify-start sm:justify-center items-center sm:pr-[2rem] lg:pr-[6rem] z-10">
-        <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 py-2 sm:p-0 shadow-3xl sm:shadow-none">
-          <div className="w-[2.5rem] h-[2.5rem] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl overflow-hidden active:shadow-none">
+        <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 sm:p-0 shadow-3xl sm:shadow-none h-[45px]">
+          <div className="w-[35px] h-[35px] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl overflow-hidden active:shadow-none">
             <img
               src="/images/daniel_regular.jpg"
               alt="증명 사진"
@@ -83,7 +104,15 @@ const Sticky = styled.div`
   top: 0;
   left: 0;
 `;
-
+const ModalInner = styled.div`
+  max-height: 70%;
+  max-width: 80%;
+  aspect-ratio: 5 / 7;
+  z-index: 200;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: default;
+`;
 const SidePanel = styled.div`
   transition: all 0.2s;
 `;
