@@ -3,13 +3,13 @@
   "name": "Eunhyeok's Portfolio",
   "icons": [
     {
-      "src": "/icons/DanielLEE_192.png",
-      "type": "image/png",
+      "src": "/icons/DanielLEE_192.webp",
+      "type": "image/webp",
       "sizes": "192x192"
     },
     {
-      "src": "/icons/DanielLEE_512.png",
-      "type": "image/png",
+      "src": "/icons/DanielLEE_512.webp",
+      "type": "image/webp",
       "sizes": "512x512"
     }
   ],

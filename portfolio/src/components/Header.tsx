@@ -11,7 +11,7 @@ export const Header = () => {
           className="flex-none"
         >
           <img
-            src="/images/logo.jpg"
+            src="/images/logo.webp"
             className="w-[35px] h-[35px] rounded-full cursor-pointer"
             alt="logo"
           />

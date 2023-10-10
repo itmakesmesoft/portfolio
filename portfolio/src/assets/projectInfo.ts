@@ -46,7 +46,7 @@ const projectInfo = {
     },
     {
       summary: {
-        src: "/images/moida.png",
+        src: "/images/moida.webp",
         alt: "모이다",
         path: "/project/2",
         desc: "",

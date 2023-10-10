@@ -27,8 +27,8 @@ export const AboutPage = () => {
           <ModalInner>
             <img
               ref={lazyImageRef}
-              src="/images/daniel_low.jpg"
-              data-src="/images/daniel.jpg" // 이미지 Lazy Loading을 위해 dataset 사용
+              src="/images/daniel_low.webp"
+              data-src="/images/daniel.webp" // 이미지 Lazy Loading을 위해 dataset 사용
               alt="증명 사진"
               width="400px"
               height="500px"
@@ -42,7 +42,7 @@ export const AboutPage = () => {
         <SidePanel className="opacity-[var(--scrolled)] sm:opacity-100 sm:h-[77%] w-full flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-start border border-[#00000005] sm:border-none bg-[#eaeaea70] sm:bg-transparent backdrop-blur-lg sm:backdrop-blur-none px-4 sm:p-0 shadow-3xl sm:shadow-none h-[45px]">
           <div className="w-[35px] h-[35px] sm:w-[200px] sm:h-[280px] lg:w-[250px] lg:h-[350px] z-0 rounded-full sm:rounded-lg mr-6 sm:mr-0 cursor-pointer hover:shadow-xl overflow-hidden active:shadow-none">
             <img
-              src="/images/daniel_regular.jpg"
+              src="/images/daniel_regular.webp"
               alt="증명 사진"
               onClick={() => setIsOpen(true)}
             />
