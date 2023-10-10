@@ -44,6 +44,8 @@ export const AboutPage = () => {
             <img
               src="/images/daniel_regular.webp"
               alt="증명 사진"
+              width="400px"
+              height="500px"
               onClick={() => setIsOpen(true)}
             />
           </div>
