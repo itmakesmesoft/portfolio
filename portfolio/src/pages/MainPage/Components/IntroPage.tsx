@@ -20,6 +20,8 @@ export const IntroPage = () => {
             <img
               className="bounce"
               src="./icons/arrow.svg"
+              width="34px"
+              height="19px"
               alt="아래 방향 스크롤"
             />
           </Link>
