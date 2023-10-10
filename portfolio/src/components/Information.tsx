@@ -24,6 +24,14 @@ const updateLog = [
       "헤더 푸터 height 조정",
     ],
   },
+  {
+    date: "2023.10.10",
+    content: [
+      "서브셋 폰트 적용",
+      "이미지 사이즈, 속성 및 형식 변경",
+      "스타일 일부 수정",
+    ],
+  },
 ];
 
 const Information = () => {
@@ -54,9 +62,9 @@ const Information = () => {
         </Phrase>
       </a>
       <p className="mt-8">
-        Copyright 2023. Eunhyeok Lee. All rights reserved.
+        Copyright 2023. Eunhyeok Lee. All rights reserved.{" "}
         <span
-          className="ms-3 text-neutral-400 underline cursor-pointer"
+          className="text-neutral-400 underline cursor-pointer inline-block"
           onClick={() => setIsOpen(true)}
         >
           updated at 23.10.09
@@ -100,6 +108,8 @@ const Phrase = styled.span`
 const MyModal = styled.div`
   height: auto;
   width: 70%;
+  overflow: auto;
+  margin: 2rem 0;
   min-width: 330px;
   max-width: 1000px;
   background-color: white;
