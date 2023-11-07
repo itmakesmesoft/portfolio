@@ -23,6 +23,8 @@ const projectInfo = {
           "선택한 주제와 관련된 AI 영어 채팅",
           "유저들과의 영어 채팅 게임",
         ],
+        gitHub: "https://github.com/itmakesmesoft/Opener",
+        link: "",
         tech: [
           "Nextjs",
           "TypeScript",
@@ -62,6 +64,8 @@ const projectInfo = {
           "카카오페이를 통한 포인트 충전",
           "기부 또는 봉사 시 NFT 보상 제공",
         ],
+        gitHub: "https://github.com/itmakesmesoft/Moida",
+        link: "",
         tech: ["Reactjs", "ReactQuery", "JavaScript"],
         simImageSrc: [
           [
@@ -116,6 +120,8 @@ const projectInfo = {
           "실시간 문자 소통",
           "방 생성 및 나가기",
         ],
+        gitHub: "https://github.com/PROJECT-SSILY/SSILY",
+        link: "",
         tech: ["Vuejs", "WebRTC", "OpenVidu", "JavaScript"],
         whatIDid: [
           "세션을 생성하고, 토큰을 발급하는 기능을 구현했습니다",

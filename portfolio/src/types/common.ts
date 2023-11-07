@@ -5,6 +5,8 @@ export type InfoType = {
   period: string;
   memberInfo: string;
   mainFunction: string[];
+  gitHub: string;
+  link: string;
   simImageSrc?: string[][];
   tech: string[];
 };
@@ -24,6 +26,8 @@ export type contentType = {
     period: string;
     memberInfo: string;
     mainFunction: string[];
+    gitHub: string;
+    link: string;
     simImageSrc?: string[][];
     tech: string[];
     whatIDid: string[];

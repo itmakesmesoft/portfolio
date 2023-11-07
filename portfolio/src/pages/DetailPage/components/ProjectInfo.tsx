@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { InfoType } from "types/common";
+import { SiGithub } from "react-icons/si";
 
 const ProjectInfo = (props: { info: InfoType }) => {
   const info = props.info;
@@ -10,7 +11,7 @@ const ProjectInfo = (props: { info: InfoType }) => {
         {info.title}
       </Title>
       <Description>{info.description}</Description>
-      <div>
+      <div className="w-full">
         <Period className="text-sm sm:text-base">
           <SubTitle>기간</SubTitle>
           {info.period}
@@ -25,6 +26,15 @@ const ProjectInfo = (props: { info: InfoType }) => {
             return <p key={index}>{func}</p>;
           })}
         </Function>
+        <ButtonGroup>
+          <Button
+            href={props.info.gitHub}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiGithub size={"2rem"} className="mr-2" /> 코드 보기
+          </Button>
+        </ButtonGroup>
       </div>
     </>
   );
@@ -53,5 +63,25 @@ const Members = styled.div`
 const Function = styled.div`
   margin-top: 10px;
   color: #696969;
+`;
+const ButtonGroup = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid #00000020;
+`;
+const Button = styled.a`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.6rem;
+  background: #50a78f;
+  color: white;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  &:hover {
+    background: #43b495;
+  }
 `;
 export default ProjectInfo;

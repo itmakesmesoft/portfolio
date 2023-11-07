@@ -57,7 +57,11 @@ export const AboutPage = () => {
               </A>
             </p>
             <p className="sm:mb-2">
-              <A href="https://github.com/itmakesmesoft/" target="_blank">
+              <A
+                href="https://github.com/itmakesmesoft/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SiGithub className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
                 <span className="hidden lg:inline">
                   github.com/itmakesmesoft
@@ -65,7 +69,11 @@ export const AboutPage = () => {
               </A>
             </p>
             <p className="sm:mb-2">
-              <A href="https://velog.io/@dmsgur7112/series" target="_blank">
+              <A
+                href="https://velog.io/@dmsgur7112/series"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <SiVelog className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
                 <span className="hidden lg:inline">velog</span>
               </A>
