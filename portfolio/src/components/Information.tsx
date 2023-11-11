@@ -1,4 +1,6 @@
-import { MdFace, MdOutlineSmartphone, MdEmail } from "react-icons/md";
+import { MdFace } from "@react-icons/all-files/md/MdFace";
+import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import styled from "styled-components";
 import { HashLink as Link } from "react-router-hash-link";
 import useModal from "./useModal";
@@ -32,6 +34,17 @@ const updateLog = [
       "스타일 일부 수정",
     ],
   },
+  {
+    date: "2023.11.07",
+    content: ["프로젝트 깃허브 링크 추가"],
+  },
+  {
+    date: "2023.11.11",
+    content: [
+      "기존 react-icons 삭제 후 @react-icons/all-files 추가",
+      "notion 링크 추가",
+    ],
+  },
 ];
 
 const Information = () => {
@@ -51,7 +64,7 @@ const Information = () => {
       </Link>
       <a href="tel:010-6396-7078">
         <Phrase>
-          <MdOutlineSmartphone className="icon" />
+          <MdSmartphone className="icon" />
           010-6396-7078
         </Phrase>
       </a>
@@ -67,7 +80,7 @@ const Information = () => {
           className="text-neutral-400 underline cursor-pointer inline-block"
           onClick={() => setIsOpen(true)}
         >
-          updated at 23.10.09
+          updated at {updateLog[updateLog.length - 1]["date"]}
         </span>
       </p>
       <Modal

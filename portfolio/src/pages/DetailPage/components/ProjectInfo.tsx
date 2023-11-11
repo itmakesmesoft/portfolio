@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { InfoType } from "types/common";
-import { SiGithub } from "react-icons/si";
+import { SiGithub } from "@react-icons/all-files/si/SiGithub";
 
 const ProjectInfo = (props: { info: InfoType }) => {
   const info = props.info;

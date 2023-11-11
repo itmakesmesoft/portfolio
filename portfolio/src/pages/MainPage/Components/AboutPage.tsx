@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { MyInfo } from "./MyInfo";
 import { MyExperience } from "./MyExperience";
-import { SiVelog, SiMaildotru, SiGithub } from "react-icons/si";
+import { SiMailDotRu } from "@react-icons/all-files/si/SiMailDotRu";
+import { SiGithub } from "@react-icons/all-files/si/SiGithub";
+import { SiNotion } from "@react-icons/all-files/si/SiNotion";
 import useModal from "components/useModal";
 import { useEffect, useRef } from "react";
 
@@ -52,7 +54,7 @@ export const AboutPage = () => {
           <div className="text-base sm:mt-5 flex flex-row lg:flex-col sm:justify-center sm:w-full">
             <p className="sm:mb-2">
               <A href="mailto:dmsgur7112@naver.com">
-                <SiMaildotru className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
+                <SiMailDotRu className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
                 <span className="hidden lg:inline">dmsgur7112@naver.com</span>
               </A>
             </p>
@@ -70,12 +72,12 @@ export const AboutPage = () => {
             </p>
             <p className="sm:mb-2">
               <A
-                href="https://velog.io/@dmsgur7112/series"
+                href="https://itmakesmesoft.notion.site/Programming-1002fb9111264d5fbbd474db1fed1181?pvs=4"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <SiVelog className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
-                <span className="hidden lg:inline">velog</span>
+                <SiNotion className="inline-block mr-3 w-[1.5rem] h-[1.5rem]" />
+                <span className="hidden lg:inline">notion/itmakesmesoft</span>
               </A>
             </p>
           </div>
