@@ -10,37 +10,37 @@ export const MyExperience = () => {
         title: "Javascript",
         content:
           "자바스크립트를 이용하여 사용자와 상호작용을 하는 이벤트를 구현할 수 있습니다. 또한, 자바스크립트의 작동 원리를 이해하고, 동시성으로 인한 문제를 처리할 수 있습니다.",
-        level: 7,
+        level: 5,
       },
       {
         title: "Typescript",
         content:
           "타입스크립트를 이용하여 변수의 타입을 명시하고, 이를 통해 사전에 오류를 해결할 수 있습니다.",
-        level: 3,
+        level: 2,
       },
       {
         title: "React.js",
         content:
           "리액트 라이브러리를 이용하여 중소규모의 웹페이지를 혼자서도 제작할 수 있습니다. 또한, 커스텀 리액트 훅을 만들어 코드의 재사용성과 유지보수성을 높일 수 있습니다.",
-        level: 8,
+        level: 6,
       },
       {
         title: "Vue.js",
         content:
           "Vue의 라이프사이클을 이해하고 있으며, Vue 3.0의 Composition API를 이용하여 코드를 기능별로 배치 구성할 수 있습니다.",
-        level: 5,
+        level: 4,
       },
       {
         title: "Python",
         content:
           "파이썬을 이용하여 자료구조를 만들고 알고리즘 문제를 해결할 수 있습니다. 또한, 웹 데이터를 크롤링하여 이를 저장하거나 데이터를 가공할 수 있습니다.",
-        level: 7,
+        level: 6,
       },
       {
         title: "Django",
         content:
           "장고를 이용하여 소규모 웹페이지를 제작하거나, 게시글의 CRUD, 회원가입과 토큰 및 리프레시 토큰 발급 등의 처리를 수행하는 REST API를 제작할 수 있습니다.",
-        level: 5,
+        level: 3,
       },
     ],
     certificates: [
