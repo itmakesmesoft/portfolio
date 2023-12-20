@@ -7,7 +7,7 @@ import { SiNotion } from "@react-icons/all-files/si/SiNotion";
 import useModal from "components/useModal";
 import { useEffect, useRef } from "react";
 
-export const AboutPage = () => {
+export const AboutSection = () => {
   const lazyImageRef = useRef<HTMLImageElement>(null);
   const { Modal, isOpen, setIsOpen } = useModal();
 

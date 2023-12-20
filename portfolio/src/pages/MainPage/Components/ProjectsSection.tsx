@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { contentType } from "types/common";
 import projectInfo from "assets/projectInfo";
 
-export const ProjectsPage = () => {
+export const ProjectsSection = () => {
   return (
     <div
       id="project"

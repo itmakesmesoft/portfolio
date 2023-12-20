@@ -1,5 +1,5 @@
 import Information from "../../../components/Information";
-export const ContactPage = () => {
+export const ContactSection = () => {
   return (
     <div
       id="contact"
