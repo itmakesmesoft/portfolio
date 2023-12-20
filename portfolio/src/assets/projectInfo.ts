@@ -5,7 +5,8 @@ const projectInfo = {
         src: "/images/opener.webp",
         alt: "OPENER",
         path: "/project/1",
-        desc: "영어 회화 학습 웹서비스입니다",
+        description:
+          "영상을 따라하고, AI와 소통하며 회화 능력을 향상시키는 영어학습 서비스",
       },
       detail: {
         title: "OPENER",
@@ -51,7 +52,8 @@ const projectInfo = {
         src: "/images/moida.webp",
         alt: "모이다",
         path: "/project/2",
-        desc: "",
+        description:
+          "야생동물과의 상생을 위한 블록체인 기반 기부, 봉사 및 NFT 보상 플랫폼",
       },
       detail: {
         title: "MOIDA: 모이다",
@@ -104,9 +106,10 @@ const projectInfo = {
     {
       summary: {
         src: "/images/ssily.webp",
-        alt: "ssily project",
+        alt: "PROJECT SSILY",
         path: "/project/3",
-        desc: "",
+        description:
+          "상대방의 몸짓을 보고 그림을 그려, AI가 이를 맞추면 점수를 얻는 게임",
       },
       detail: {
         title: "PROJECT SSILY",

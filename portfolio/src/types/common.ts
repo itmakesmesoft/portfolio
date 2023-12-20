@@ -18,7 +18,7 @@ export type contentType = {
     src: string;
     alt: string;
     path: string;
-    desc: string;
+    description: string;
   };
   detail: {
     title: string;

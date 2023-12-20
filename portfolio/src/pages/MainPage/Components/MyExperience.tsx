@@ -87,47 +87,43 @@ export const MyExperience = () => {
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left leading-none">
         Summary
       </h1>
-      <div className="flex flex-row w-full">
-        <div className="w-full">
-          <Box className="min-w-[165px] max-w-[250px]">
-            <H1>SKILLS</H1>
-            {info.skills.map((skill: SkillType, index: number) => (
-              <Skill content={skill.content} key={index}>
-                {skill.title}
-                <LevelGuage level={skill.level} />
-              </Skill>
-            ))}
-          </Box>
-          <Box>
-            <H1>CERTIFICATES</H1>
-            {info.certificates.map((cert: ExperienceType, index: number) => (
-              <P key={index}>
-                <Sub>{cert.date}</Sub>
-                {cert.name}
-              </P>
-            ))}
-          </Box>
-        </div>
-        <div className="w-full">
-          <Box>
-            <H1>AWARDS</H1>
-            {info.awards.map((award: ExperienceType, index: number) => (
-              <P key={index}>
-                <Sub>{award.date}</Sub>
-                {award.name}
-              </P>
-            ))}
-          </Box>
-          <Box>
-            <H1>EXPERIENCES</H1>
-            {info.experiences.map((exp: ExperienceType, index: number) => (
-              <P key={index}>
-                <Sub>{exp.date}</Sub>
-                {exp.name}
-              </P>
-            ))}
-          </Box>
-        </div>
+      <div className="grid grid-flow-col grid-rows-2 gap-6">
+        <Box className="min-w-[165px] max-w-[270px]">
+          <H1>SKILLS</H1>
+          {info.skills.map((skill: SkillType, index: number) => (
+            <Skill content={skill.content} key={index}>
+              {skill.title}
+              <LevelGuage level={skill.level} />
+            </Skill>
+          ))}
+        </Box>
+        <Box>
+          <H1>CERTIFICATES</H1>
+          {info.certificates.map((cert: ExperienceType, index: number) => (
+            <P key={index}>
+              <Sub>{cert.date}</Sub>
+              {cert.name}
+            </P>
+          ))}
+        </Box>
+        <Box>
+          <H1>EXPERIENCES</H1>
+          {info.experiences.map((exp: ExperienceType, index: number) => (
+            <P key={index}>
+              <Sub>{exp.date}</Sub>
+              {exp.name}
+            </P>
+          ))}
+        </Box>
+        <Box>
+          <H1>AWARDS</H1>
+          {info.awards.map((award: ExperienceType, index: number) => (
+            <P key={index}>
+              <Sub>{award.date}</Sub>
+              {award.name}
+            </P>
+          ))}
+        </Box>
       </div>
     </div>
   );
@@ -158,10 +154,7 @@ const Skill = styled.p<{ content?: string }>`
   }
 `;
 
-const Box = styled.div`
-  margin-bottom: 2.5rem;
-  margin-right: 1.5rem;
-`;
+const Box = styled.div``;
 const H1 = styled.h1`
   margin-bottom: 1rem;
   font-size: 2rem;

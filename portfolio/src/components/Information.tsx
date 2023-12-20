@@ -45,6 +45,10 @@ const updateLog = [
       "notion 링크 추가",
     ],
   },
+  {
+    date: "2023.12.20",
+    content: ["메인페이지 프로젝트 리스트 호버 시 정보 표시하는 기능 추가"],
+  },
 ];
 
 const Information = () => {
@@ -89,7 +93,7 @@ const Information = () => {
             <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
             <ul>
               {updateLog.map((mylog: { date: string; content: string[] }) => (
-                <li className="mb-2">
+                <li className="mb-4">
                   <b>{mylog.date}</b>
                   {mylog.content.map((text: string) => (
                     <p>- {text}</p>
@@ -120,11 +124,12 @@ const Phrase = styled.span`
 
 const MyModal = styled.div`
   height: auto;
-  width: 70%;
+  max-height: 70vh;
+  min-height: 500px;
+  width: 90%;
   overflow: auto;
-  margin: 2rem 0;
   min-width: 330px;
-  max-width: 1000px;
+  max-width: 700px;
   background-color: white;
   border-radius: 10px;
   padding: 2rem 3rem;
