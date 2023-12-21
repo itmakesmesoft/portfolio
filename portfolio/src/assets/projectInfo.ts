@@ -154,7 +154,7 @@ const projectInfo = {
           "링크 및 영상 제공",
           "반응형 웹(pc, tablet, mobile)",
         ],
-        gitHub: "https://github.com/PROJECT-SSILY/SSILY",
+        gitHub: "https://github.com/itmakesmesoft/portfolio",
         link: "",
         tech: ["Reactjs", "TypeScript"],
         simImageSrc: [
