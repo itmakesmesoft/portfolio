@@ -23,6 +23,15 @@ const Simulation = (props: { data: string[][] }) => {
     }
   }, [playNext, status]);
 
+  useEffect(() => {
+    handleOnActive(selected);
+    handleOnInActive();
+  }, [selected]);
+
+  useEffect(() => {
+    loadAllImages(imageSrc);
+  }, []);
+
   const showCard = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
@@ -36,15 +45,10 @@ const Simulation = (props: { data: string[][] }) => {
     });
   };
 
-  useEffect(() => {
-    handleOnActive(selected);
-    handleOnInActive();
-  }, [selected]);
-
   const handleOnActive = (selected: number) => {
     const target = document.querySelector<HTMLImageElement>(".active > .gif");
     if (target && target.dataset.src) {
-      loadImage(target.dataset.src);
+      // loadImage(target.dataset.src);
       changeImgPath(target, target.dataset.src);
       setSelected(selected);
     }
@@ -62,9 +66,11 @@ const Simulation = (props: { data: string[][] }) => {
 
   const [targetRef] = useObserver(showCard, 0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
-  const loadImage = (dataSrc: string) => {
-    const loadImg = new Image();
-    loadImg.src = dataSrc;
+  const loadAllImages = (imageList: string[][]) => {
+    imageList.forEach((src: string[]) => {
+      const loadGif = new Image();
+      loadGif.src = src[1];
+    });
   };
 
   const changeImgPath = (target: HTMLImageElement, newSrc: any) => {
@@ -76,7 +82,7 @@ const Simulation = (props: { data: string[][] }) => {
     index: number
   ) => {
     if (e.currentTarget.dataset.src) {
-      loadImage(e.currentTarget.dataset.src);
+      // loadImage(e.currentTarget.dataset.src);
       changeImgPath(e.currentTarget, e.currentTarget.dataset.src);
       setSelected(index);
       setStatus(1);
