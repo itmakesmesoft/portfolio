@@ -5,7 +5,6 @@ import useDebounce from "components/useDebounce";
 const Simulation = (props: { data: string[][] }) => {
   const [selected, setSelected] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
   const imageSrc: string[][] = props.data;
-  // const [imageSrc, setImageSrc] = useState(props.data);
 
   const playNext = useCallback(() => {
     // useCallback => useEffect로 인해 불필요한 재렌더링이 발생되는 것을 막기 위해 사용

@@ -24,7 +24,7 @@ export type contentType = {
     title: string;
     description: string;
     period: string;
-    memberInfo: string;
+    memberInfo?: string;
     mainFunction: string[];
     gitHub: string;
     link: string;
