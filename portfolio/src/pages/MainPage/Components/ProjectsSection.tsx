@@ -1,8 +1,7 @@
-// import { Link } from "react-router-dom";
-import { contentType } from "types/common";
+import styled from "styled-components";
 import projectInfo from "assets/projectInfo";
 import { Section } from "style/common";
-import styled from "styled-components";
+import { contentType } from "types/common";
 import { useNavigate } from "react-router-dom";
 
 export const ProjectsSection = () => {
@@ -91,15 +90,15 @@ const ProjectInfo = styled.div`
   text-align: right;
   opacity: 1;
   background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
+    120deg,
+    rgba(0, 0, 0, 0.1) 0%,
     rgba(0, 0, 0, 0.3) 60%
   );
 
   @media (min-width: 640px) {
     text-align: left;
     opacity: 0;
-    height: 50%;
+    height: 100%;
     justify-content: end;
     padding: 2rem;
     padding-bottom: 3rem;
@@ -124,7 +123,7 @@ const Title = styled.p`
 
 const Desc = styled.p`
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   @media (min-width: 640px) {
     font-size: 1.125rem;
   }
