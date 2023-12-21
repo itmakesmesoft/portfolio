@@ -9,7 +9,14 @@ const Project = (props: { info: contentType }) => {
   return (
     <div className="w-full flex flex-col items-center">
       <ProjectIntro info={info.detail} />
-      <section className="w-full flex flex-col items-center">
+      <section className="w-full flex flex-col items-center border-y border-[#d2d2d2]">
+        <img
+          src="/images/portfolio.webp"
+          alt=""
+          width="1300"
+          height="1000"
+          className="w-[1000px] h-auto"
+        />
         {info.detail.simImageSrc && (
           <Simulation data={info.detail.simImageSrc} />
         )}
