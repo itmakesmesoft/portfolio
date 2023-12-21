@@ -90,17 +90,19 @@ const Information = () => {
       <Modal
         children={
           <MyModal>
-            <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
-            <ul>
-              {updateLog.map((mylog: { date: string; content: string[] }) => (
-                <li className="mb-4">
-                  <b>{mylog.date}</b>
-                  {mylog.content.map((text: string) => (
-                    <p>- {text}</p>
-                  ))}
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
+              {updateLog.map(
+                (mylog: { date: string; content: string[] }, index: number) => (
+                  <li key={`${mylog.date}-${index}`} className="mb-4">
+                    <b>{mylog.date}</b>
+                    {mylog.content.map((text: string, index: number) => (
+                      <p key={`${text}-${index}`}>- {text}</p>
+                    ))}
+                  </li>
+                )
+              )}
+            </div>
           </MyModal>
         }
       />

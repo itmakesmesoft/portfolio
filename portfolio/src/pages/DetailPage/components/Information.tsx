@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { InfoType } from "types/common";
 import { SiGithub } from "@react-icons/all-files/si/SiGithub";
 
-const ProjectInfo = (props: { info: InfoType }) => {
+const Information = (props: { info: InfoType }) => {
   const info = props.info;
   return (
     <>
@@ -16,15 +16,17 @@ const ProjectInfo = (props: { info: InfoType }) => {
           <SubTitle>기간</SubTitle>
           {info.period}
         </Period>
-        <Members className="text-sm sm:text-base">
-          <SubTitle>인원</SubTitle>
-          {info.memberInfo}
-        </Members>
+        {info.memberInfo && (
+          <Members className="text-sm sm:text-base">
+            <SubTitle>인원</SubTitle>
+            {info.memberInfo}
+          </Members>
+        )}
         <Function className="text-sm sm:text-base">
           <SubTitle>주요 기능</SubTitle>
-          {info.mainFunction.map((func, index) => {
-            return <p key={index}>{func}</p>;
-          })}
+          {info.mainFunction.map((func, index) => (
+            <p key={`${func}-${index}`}>{func}</p>
+          ))}
         </Function>
         <ButtonGroup>
           <Button
@@ -84,4 +86,4 @@ const Button = styled.a`
     background: #43b495;
   }
 `;
-export default ProjectInfo;
+export default Information;
