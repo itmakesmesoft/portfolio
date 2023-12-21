@@ -10,6 +10,7 @@ const projectInfo = {
       },
       detail: {
         title: "OPENER",
+        thumbnail: require("assets/img/project1_1.webp"),
         description:
           "OpenAI를 이용한 인공지능 3D 캐릭터와의 채팅, 미드 립싱크 챌린지 및 Youtube 영어 쉐도잉 학습 반응형 웹서비스",
         period: "23.04.10 ~ 23.05.19 (6주)",
@@ -57,6 +58,7 @@ const projectInfo = {
       },
       detail: {
         title: "MOIDA: 모이다",
+        thumbnail: require("assets/img/project2_1.webp"),
         description:
           "야생동물과의 상생을 위한 블록체인 기반 기부, 봉사 및 NFT 보상 플랫폼",
         period: "23.02.28 ~ 23.04.07 (6주)",
@@ -71,28 +73,28 @@ const projectInfo = {
         tech: ["Reactjs", "ReactQuery", "JavaScript"],
         simImageSrc: [
           [
-            require("assets/img/project2_3.webp"),
             require("assets/img/project2_3_thumbnail.webp"),
+            require("assets/img/project2_3.webp"),
           ],
           [
-            require("assets/img/project2_4.webp"),
             require("assets/img/project2_4_thumbnail.webp"),
+            require("assets/img/project2_4.webp"),
           ],
           [
-            require("assets/img/project2_5.webp"),
             require("assets/img/project2_5_thumbnail.webp"),
+            require("assets/img/project2_5.webp"),
           ],
           [
-            require("assets/img/project2_6.webp"),
             require("assets/img/project2_6_thumbnail.webp"),
+            require("assets/img/project2_6.webp"),
           ],
           [
-            require("assets/img/project2_7.webp"),
             require("assets/img/project2_7_thumbnail.webp"),
+            require("assets/img/project2_7.webp"),
           ],
           [
-            require("assets/img/project2_8.webp"),
             require("assets/img/project2_8_thumbnail.webp"),
+            require("assets/img/project2_8.webp"),
           ],
         ],
         whatIDid: [
@@ -113,6 +115,7 @@ const projectInfo = {
       },
       detail: {
         title: "PROJECT SSILY",
+        thumbnail: require("assets/img/project3_1.webp"),
         description:
           "WebRTC 기반 몸짓과 그림으로 소통하고, ai가 이를 맞추는 웹 게임",
         period: "23.01.09 ~ 23.02.17 (6주)",
@@ -131,6 +134,62 @@ const projectInfo = {
           "그림판을 제작하고, 생성된 그림을 쿠렌토 미디어서버를 통해 상대방에게 전달하는 기능을 구현했습니다.",
           "피그마를 이용해 목업을 제작하고 이를 똑같이 구현했습니다.",
           "피드백을 듣고, UX를 지속적으로 개선하였습니다.",
+        ],
+      },
+    },
+    {
+      summary: {
+        src: "/images/portfolio.webp",
+        alt: "PORTFOLIO",
+        path: "/project/4",
+        description: "제 포트폴리오 입니다.",
+      },
+      detail: {
+        title: "PORTFOLIO",
+        thumbnail: require("assets/img/project4_1.webp"),
+        description: "",
+        period: "23.03.01 ~ 현재",
+        mainFunction: [
+          "프로젝트 소개",
+          "링크 및 영상 제공",
+          "반응형 웹(pc, tablet, mobile)",
+        ],
+        gitHub: "https://github.com/PROJECT-SSILY/SSILY",
+        link: "",
+        tech: ["Reactjs", "TypeScript"],
+        simImageSrc: [
+          [
+            require("assets/img/project4_2_thumbnail.webp"),
+            require("assets/img/project4_2.webp"),
+          ],
+          [
+            require("assets/img/project4_4_thumbnail.webp"),
+            require("assets/img/project4_3.webp"),
+          ],
+          [
+            require("assets/img/project4_4_thumbnail.webp"),
+            require("assets/img/project4_4.webp"),
+          ],
+          [
+            require("assets/img/project4_5_thumbnail.webp"),
+            require("assets/img/project4_5.webp"),
+          ],
+          [
+            require("assets/img/project4_6_thumbnail.webp"),
+            require("assets/img/project4_6.webp"),
+          ],
+          [
+            require("assets/img/project4_7_thumbnail.webp"),
+            require("assets/img/project4_7.webp"),
+          ],
+        ],
+        whatIDid: [
+          "IntersectionObserver를 사용하여 Card 및 Hovering Effect 제작하였습니다",
+          "라우트 기반 코드 분할을 통해 번들 사이즈를 최적화하였습니다.",
+          "React Portal을 활용하여 범용성 높은 커스텀 모달 훅을 제작하였습니다.",
+          "메인 페이지의 폰트를 미리 불러오도록 하여 FOUT 현상을 방지하였습니다.",
+          "폰트와 이미지를 최적화하여 로딩 성능을 개선하였습니다",
+          "tailwindCSS와 StyledComponent를 이용하여 반응형 웹을 제작하였습니다",
         ],
       },
     },
