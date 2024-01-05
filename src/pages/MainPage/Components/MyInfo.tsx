@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const MyInfo = () => {
+  const BIRTH_DATE = new Date("1994-05-06");
   const today = new Date();
-  const birthdate = new Date("1994-05-06");
-  let age = today.getFullYear() - birthdate.getFullYear();
+  let age = today.getFullYear() - BIRTH_DATE.getFullYear();
   if (
-    today.getMonth() < birthdate.getMonth() ||
-    (today.getMonth() === birthdate.getMonth() &&
-      today.getDate() < birthdate.getDate())
+    today.getMonth() < BIRTH_DATE.getMonth() ||
+    (today.getMonth() === BIRTH_DATE.getMonth() &&
+      today.getDate() < BIRTH_DATE.getDate())
   ) {
     age -= 1;
   }

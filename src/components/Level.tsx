@@ -9,7 +9,10 @@ const useGuage = () => {
     }, [props]);
     return (
       <WrapGuage size={props?.size}>
-        <Gauge level={level - 0} />
+        {Array(10).map((index: number) => (
+          <Gauge level={level - index} />
+        ))}
+        {/* <Gauge level={level - 0} />
         <Gauge level={level - 1} />
         <Gauge level={level - 2} />
         <Gauge level={level - 3} />
@@ -18,7 +21,7 @@ const useGuage = () => {
         <Gauge level={level - 6} />
         <Gauge level={level - 7} />
         <Gauge level={level - 8} />
-        <Gauge level={level - 9} />
+        <Gauge level={level - 9} /> */}
       </WrapGuage>
     );
   };

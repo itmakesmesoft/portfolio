@@ -1,9 +1,9 @@
 import WhatIDid from "pages/DetailPage/components/WhatIDid";
 import UsedTech from "pages/DetailPage/components/UsedTech";
-import { contentType } from "types/common";
+import { ContentType } from "types/common";
 import { ProjectIntro } from "pages/DetailPage/components/ProjectIntro";
 
-const Project = (props: { info: contentType }) => {
+const Project = (props: { info: ContentType }) => {
   const info = props.info;
   return (
     <div className="w-full flex flex-col items-center">

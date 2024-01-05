@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import projectInfo from "assets/projectInfo";
+import { PROJECTS_INFO } from "assets/projectInfo";
 import { Section } from "style/common";
-import { contentType } from "types/common";
+import { ContentType } from "types/common";
 import { useNavigate } from "react-router-dom";
 
 export const ProjectsSection = () => {
@@ -12,7 +12,7 @@ export const ProjectsSection = () => {
         Projects
       </h1>
       <div className="w-full sm:w-[90%] lg:w-[90%] max-w-[1000px] mt-[2rem] min-h-[50vh] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0">
-        {projectInfo.list.map((content: contentType, index: number) => {
+        {PROJECTS_INFO.list.map((content: ContentType, index: number) => {
           const summary = content.summary;
           return (
             <Link

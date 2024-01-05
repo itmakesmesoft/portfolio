@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import Information from "components/Information";
-import projects from "assets/projectInfo";
+import { PROJECTS_INFO } from "assets/projectInfo";
 
 const DetailPage = () => {
   useEffect(() => window.scrollTo(0, 0), []);
@@ -21,7 +21,7 @@ const DetailPage = () => {
         }
       >
         {projectId && (
-          <Component info={projects.list[parseInt(projectId) - 1]} />
+          <Component info={PROJECTS_INFO.list[parseInt(projectId) - 1]} />
         )}
       </Suspense>
 

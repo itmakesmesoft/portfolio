@@ -13,7 +13,7 @@ export type InfoType = {
 // ----------------------------
 
 // ProjectsPage 컴포넌트에서 사용
-export type contentType = {
+export type ContentType = {
   summary: {
     src: string;
     alt: string;

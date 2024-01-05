@@ -1,4 +1,4 @@
-const projectInfo = {
+export const PROJECTS_INFO = {
   list: [
     {
       summary: {
@@ -195,4 +195,3 @@ const projectInfo = {
     },
   ],
 };
-export default projectInfo;

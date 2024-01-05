@@ -1,6 +1,5 @@
 const UsedTech = (props: { tech: string[] }) => {
-  const tech = props.tech;
-  const filename: any = {
+  const FILES_NAME: { [skill: string]: string } = {
     TypeScript: "TypeScript.svg",
     JavaScript: "JavaScript.svg",
     Css: "css.svg",
@@ -23,12 +22,12 @@ const UsedTech = (props: { tech: string[] }) => {
     <div className="mx-auto max-w-[1000px] border-b border-[#d2d2d2] py-[4rem] sm:py-[7rem]">
       <h1 className="text-center text-[2rem] font-extrabold">What I used</h1>
       <div className="flex flex-row justify-center items-end flex-wrap mt-8">
-        {tech.map((t: string, index: number) => {
+        {props.tech.map((t: string, index: number) => {
           return (
             <div key={index} className="p-4 mx-4">
-              {filename[t] && (
+              {FILES_NAME[t] && (
                 <img
-                  src={require(`/public/icons/${filename[t]}`)}
+                  src={require(`/public/icons/${FILES_NAME[t]}`)}
                   alt={t}
                   className="w-[4.5rem] h-[4.5rem] mx-auto"
                 />

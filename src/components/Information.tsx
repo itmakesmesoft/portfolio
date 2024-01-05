@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { HashLink as Link } from "react-router-hash-link";
 import useModal from "./useModal";
 
-const updateLog = [
+const UPDATE_LOG = [
   {
     date: "2023.10.08",
     content: [
@@ -93,7 +93,7 @@ const Information = () => {
           className="text-neutral-400 underline cursor-pointer inline-block"
           onClick={() => setIsOpen(true)}
         >
-          updated at {updateLog[updateLog.length - 1]["date"]}
+          updated at {UPDATE_LOG[UPDATE_LOG.length - 1]["date"]}
         </span>
       </p>
       <Modal
@@ -101,7 +101,7 @@ const Information = () => {
           <MyModal>
             <div>
               <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
-              {updateLog.map(
+              {UPDATE_LOG.map(
                 (mylog: { date: string; content: string[] }, index: number) => (
                   <li key={`${mylog.date}-${index}`} className="mb-4">
                     <b>{mylog.date}</b>
