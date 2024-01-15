@@ -16,6 +16,15 @@ const Project = (props: { info: ContentType }) => {
           height="1000"
           className="w-full h-full max-w-[1300px]"
         />
+        <section className="w-full h-full py-20 px-4 border">
+          <iframe
+            className="w-full aspect-video mx-auto max-w-[1000px]"
+            src="https://www.youtube.com/embed/0HpswcHNBAw"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </section>
         <img
           src={require("assets/img/project3_3.webp")}
           alt=""
