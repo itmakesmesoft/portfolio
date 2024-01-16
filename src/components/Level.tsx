@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const LevelGuage = (props: { level: number; size?: number }) => {
-  console.log(props.level);
   return (
     <WrapGuage size={props?.size}>
       {Array(10)
         .fill(1)
         .map((_, index: number) => (
-          <Gauge level={props.level - index} />
+          <Gauge key={`level-${index}`} level={props.level - index} />
         ))}
     </WrapGuage>
   );
