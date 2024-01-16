@@ -47,3 +47,10 @@ export type ExperienceType = {
   name: string;
 };
 // ----------------------------
+
+// 업데이트 기록 모달용
+
+export interface UpdateInterface {
+  date: string;
+  content: string[];
+}
