@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { InfoType } from "types/common";
+import { ContentDetailType } from "types/common";
 import { SiGithub } from "@react-icons/all-files/si/SiGithub";
 
-const Information = (props: { info: InfoType }) => {
+const Information = (props: { info: ContentDetailType }) => {
   const info = props.info;
   return (
     <>

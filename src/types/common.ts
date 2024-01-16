@@ -1,14 +1,17 @@
 // ProjectInfo 컴포넌트에서 사용
-export type InfoType = {
+export type ContentDetailType = {
   title: string;
+  thumbnail: string;
+  lowThumbnail: string;
   description: string;
   period: string;
-  memberInfo: string;
+  memberInfo?: string;
   mainFunction: string[];
   gitHub: string;
   link: string;
   simImageSrc?: string[][];
   tech: string[];
+  whatIDid: string[];
 };
 // ----------------------------
 
@@ -20,18 +23,7 @@ export type ContentType = {
     path: string;
     description: string;
   };
-  detail: {
-    title: string;
-    description: string;
-    period: string;
-    memberInfo?: string;
-    mainFunction: string[];
-    gitHub: string;
-    link: string;
-    simImageSrc?: string[][];
-    tech: string[];
-    whatIDid: string[];
-  };
+  detail: ContentDetailType;
 };
 // ----------------------------
 

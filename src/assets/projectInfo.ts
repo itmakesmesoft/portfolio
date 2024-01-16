@@ -11,6 +11,7 @@ export const PROJECTS_INFO = {
       detail: {
         title: "OPENER",
         thumbnail: require("assets/img/project1_1.webp"),
+        lowThumbnail: require("assets/img/project1_1_low.webp"),
         description:
           "OpenAI를 이용한 인공지능 3D 캐릭터와의 채팅, 미드 립싱크 챌린지 및 Youtube 영어 쉐도잉 학습 반응형 웹서비스",
         period: "23.04.10 ~ 23.05.19 (6주)",
@@ -59,6 +60,7 @@ export const PROJECTS_INFO = {
       detail: {
         title: "MOIDA: 모이다",
         thumbnail: require("assets/img/project2_1.webp"),
+        lowThumbnail: require("assets/img/project2_1_low.webp"),
         description:
           "야생동물과의 상생을 위한 블록체인 기반 기부, 봉사 및 NFT 보상 플랫폼",
         period: "23.02.28 ~ 23.04.07 (6주)",
@@ -116,6 +118,7 @@ export const PROJECTS_INFO = {
       detail: {
         title: "PROJECT SSILY",
         thumbnail: require("assets/img/project3_1.webp"),
+        lowThumbnail: require("assets/img/project3_1_low.webp"),
         description:
           "WebRTC 기반 몸짓과 그림으로 소통하고, ai가 이를 맞추는 웹 게임",
         period: "23.01.09 ~ 23.02.17 (6주)",
@@ -147,6 +150,7 @@ export const PROJECTS_INFO = {
       detail: {
         title: "PORTFOLIO",
         thumbnail: require("assets/img/project4_1.webp"),
+        lowThumbnail: require("assets/img/project4_1_low.webp"),
         description: "",
         period: "23.03.01 ~ 현재",
         mainFunction: [
