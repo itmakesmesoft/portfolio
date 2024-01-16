@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import Information from "components/Information";
 import { PROJECTS_INFO } from "assets/projectInfo";
+import Skeleton from "./components/Skeleton";
 
 const DetailPage = () => {
   useEffect(() => window.scrollTo(0, 0), []);
@@ -13,13 +14,7 @@ const DetailPage = () => {
 
   return (
     <div className="w-full min-h-screen pt-[45px]">
-      <Suspense
-        fallback={
-          <div className="h-screen w-full flex flex-col justify-center">
-            <p className="text-center">Loading...</p>
-          </div>
-        }
-      >
+      <Suspense fallback={<Skeleton />}>
         {projectId && (
           <Component info={PROJECTS_INFO.list[parseInt(projectId) - 1]} />
         )}
