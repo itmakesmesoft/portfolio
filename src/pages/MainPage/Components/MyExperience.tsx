@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useGuage from "../../../components/Level";
+import LevelGuage from "../../../components/Level";
 import { SkillType, ExperienceType } from "types/common";
 
 const INFORMATION = {
@@ -7,26 +7,26 @@ const INFORMATION = {
     {
       title: "Javascript",
       content:
-        "자바스크립트를 이용하여 사용자와 상호작용을 하는 이벤트를 구현할 수 있습니다. 또한, 자바스크립트의 작동 원리를 이해하고, 동시성으로 인한 문제를 처리할 수 있습니다.",
+        "자바스크립트를 이용하여 사용자와 상호작용을 하는 이벤트를 구현할 수 있습니다. 또한, 자바스크립트의 작동 원리를 이해하고, 비동기 문제를 처리할 수 있습니다.",
       level: 6,
     },
     {
       title: "Typescript",
       content:
-        "타입스크립트를 이용하여 변수의 타입을 명시하고, 이를 통해 사전에 오류를 해결할 수 있습니다.",
+        "타입스크립트의 타입과 제너릭을 사용하여 유연하고 안정성 있는 코드를 작성할 수 있습니다.",
       level: 4,
     },
     {
       title: "React.js",
       content:
-        "리액트 라이브러리를 이용하여 중소규모의 웹페이지를 혼자서도 제작할 수 있습니다. 또한, 커스텀 리액트 훅을 만들어 코드의 재사용성과 유지보수성을 높일 수 있습니다.",
+        "리액트 라이브러리를 이용하여 중소규모의 웹페이지를 혼자서도 제작할 수 있습니다. 또한, 리액트 커스텀 훅을 제작하여 코드의 재사용성과 유지보수성을 높일 수 있습니다.",
       level: 6,
     },
     {
       title: "Vue.js",
       content:
         "Vue의 라이프사이클을 이해하고 있으며, Vue 3.0의 Composition API를 이용하여 코드를 기능별로 배치 구성할 수 있습니다.",
-      level: 4,
+      level: 3,
     },
     {
       title: "Python",
@@ -37,8 +37,8 @@ const INFORMATION = {
     {
       title: "Django",
       content:
-        "장고를 이용하여 소규모 웹페이지를 제작하거나, 게시글의 CRUD, 회원가입과 토큰 및 리프레시 토큰 발급 등의 처리를 수행하는 REST API를 제작할 수 있습니다.",
-      level: 4,
+        "장고를 이용하여 소규모 웹페이지를 제작하거나, 게시글의 CRUD, 회원가입과 토큰 발급 등의 처리를 수행하는 REST API를 제작할 수 있습니다.",
+      level: 3,
     },
   ],
   certificates: [
@@ -82,8 +82,6 @@ const INFORMATION = {
 };
 
 export const MyExperience = () => {
-  const { LevelGuage } = useGuage();
-
   return (
     <div className="h-[77%] w-full">
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left leading-none">
