@@ -73,8 +73,11 @@ const Simulation = (props: { data: string[][] }) => {
     });
   };
 
-  const changeImgPath = (target: HTMLImageElement, newSrc: any) => {
-    target.src = newSrc;
+  const changeImgPath = (
+    target: HTMLImageElement,
+    newSrc: string | undefined
+  ) => {
+    if (newSrc) target.src = newSrc;
   };
 
   const handleOnMouseOver = (
