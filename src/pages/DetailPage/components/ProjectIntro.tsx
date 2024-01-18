@@ -1,16 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Information from "./Information";
 import { ContentDetailType } from "types/common";
 
 export const ProjectIntro = (props: { info: ContentDetailType }) => {
   const imgRef = useRef<HTMLImageElement>(null);
 
-  useEffect(() => {
-    // 썸네일 저화질 -> 고화질 lazyload
+  const placeholder = new Image();
+  placeholder.src = props.info.lowThumbnail;
+  placeholder.onload = () => {
     if (imgRef.current && imgRef.current.dataset.src) {
       imgRef.current.src = imgRef.current.dataset.src;
     }
-  }, []);
+  };
 
   return (
     <section className="flex flex-col justify-center min-h-[calc(100vh-45px)] pb-10">
