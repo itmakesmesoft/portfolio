@@ -3,17 +3,22 @@ import { UpdateInterface } from "types/common";
 
 const UpdateLogModal = ({ updates }: { updates: UpdateInterface[] }) => (
   <MyModal>
-    <div>
-      <h1 className="text-lg font-bold mb-4">업데이트 기록</h1>
-      {updates.map((mylog: UpdateInterface, index: number) => (
-        <li key={`${mylog.date}-${index}`} className="mb-4">
-          <b>{mylog.date}</b>
-          {mylog.content.map((text: string, index: number) => (
-            <p key={`${text}-${index}`}>- {text}</p>
-          ))}
-        </li>
-      ))}
-    </div>
+    <H1 className="sticky top-0 text-lg font-bold py-3 px-[3rem] mt-4 mb-4 bg-white">
+      업데이트 기록
+    </H1>
+    <Div>
+      {updates
+        .slice(0)
+        .reverse()
+        .map((mylog: UpdateInterface, index: number) => (
+          <li key={`${mylog.date}-${index}`} className="mb-4">
+            <b>{mylog.date}</b>
+            {mylog.content.map((text: string, index: number) => (
+              <p key={`${text}-${index}`}>- {text}</p>
+            ))}
+          </li>
+        ))}
+    </Div>
   </MyModal>
 );
 
@@ -29,6 +34,13 @@ const MyModal = styled.div`
   max-width: 700px;
   background-color: white;
   border-radius: 10px;
-  padding: 2rem 3rem;
   cursor: default;
+`;
+
+const Div = styled.div`
+  padding: 0 3rem 2rem 3rem;
+`;
+
+const H1 = styled.h1`
+  box-shadow: 0px 6px 10px -11px #000000a1;
 `;
