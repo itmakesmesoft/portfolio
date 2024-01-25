@@ -24,7 +24,10 @@ const UsedTech = (props: { tech: string[] }) => {
       <div className="flex flex-row justify-center items-end flex-wrap mt-8">
         {props.tech.map((t: string, index: number) => {
           return (
-            <div key={index} className="p-4 mx-4">
+            <div
+              key={index}
+              className="w-[6.5rem] sm:w-[7rem] md:w-[8rem] px-2 py-4 sm:px-6 sm:py-8"
+            >
               {FILES_NAME[t] && (
                 <img
                   src={require(`/public/icons/${FILES_NAME[t]}`)}
