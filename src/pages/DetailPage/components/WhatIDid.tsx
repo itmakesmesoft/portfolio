@@ -18,7 +18,7 @@ const WhatIDid = (props: { info: string[] }) => {
           >
             <div
               className={`w-full h-full rounded-xl shadow-md sm:shadow-xl bg-[#fff] px-7 py-3 sm:p-7 flex flex-row items-center text-left break-words border ${
-                (index % 4 === 0 || index % 4 === 3) && "sm:bg-[#eaeaea]"
+                (index % 4 === 0 || index % 4 === 3) && "sm:bg-[#f4f4f4]"
               }`}
             >
               <span className="sm:hidden text-2xl mr-5">{index + 1}</span>
