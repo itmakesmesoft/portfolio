@@ -29,7 +29,7 @@ const UsedTech = (props: { tech: string[] }) => {
                 <img
                   src={require(`/public/icons/${FILES_NAME[t]}`)}
                   alt={t}
-                  className="w-[4.5rem] h-[4.5rem] mx-auto"
+                  className="w-[2.5rem] h-[2.5rem] sm:w-[3.5rem] sm:h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] mx-auto"
                 />
               )}
               <p className="mt-4 text-center">{t}</p>
