@@ -202,28 +202,27 @@ const Tech = styled.div`
       opacity: 1;
     }
   }
-  & > .info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.2s;
-    transform: rotateY(180deg);
-  }
 `;
 
 const Info = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
   padding: 10px;
-  text-align: center;
   width: 100%;
   height: 100%;
+  word-wrap: break-word;
+  text-align: center;
+  transition: opacity 0.2s;
+  transform: rotateY(180deg);
+
   & > header {
     font-size: 0.625rem;
     margin-bottom: 5px;
   }
   & > article {
     font-size: 0.55rem;
-    word-wrap: break-word;
   }
 `;
 
