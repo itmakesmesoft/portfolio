@@ -18,10 +18,10 @@ export const ProjectsSection = () => {
             <Link
               key={index}
               onClick={() => navigate(summary.path)}
-              className="hover:shadow-xl sm:mr-2 mb-2 sm:mb-0 last:mr-0 rounded-lg min-h-[100px]"
+              className="sm:mr-2 mb-2 sm:mb-0 last:mr-0 rounded-lg min-h-[100px]"
             >
               <ProjectImage className="projectImage" src={summary.src}>
-                <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[200] drop-shadow-lg text-white">
+                <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[200] drop-shadow-lg text-white z-10">
                   {index + 1}
                 </p>
                 <ProjectInfo className="info">
@@ -42,18 +42,31 @@ const Link = styled.button`
   height: 100%;
   overflow: hidden;
   flex-grow: 1;
-  filter: grayscale(70%);
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(70%);
 
+  @media (max-width: 639px) {
+    &:active::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #00918d5e;
+    }
+  }
   @media (min-width: 640px) {
     width: auto;
     &:hover {
       flex-grow: 5;
       filter: grayscale(0);
-    }
-    &:hover > .projectImage > .info {
-      animation: 300ms ease-out 500ms fadeIn both;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+        0 8px 10px -6px rgb(0 0 0 / 0.1);
+      & > .projectImage > .info {
+        animation: 300ms ease-out 500ms fadeIn both;
+      }
     }
   }
   @keyframes fadeIn {
@@ -84,7 +97,7 @@ const ProjectInfo = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  color: white;
+  color: #ffffffeb;
   padding: 1rem;
   padding-left: 4.5rem;
   text-align: right;
@@ -96,6 +109,7 @@ const ProjectInfo = styled.div`
   );
 
   @media (min-width: 640px) {
+    color: white;
     text-align: left;
     opacity: 0;
     height: 100%;

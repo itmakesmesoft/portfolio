@@ -138,7 +138,6 @@ const Skill = styled.p<{ content?: string }>`
   &:hover,
   &.selected {
     background-color: white;
-    font-weight: 900;
     padding: 0 10px;
   }
   &:hover:after {

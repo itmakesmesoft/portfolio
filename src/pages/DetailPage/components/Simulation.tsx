@@ -2,14 +2,15 @@ import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import useObserver from "components/useObserver";
 import useDebounce from "components/useDebounce";
+
 const Simulation = (props: { data: string[][] }) => {
   const [selected, setSelected] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
-  const imageSrc: string[][] = props.data;
+  const imageSrcs: string[][] = props.data;
 
   const playNext = useCallback(() => {
     // useCallback => useEffect로 인해 불필요한 재렌더링이 발생되는 것을 막기 위해 사용
-    setSelected(selected < imageSrc.length - 1 ? selected + 1 : 0);
-  }, [imageSrc.length, selected]);
+    setSelected(selected < imageSrcs.length - 1 ? selected + 1 : 0);
+  }, [imageSrcs.length, selected]);
 
   // 디바운스 적용
   const { status, setStatus } = useDebounce(playNext, 1000);
@@ -29,7 +30,7 @@ const Simulation = (props: { data: string[][] }) => {
   }, [selected]);
 
   useEffect(() => {
-    loadAllImages(imageSrc);
+    loadAllImages(imageSrcs);
   }, []);
 
   const showCard = (entries: IntersectionObserverEntry[]) => {
@@ -56,7 +57,7 @@ const Simulation = (props: { data: string[][] }) => {
 
   const handleOnInActive = () => {
     const target =
-      document.querySelectorAll<HTMLImageElement>(".inactive > .gif");
+      document.querySelectorAll<HTMLImageElement>(".unhover > .gif");
     if (target) {
       target.forEach((el: HTMLImageElement) => {
         changeImgPath(el, el.dataset.thumbnail);
@@ -105,11 +106,11 @@ const Simulation = (props: { data: string[][] }) => {
       ref={targetRef}
       className="w-full max-w-[700px] py-[5rem] lg:py-[10rem] px-12 sm:px-20 grid gap-4 md:gap-6 grid-cols-2 content-center"
     >
-      {imageSrc.map((src: string[], index: number) => {
+      {imageSrcs.map((src: string[], index: number) => {
         return (
           <WrapCard
             className={`rounded-lg sm:rounded-xl ${
-              selected === index ? "active" : "inactive"
+              selected === index ? "hover" : "unhover"
             }`}
             key={`${src}-${index}`}
           >
@@ -149,16 +150,15 @@ const WrapCard = styled.div`
   box-shadow: #00000069 0 5px 15px -5px;
   transition-duration: 0.5s;
   cursor: pointer;
-
-  &.active > .gif {
+  &.hover > .gif {
     opacity: 1;
   }
 
-  &:nth-child(even).active {
+  &:nth-child(even).hover {
     transform: scale(1.12) translateY(-15%) translateX(12%);
     box-shadow: #00000050 -10px 10px 30px -10px;
   }
-  &:nth-child(odd).active {
+  &:nth-child(odd).hover {
     transform: scale(1.12) translateY(-15%) translateX(-12%);
     box-shadow: #00000050 10px 10px 30px -10px;
   }

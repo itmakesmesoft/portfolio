@@ -12,7 +12,7 @@ const UpdateLogModal = ({ updates }: { updates: UpdateInterface[] }) => (
         .reverse()
         .map((mylog: UpdateInterface, index: number) => (
           <div key={`${mylog.date}-${index}`}>
-            <p className="sticky top-[60px] font-[600] text-[#515151] left-0 bg-[#f5f5f5] border-y border-[gainsboro]">
+            <p className="sticky top-[60px] font-[600] text-[#515151] left-0 bg-[#eeeeee] border-y border-[gainsboro]">
               {mylog.date}
             </p>
             <div className="pt-2 pb-3 text-[#3a3a3a]">
@@ -42,8 +42,18 @@ const MyModal = styled.div`
 `;
 
 const Div = styled.div`
+  background: #fbfbfb;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   & p {
-    padding: 0 3rem;
+    padding: 0 1.5rem;
+  }
+  @media screen and (min-width: 640px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    & p {
+      padding: 0 3rem;
+    }
   }
 `;
 

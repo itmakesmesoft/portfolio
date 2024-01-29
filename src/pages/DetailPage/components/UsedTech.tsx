@@ -100,11 +100,11 @@ const UsedTech = (props: { tech: string[] }) => {
   };
 
   const handleClick = (e: any) => {
-    const target = e.currentTarget.children[0];
-    const [moveX, moveY] = getMoveXY(e);
     const actives = document.querySelectorAll(".active");
     cancelClick();
     if (actives.length < 1) {
+      const target = e.currentTarget.children[0];
+      const [moveX, moveY] = getMoveXY(e);
       addClassName(target, "active");
       setBlurBackground();
       document.querySelectorAll(".wrapitem").forEach((item: any) => {
@@ -183,7 +183,7 @@ const Info = styled.div`
   left: -50%;
   width: 200%;
   height: 200%;
-  padding: 1.5rem;
+  padding: 1rem;
   opacity: 0;
   word-wrap: break-word;
   text-align: center;
@@ -191,11 +191,20 @@ const Info = styled.div`
   transform: rotateY(180deg) scale(50%);
   will-change: transform;
   -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 0.85rem;
 
   & > header {
     margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 700;
+  }
+
+  @media screen and (min-width: 640px) {
+    font-size: 1rem;
+    padding: 1.5rem;
+    & > header {
+      font-size: 1.25rem;
+    }
   }
 `;
 
