@@ -68,19 +68,19 @@ const FILES_NAME: { [skill: string]: { src: string; info: string } } = {
 const UsedTech = (props: { tech: string[] }) => {
   const getMoveXY = (e: any) => {
     const target = e.currentTarget.children[0];
+    const parent = document.querySelectorAll("#parent")[0];
     const {
       left: pleft,
       width: pwidth,
       height: pheight,
       top: ptop,
-    } = e.currentTarget.parentElement.getBoundingClientRect();
+    } = parent.getBoundingClientRect();
     const {
       left: cleft,
       width: cwidth,
       height: cheight,
       top: ctop,
     } = target.getBoundingClientRect();
-    console.log((pheight - cheight) / 2 - (ctop - ptop));
     return [
       (pwidth - cwidth) / 2 - (cleft - pleft),
       (pheight - cheight) / 2 - (ctop - ptop),
@@ -111,7 +111,7 @@ const UsedTech = (props: { tech: string[] }) => {
         item.style.zIndex = null;
       });
       e.currentTarget.style.zIndex = 1;
-      target.style.transform = `translateX(${moveX}px) translateY(${moveY}px) scale(200%) rotateY(180deg)`;
+      target.style.transform = `translateX(${moveX}px) translateY(${moveY}px) translateZ(0) scale(200%) rotateY(180deg)`;
     }
   };
 
@@ -137,7 +137,10 @@ const UsedTech = (props: { tech: string[] }) => {
   };
 
   return (
-    <div className="relative mx-auto max-w-[1000px] border-b border-[#d2d2d2] py-[4rem] sm:py-[7rem]">
+    <div
+      id="parent"
+      className="relative mx-auto max-w-[1000px] border-b border-[#d2d2d2] py-[4rem] sm:py-[7rem]"
+    >
       <h1 className="text-center text-[2rem] font-extrabold">What I used</h1>
       <div className="flex flex-row justify-center items-end flex-wrap mt-8">
         {props.tech.map((t: any, index: number) => {
@@ -186,6 +189,8 @@ const Info = styled.div`
   text-align: center;
   transition: opacity 0.2s;
   transform: rotateY(180deg) scale(50%);
+  will-change: transform;
+  -webkit-font-smoothing: subpixel-antialiased;
 
   & > header {
     margin-bottom: 1rem;
@@ -195,23 +200,23 @@ const Info = styled.div`
 `;
 
 const Tech = styled.div`
-  transition: 0.2s;
+  transition: 0.5s;
   cursor: pointer;
   border-radius: 1rem;
   box-sizing: border-box;
   &:hover {
+    transition: 0.2s;
     transform: rotateY(45deg);
     background: white;
     box-shadow: 0px 0px 20px -15px black;
     & > img,
     > p {
-      transition: 0.2s;
       opacity: 0.7;
     }
   }
 
   &.active {
-    transition: transform 0.5s;
+    transition: 0.5s;
     background: white;
     box-shadow: #00000017 0px 0px 15px -10px;
     & img,
@@ -219,6 +224,7 @@ const Tech = styled.div`
       opacity: 0;
     }
     & > .info {
+      transition: 0.5s;
       opacity: 1;
     }
   }
