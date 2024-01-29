@@ -167,12 +167,12 @@ export const PROJECTS_INFO = {
             require("assets/img/project4_2.webp"),
           ],
           [
-            require("assets/img/project4_4_thumbnail.webp"),
+            require("assets/img/project4_3_thumbnail.webp"),
             require("assets/img/project4_3.webp"),
           ],
           [
             require("assets/img/project4_4_thumbnail.webp"),
-            require("assets/img/project4_4.webp"),
+            require("assets/img/project4_4.gif"),
           ],
           [
             require("assets/img/project4_5_thumbnail.webp"),
@@ -188,12 +188,14 @@ export const PROJECTS_INFO = {
           ],
         ],
         whatIDid: [
-          "IntersectionObserver를 사용하여 Card 및 Hovering Effect 제작하였습니다",
+          "IntersectionObserver를 사용하여 Card 및 Hovering 효과를 제작하였습니다",
+          "프로젝트 상세 페이지 내 사용 기술 아이콘의 호버 및 클릭 이벤트를 제작하였습니다.",
+          "포트폴리오 사이트 내 모든 효과 및 이벤트를 라이브러리 도움 없이 직접 구현하였습니다.",
           "라우트 기반 코드 분할을 통해 번들 사이즈를 최적화하였습니다.",
           "React Portal을 활용하여 범용성 높은 커스텀 모달 훅을 제작하였습니다.",
           "메인 페이지의 폰트를 미리 불러오도록 하여 FOUT 현상을 방지하였습니다.",
           "폰트와 이미지를 최적화하여 로딩 성능을 개선하였습니다",
-          "tailwindCSS와 StyledComponent를 이용하여 반응형 웹을 제작하였습니다",
+          "tailwindCSS와 StyledComponent를 이용하여 반응형 웹을 제작하였습니다.",
         ],
       },
     },
