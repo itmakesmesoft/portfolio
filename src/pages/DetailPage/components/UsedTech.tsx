@@ -170,16 +170,43 @@ export default UsedTech;
 const Wrapper = styled.div`
   transform-style: preserve-3d;
   perspective: 300px;
+  position: relative;
+  box-sizing: border-box;
 `;
+
+const Info = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  opacity: 0;
+  word-wrap: break-word;
+  text-align: center;
+  transition: opacity 0.2s;
+  transform: rotateY(180deg);
+  font-size: 0.45rem;
+
+  & > header {
+    font-size: 0.625rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 640px) {
+    font-size: 0.55rem;
+  }
+`;
+
 const Tech = styled.div`
   transition: 0.2s;
   cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 1rem;
+  box-sizing: border-box;
   &:hover {
     transform: rotateY(45deg);
     background: white;
-    border: 1px solid #0000002e;
     box-shadow: 0px 0px 20px -15px black;
     & > img,
     > p {
@@ -190,10 +217,8 @@ const Tech = styled.div`
 
   &.active {
     transition: transform 0.5s;
-    transform-style: preserve-3d;
     background: white;
-    box-shadow: 0px 0px 20px -15px black;
-    border: 1px solid #eaeaea;
+    box-shadow: #00000017 0px 0px 15px -10px;
     & img,
     p {
       opacity: 0;
@@ -201,28 +226,6 @@ const Tech = styled.div`
     & > .info {
       opacity: 1;
     }
-  }
-`;
-
-const Info = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  padding: 10px;
-  width: 100%;
-  height: 100%;
-  word-wrap: break-word;
-  text-align: center;
-  transition: opacity 0.2s;
-  transform: rotateY(180deg);
-
-  & > header {
-    font-size: 0.625rem;
-    margin-bottom: 5px;
-  }
-  & > article {
-    font-size: 0.55rem;
   }
 `;
 
