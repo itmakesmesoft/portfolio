@@ -176,26 +176,21 @@ const Wrapper = styled.div`
 
 const Info = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  padding: 1.5rem;
   opacity: 0;
   word-wrap: break-word;
   text-align: center;
   transition: opacity 0.2s;
-  transform: rotateY(180deg);
-  font-size: 0.45rem;
+  transform: rotateY(180deg) scale(50%);
 
   & > header {
-    font-size: 0.625rem;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
     font-weight: 700;
-  }
-
-  @media screen and (min-width: 640px) {
-    font-size: 0.55rem;
   }
 `;
 
