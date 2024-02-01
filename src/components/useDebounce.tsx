@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
-const useDebounce = (callback: () => void, interval: number) => {
-  const [status, setStatus] = useState<number>(-2); // -2: noneOfView, -1: mouseLeaved, 0: standby, 1: mouseHovered
-  useEffect(() => {
-    if (status === -1) {
-      const debounce = setTimeout(() => {
-        if (status === -1) {
-          setStatus(0);
-          callback();
-        }
-      }, interval);
-      return () => clearTimeout(debounce);
-    }
-  }, [callback, interval, status]);
+let timer: NodeJS.Timeout;
 
-  return { status, setStatus };
+const debounce = (callback: () => void, interval: number) => {
+  console.log(timer, "실행");
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    callback();
+    console.log("callback 실행");
+  }, interval);
 };
 
-export default useDebounce;
+export default debounce;

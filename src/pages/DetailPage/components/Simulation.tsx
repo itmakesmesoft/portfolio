@@ -1,33 +1,33 @@
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import useObserver from "components/useObserver";
-import useDebounce from "components/useDebounce";
+import debounce from "components/useDebounce";
 
 const Simulation = (props: { data: string[][] }) => {
-  const [selected, setSelected] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
+  const [currentCard, setCurrentCard] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
   const imageSrcs: string[][] = props.data;
 
   const playNext = useCallback(() => {
     // useCallback => useEffect로 인해 불필요한 재렌더링이 발생되는 것을 막기 위해 사용
-    setSelected(selected < imageSrcs.length - 1 ? selected + 1 : 0);
-  }, [imageSrcs.length, selected]);
+    setCurrentCard(currentCard < imageSrcs.length - 1 ? currentCard + 1 : 0);
+  }, [imageSrcs.length, currentCard]);
 
   // 디바운스 적용
-  const { status, setStatus } = useDebounce(playNext, 1000);
+  // const { status, setStatus } = useDebounce(playNext, 1000);
 
   useEffect(() => {
-    if (status === 0) {
-      const animPlaying = setTimeout(playNext, 3000);
-      return () => {
-        clearTimeout(animPlaying);
-      };
-    }
-  }, [playNext, status]);
+    // if (status === "standby") {
+    const animPlaying = setTimeout(playNext, 3000);
+    return () => {
+      clearTimeout(animPlaying);
+    };
+    // }
+  }, [playNext]);
 
   useEffect(() => {
-    handleOnActive(selected);
+    handleOnActive(currentCard);
     handleOnInActive();
-  }, [selected]);
+  }, [currentCard]);
 
   useEffect(() => {
     loadAllImages(imageSrcs);
@@ -37,27 +37,26 @@ const Simulation = (props: { data: string[][] }) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
         // observer.unobserve(entry.target); // 1회성 동작 시
-        setStatus(0);
-        setSelected(0);
+        // setStatus("");
+        setCurrentCard(0);
       } else {
-        setStatus(-2);
-        setSelected(-1);
+        // setStatus(-2);
+        setCurrentCard(-1);
       }
     });
   };
 
-  const handleOnActive = (selected: number) => {
+  const handleOnActive = (currentCard: number) => {
     const target = document.querySelector<HTMLImageElement>(".active > .gif");
     if (target && target.dataset.src) {
       // loadImage(target.dataset.src);
       changeImgPath(target, target.dataset.src);
-      setSelected(selected);
+      setCurrentCard(currentCard);
     }
   };
 
   const handleOnInActive = () => {
-    const target =
-      document.querySelectorAll<HTMLImageElement>(".unhover > .gif");
+    const target = document.querySelectorAll<HTMLImageElement>(".gif");
     if (target) {
       target.forEach((el: HTMLImageElement) => {
         changeImgPath(el, el.dataset.thumbnail);
@@ -88,8 +87,9 @@ const Simulation = (props: { data: string[][] }) => {
     if (e.currentTarget.dataset.src) {
       // loadImage(e.currentTarget.dataset.src);
       changeImgPath(e.currentTarget, e.currentTarget.dataset.src);
-      setSelected(index);
-      setStatus(1);
+      setCurrentCard(index);
+      // setStatus(1);
+      debounce(playNext, 1000);
     }
   };
 
@@ -97,8 +97,8 @@ const Simulation = (props: { data: string[][] }) => {
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
     changeImgPath(e.currentTarget, e.currentTarget.dataset.thumbnail);
-    setSelected(-1);
-    setStatus(-1);
+    setCurrentCard(-1);
+    // setStatus(-1);
   };
 
   return (
@@ -110,7 +110,7 @@ const Simulation = (props: { data: string[][] }) => {
         return (
           <WrapCard
             className={`rounded-lg sm:rounded-xl ${
-              selected === index ? "hover" : "unhover"
+              currentCard === index ? "hover" : "unhover"
             }`}
             key={`${src}-${index}`}
           >
