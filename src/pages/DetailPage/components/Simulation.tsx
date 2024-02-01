@@ -1,70 +1,45 @@
 import styled from "styled-components";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useObserver from "components/useObserver";
-import debounce from "components/useDebounce";
 
 const Simulation = (props: { data: string[][] }) => {
-  const [currentCard, setCurrentCard] = useState(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
   const imageSrcs: string[][] = props.data;
-
-  const playNext = useCallback(() => {
-    // useCallback => useEffect로 인해 불필요한 재렌더링이 발생되는 것을 막기 위해 사용
-    setCurrentCard(currentCard < imageSrcs.length - 1 ? currentCard + 1 : 0);
-  }, [imageSrcs.length, currentCard]);
-
-  // 디바운스 적용
-  // const { status, setStatus } = useDebounce(playNext, 1000);
-
-  useEffect(() => {
-    // if (status === "standby") {
-    const animPlaying = setTimeout(playNext, 3000);
-    return () => {
-      clearTimeout(animPlaying);
-    };
-    // }
-  }, [playNext]);
-
-  useEffect(() => {
-    handleOnActive(currentCard);
-    handleOnInActive();
-  }, [currentCard]);
+  const [card, setCard] = useState<number>(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   useEffect(() => {
     loadAllImages(imageSrcs);
+    console.log("gif 이미지 로드 시작");
   }, []);
 
-  const showCard = (entries: IntersectionObserverEntry[]) => {
+  const initSimulation = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
         // observer.unobserve(entry.target); // 1회성 동작 시
-        // setStatus("");
         setCurrentCard(0);
       } else {
-        // setStatus(-2);
-        setCurrentCard(-1);
+        handleOnBgClick();
       }
     });
   };
+  const [targetRef] = useObserver(initSimulation, 0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
-  const handleOnActive = (currentCard: number) => {
-    const target = document.querySelector<HTMLImageElement>(".active > .gif");
-    if (target && target.dataset.src) {
-      // loadImage(target.dataset.src);
-      changeImgPath(target, target.dataset.src);
-      setCurrentCard(currentCard);
-    }
-  };
-
-  const handleOnInActive = () => {
-    const target = document.querySelectorAll<HTMLImageElement>(".gif");
+  const setCurrentCard = (index: number) => {
+    const target = document.querySelector(`#sim-${index}`) as HTMLImageElement;
     if (target) {
-      target.forEach((el: HTMLImageElement) => {
-        changeImgPath(el, el.dataset.thumbnail);
-      });
+      changeImgPath(target, target.dataset.src);
+      setCard(index);
     }
   };
 
-  const [targetRef] = useObserver(showCard, 0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
+  const unSetCardAll = () => {
+    const targets: NodeListOf<HTMLImageElement> =
+      document.querySelectorAll(`.sim`);
+    targets.forEach((target: HTMLImageElement) => {
+      changeImgPath(target, target.dataset.thumbnail);
+    });
+    setCard(-1);
+  };
 
   const loadAllImages = (imageList: string[][]) => {
     imageList.forEach((src: string[]) => {
@@ -80,63 +55,123 @@ const Simulation = (props: { data: string[][] }) => {
     if (newSrc) target.src = newSrc;
   };
 
-  const handleOnMouseOver = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    index: number
-  ) => {
-    if (e.currentTarget.dataset.src) {
-      // loadImage(e.currentTarget.dataset.src);
-      changeImgPath(e.currentTarget, e.currentTarget.dataset.src);
-      setCurrentCard(index);
-      // setStatus(1);
-      debounce(playNext, 1000);
-    }
+  const handleOnMouseOver = (index: number) => {
+    if (isClicked) return;
+    setCurrentCard(index);
   };
 
   const handleOnMouseLeave = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    changeImgPath(e.currentTarget, e.currentTarget.dataset.thumbnail);
-    setCurrentCard(-1);
-    // setStatus(-1);
+    if (isClicked) return;
+    unSetCardAll();
+  };
+
+  const getElementOffset = (target: HTMLElement) => {
+    const top = target.offsetTop;
+    const left = target.offsetLeft;
+    const height = target.offsetHeight;
+    const width = target.offsetWidth;
+    return { top, left, height, width };
+  };
+
+  const handleOnBgClick = () => {
+    setIsClicked(false);
+    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
+    bg.style.opacity = "";
+    bg.style.zIndex = "";
+    const images = document.querySelectorAll(".animatedImage");
+    images.forEach((target: any) => {
+      target.parentNode.style.transform = "";
+      target.parentNode.style.opacity = "";
+      changeImgPath(target, target.dataset.thumbnail);
+      if (target.parentNode.style.zIndex) {
+        setTimeout(() => {
+          if (target.parentNode.style.zIndex) {
+            target.parentNode.style.zIndex = "";
+          }
+        }, 500);
+      }
+    });
+    unSetCardAll();
+  };
+
+  const handleOnClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    setIsClicked(true);
+    const child = getElementOffset(e.currentTarget);
+    const parent = getElementOffset(
+      document.querySelector("#container-wrapcards") as HTMLElement
+    );
+    const px = parent.left + parent.width / 2;
+    const py = parent.top + parent.height / 2;
+    const cx = parent.left + child.left + child.width / 2;
+    const cy = parent.top + child.top + child.height / 2;
+
+    e.currentTarget.style.transform = `translateX(${px - cx}px) translateY(${
+      py - cy
+    }px) scale(2)`;
+    e.currentTarget.style.zIndex = "2";
+    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
+    bg.style.opacity = "1";
+    bg.style.zIndex = "1";
   };
 
   return (
-    <div
-      ref={targetRef}
-      className="w-full max-w-[700px] py-[5rem] lg:py-[10rem] px-12 sm:px-20 grid gap-4 md:gap-6 grid-cols-2 content-center"
-    >
-      {imageSrcs.map((src: string[], index: number) => {
-        return (
-          <WrapCard
-            className={`rounded-lg sm:rounded-xl ${
-              currentCard === index ? "hover" : "unhover"
-            }`}
-            key={`${src}-${index}`}
-          >
-            <Img src={src[0]} alt={`simulationImage_${index + 1}`} />
-            <Img
-              className="gif"
-              onMouseOver={(e) => handleOnMouseOver(e, index)}
+    <div className="w-full relative flex flex-row justify-center">
+      <div
+        id="container-wrapcards"
+        ref={targetRef}
+        className="relative w-full max-w-[700px] py-[5rem] lg:py-[10rem] px-12 sm:px-20 grid gap-4 md:gap-6 grid-cols-2 content-center"
+      >
+        {imageSrcs.map((src: string[], index: number) => {
+          return (
+            <WrapCard
+              className={`sim rounded-lg sm:rounded-xl${
+                card === index ? " hover" : ""
+              }`}
+              key={`${src}-${index}`}
+              onClick={handleOnClick}
               onMouseLeave={handleOnMouseLeave}
-              src={src[0]}
-              data-src={src[1]}
-              data-thumbnail={src[0]}
-              alt={`simulationImage_${index + 1}`}
-            />
-          </WrapCard>
-        );
-      })}
+              onMouseOver={() => handleOnMouseOver(index)}
+            >
+              {/* Img 태그가 하나 더 존재하는 이유는 opacity를 통한 페이드 인 효과를 위함 */}
+              <Img
+                className="thumbnail"
+                src={src[0]}
+                alt={`simulationImage_${index + 1}`}
+              />
+              <Img
+                id={`sim-${index}`}
+                className="animatedImage"
+                src={src[0]}
+                data-src={src[1]}
+                data-thumbnail={src[0]}
+                alt={`simulationImage_${index + 1}`}
+              />
+            </WrapCard>
+          );
+        })}
+      </div>
+      <Background id="blurbg-sim" onClick={handleOnBgClick} />
     </div>
   );
 };
-
+const Background = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+`;
 const Img = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
   transition: 300ms;
-  &.gif {
+  &.animatedImage {
     opacity: 0;
   }
 `;
@@ -148,10 +183,13 @@ const WrapCard = styled.div`
   aspect-ratio: 16/10;
   overflow: hidden;
   box-shadow: #00000069 0 5px 15px -5px;
-  transition-duration: 0.5s;
+  transition: all 0.5s;
   cursor: pointer;
-  &.hover > .gif {
+  &.hover > .animatedImage {
     opacity: 1;
+  }
+  &.hover > .thumbnail {
+    opacity: 0;
   }
 
   &:nth-child(even).hover {

@@ -121,7 +121,8 @@ const UsedTech = (props: { tech: string[] }) => {
   };
 
   const setBlurBackground = () => {
-    const background: HTMLElement | null = document.querySelector("#blurBg");
+    const background: HTMLElement | null =
+      document.querySelector("#blurbg-tech");
     if (background) {
       background.style.opacity = "1";
       background.style.zIndex = "0";
@@ -129,7 +130,8 @@ const UsedTech = (props: { tech: string[] }) => {
   };
 
   const unSetBlurBackground = () => {
-    const background: HTMLElement | null = document.querySelector("#blurBg");
+    const background: HTMLElement | null =
+      document.querySelector("#blurbg-tech");
     if (background) {
       background.style.opacity = "";
       background.style.zIndex = "";
@@ -164,7 +166,7 @@ const UsedTech = (props: { tech: string[] }) => {
           );
         })}
       </div>
-      <Background id="blurBg" onClick={cancelClick} />
+      <Background id="blurbg-tech" onClick={cancelClick} />
     </div>
   );
 };

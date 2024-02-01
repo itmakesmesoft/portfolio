@@ -17,6 +17,8 @@ const Project = (props: { info: ContentType }) => {
           height="1000"
           className="w-full h-full max-w-[1000px]"
         />
+      </section>
+      <section className="w-full bg-[#a0c846]">
         {info.detail.simImageSrc && (
           <Simulation data={info.detail.simImageSrc} />
         )}

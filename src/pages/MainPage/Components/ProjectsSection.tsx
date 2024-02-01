@@ -18,7 +18,7 @@ export const ProjectsSection = () => {
             <Link
               key={index}
               onClick={() => navigate(summary.path)}
-              className="sm:mr-2 mb-2 sm:mb-0 last:mr-0 rounded-lg min-h-[100px]"
+              className="sm:mr-2 mb-2 sm:mb-0 last:mr-0 min-h-[100px]"
             >
               <ProjectImage className="projectImage" src={summary.src}>
                 <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[200] drop-shadow-lg text-white z-10">
@@ -45,6 +45,7 @@ const Link = styled.button`
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   filter: grayscale(70%);
+  border-radius: 10px;
 
   @media (max-width: 639px) {
     &:active::after {
@@ -55,6 +56,8 @@ const Link = styled.button`
       width: 100%;
       height: 100%;
       background: #00918d5e;
+      border-radius: 10px;
+      overflow: hidden;
     }
   }
   @media (min-width: 640px) {
@@ -137,7 +140,7 @@ const Title = styled.p`
 
 const Desc = styled.p`
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   @media (min-width: 640px) {
     font-size: 1.125rem;
   }
