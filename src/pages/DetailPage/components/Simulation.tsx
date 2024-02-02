@@ -2,34 +2,38 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import useObserver from "components/useObserver";
 
+let simTimer: NodeJS.Timeout;
+
 const Simulation = (props: { data: string[][] }) => {
   const imageSrcs: string[][] = props.data;
   const [card, setCard] = useState<number>(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const { target: targetRef, isIntersecting } = useObserver(0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
   useEffect(() => {
     loadAllImages(imageSrcs);
-    console.log("gif 이미지 로드 시작");
+    return () => simTimer && clearTimeout(simTimer);
   }, []);
 
-  const initSimulation = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry: IntersectionObserverEntry) => {
-      if (entry.isIntersecting) {
-        // observer.unobserve(entry.target); // 1회성 동작 시
-        setCurrentCard(0);
-      } else {
-        handleOnBgClick();
-      }
+  useEffect(() => {
+    if (isIntersecting) setCurrentCard(0);
+    else setCurrentCard(-1);
+  }, [isIntersecting]);
+
+  const loadAllImages = (imageList: string[][]) => {
+    imageList.forEach((src: string[]) => {
+      const loadGif = new Image();
+      loadGif.src = src[1];
     });
   };
-  const [targetRef] = useObserver(initSimulation, 0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
   const setCurrentCard = (index: number) => {
     const target = document.querySelector(`#sim-${index}`) as HTMLImageElement;
     if (target) {
+      handleOnBgClick();
       changeImgPath(target, target.dataset.src);
       setCard(index);
-    }
+    } else setCard(index);
   };
 
   const unSetCardAll = () => {
@@ -41,18 +45,19 @@ const Simulation = (props: { data: string[][] }) => {
     setCard(-1);
   };
 
-  const loadAllImages = (imageList: string[][]) => {
-    imageList.forEach((src: string[]) => {
-      const loadGif = new Image();
-      loadGif.src = src[1];
-    });
-  };
-
   const changeImgPath = (
     target: HTMLImageElement,
     newSrc: string | undefined
   ) => {
     if (newSrc) target.src = newSrc;
+  };
+
+  const getElementOffset = (target: HTMLElement) => {
+    const top = target.offsetTop;
+    const left = target.offsetLeft;
+    const height = target.offsetHeight;
+    const width = target.offsetWidth;
+    return { top, left, height, width };
   };
 
   const handleOnMouseOver = (index: number) => {
@@ -65,14 +70,6 @@ const Simulation = (props: { data: string[][] }) => {
   ) => {
     if (isClicked) return;
     unSetCardAll();
-  };
-
-  const getElementOffset = (target: HTMLElement) => {
-    const top = target.offsetTop;
-    const left = target.offsetLeft;
-    const height = target.offsetHeight;
-    const width = target.offsetWidth;
-    return { top, left, height, width };
   };
 
   const handleOnBgClick = () => {
@@ -96,7 +93,7 @@ const Simulation = (props: { data: string[][] }) => {
     unSetCardAll();
   };
 
-  const handleOnClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+  const handleOnClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setIsClicked(true);
     const child = getElementOffset(e.currentTarget);
     const parent = getElementOffset(
@@ -116,6 +113,18 @@ const Simulation = (props: { data: string[][] }) => {
     bg.style.zIndex = "1";
   };
 
+  const eventHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index?: number
+  ) => {
+    const targetClass = (e.currentTarget as HTMLElement).classList;
+    if (targetClass.contains("hover")) {
+      handleOnClick(e);
+    } else if (index !== undefined) {
+      handleOnMouseOver(index);
+    }
+  };
+
   return (
     <div className="w-full relative flex flex-row justify-center">
       <div
@@ -130,9 +139,9 @@ const Simulation = (props: { data: string[][] }) => {
                 card === index ? " hover" : ""
               }`}
               key={`${src}-${index}`}
-              onClick={handleOnClick}
+              onClick={(e) => eventHandler(e)}
               onMouseLeave={handleOnMouseLeave}
-              onMouseOver={() => handleOnMouseOver(index)}
+              onMouseOver={(e) => eventHandler(e, index)}
             >
               {/* Img 태그가 하나 더 존재하는 이유는 opacity를 통한 페이드 인 효과를 위함 */}
               <Img
