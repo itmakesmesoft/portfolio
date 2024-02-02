@@ -1,11 +1,9 @@
 let timer: NodeJS.Timeout;
 
-const debounce = (callback: () => void, interval: number) => {
-  // console.log(timer, "실행");
+const debounce = (callback: () => unknown, interval: number) => {
   clearTimeout(timer);
   timer = setTimeout(() => {
     callback();
-    // console.log("callback 실행");
   }, interval);
 };
 
