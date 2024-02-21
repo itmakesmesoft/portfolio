@@ -12,7 +12,7 @@ const timeline = [
       "THREE.js를 이용한 3D 모델 인터렉션 구현",
       "피그마를 이용한 목업 디자인 및 제작",
     ],
-    teck: [
+    tech: [
       "Next",
       "TypeScript",
       "SWR",
@@ -29,7 +29,7 @@ const timeline = [
     role: "FrontEnd Developer",
     description: "간단한 소개와 프로젝트를 기록해둔 사이트",
     whatIDid: null,
-    teck: ["React", "TypeScript"],
+    tech: ["React", "TypeScript"],
     link: "",
   },
   {
@@ -43,7 +43,7 @@ const timeline = [
       "메인페이지, 기부/봉사 목록 및 상세페이지, 마이페이지 제작 담당",
       "피그마를 이용한 목업 디자인 및 제작",
     ],
-    teck: ["React", "ReactQuery", "JavaScript"],
+    tech: ["React", "ReactQuery", "JavaScript"],
     link: "",
   },
   {
@@ -57,7 +57,7 @@ const timeline = [
       "오픈비두 세션 생성 및 토큰을 발급 기능 및 그림판 제작",
       "피그마를 이용한 목업 디자인 및 제작",
     ],
-    teck: ["Vue3", "WebRTC", "OpenVidu", "JavaScript"],
+    tech: ["Vue3", "WebRTC", "OpenVidu", "JavaScript"],
     link: "",
   },
 ];
@@ -98,8 +98,8 @@ const Timeline = () => {
           <VerticalBar />
         </WrapVerticalBar>
         <Content>
-          {timeline.map((item) => (
-            <Section>
+          {timeline.map((item, index: number) => (
+            <Section key={`timeline-${index}`}>
               <Article>
                 <Title>{item.title}</Title>
                 <Date>{item.period}</Date>
@@ -108,13 +108,13 @@ const Timeline = () => {
                   <p>{item.description}</p>
                   <p>what I Did</p>
                   <ul>
-                    {item.whatIDid?.map((li) => (
-                      <li>{li}</li>
+                    {item.whatIDid?.map((li, index: number) => (
+                      <li key={`list-${index}`}>{li}</li>
                     ))}
                   </ul>
-                  <p>teck</p>
-                  {item.teck.map((t) => (
-                    <span>{t}</span>
+                  <p>tech</p>
+                  {item.tech.map((t, index: number) => (
+                    <span key={`tech-${index}`}>{t}</span>
                   ))}
                 </Body>
               </Article>
