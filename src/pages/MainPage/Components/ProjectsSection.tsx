@@ -4,14 +4,14 @@ import { Section } from "style/common";
 import { ContentType } from "types/common";
 import { useNavigate } from "react-router-dom";
 
-export const ProjectsSection = () => {
+const ProjectsSection = () => {
   const navigate = useNavigate();
   return (
-    <Section id="project" className="h-screen w-full">
-      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 text-center font-['Bangers']">
+    <Section id="project" className="w-full h-screen">
+      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center">
         Projects
       </h1>
-      <div className="w-full sm:w-[90%] lg:w-[90%] max-w-[1000px] mt-[2rem] min-h-[50vh] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0">
+      <div className="w-full sm:w-[90%] lg:w-[90%] max-w-[1000px] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0 h-[50vh]">
         {PROJECTS_INFO.list.map((content: ContentType, index: number) => {
           const summary = content.summary;
           return (
@@ -36,6 +36,8 @@ export const ProjectsSection = () => {
     </Section>
   );
 };
+
+export default ProjectsSection;
 
 const Link = styled.button`
   width: 100%;

@@ -85,13 +85,13 @@ export const AboutSection = () => {
       </div>
       {/* 오른쪽 */}
       <div className="flex flex-col h-full w-full px-4 sm:px-0">
-        <div className="h-full sm:h-[130vh] w-full relative">
+        <div className="h-screen w-full relative">
           <Sticky className="sm:sticky h-full sm:h-screen">
             <MyInfo />
           </Sticky>
         </div>
         <div className="flex flex-col h-full w-full">
-          <div className="h-full sm:h-[130vh] w-full relative">
+          <div className="h-screen w-full relative">
             <Sticky className="sm:sticky h-full sm:h-screen">
               <MyExperience />
             </Sticky>

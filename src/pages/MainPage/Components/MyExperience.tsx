@@ -84,7 +84,7 @@ const INFORMATION = {
 export const MyExperience = () => {
   return (
     <div className="h-[77%] w-full">
-      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left leading-none">
+      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center sm:text-left leading-none">
         Summary
       </h1>
       <div className="grid grid-flow-col grid-rows-2 gap-6">

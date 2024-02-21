@@ -119,6 +119,7 @@ const Simulation = (props: { data: string[][] }) => {
   ) => {
     const targetClass = (e.currentTarget as HTMLElement).classList;
     if (targetClass.contains("hover")) {
+      console.log("????");
       handleOnClick(e);
     } else if (index !== undefined) {
       handleOnMouseOver(index);

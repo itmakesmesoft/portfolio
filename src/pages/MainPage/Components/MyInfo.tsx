@@ -13,7 +13,7 @@ export const MyInfo = () => {
   }
   return (
     <div className="h-[77%] w-full pb-[10rem] pt-[5rem] sm:pt-0">
-      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-10 font-bold font-['Bangers'] text-center sm:text-left leading-none">
+      <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center sm:text-left leading-none">
         About Me
       </h1>
       <div>
