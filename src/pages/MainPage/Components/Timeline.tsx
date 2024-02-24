@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const timeline = [
   {
@@ -21,7 +22,7 @@ const timeline = [
       "Three.js",
       "FastApi",
     ],
-    link: "",
+    path: "/project/1",
   },
   {
     title: "PORTFOLIO",
@@ -30,7 +31,7 @@ const timeline = [
     description: "간단한 소개와 프로젝트를 기록해둔 사이트",
     whatIDid: null,
     tech: ["React", "TypeScript"],
-    link: "",
+    path: "/project/4",
   },
   {
     title: "MOIDA : 모이다",
@@ -44,7 +45,7 @@ const timeline = [
       "피그마를 이용한 목업 디자인 및 제작",
     ],
     tech: ["React", "ReactQuery", "JavaScript"],
-    link: "",
+    path: "/project/2",
   },
   {
     title: "PROJECT SSILY",
@@ -58,18 +59,20 @@ const timeline = [
       "피그마를 이용한 목업 디자인 및 제작",
     ],
     tech: ["Vue3", "WebRTC", "OpenVidu", "JavaScript"],
-    link: "",
+    path: "/project/3",
   },
 ];
 
 const Timeline = () => {
+  const navigate = useNavigate();
   return (
-    <WrapTimeline>
+    <div>
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center">
         career timeline
       </h1>
-      <WrapBar className="max-h-[500px] sm:max-h-[700px] overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[#eaeaea9c] backdrop-blur z-20 flex flex-col justify-center items-center">
+      <WrapTimeline>
+        <WrapBar>
+          {/* <div className="absolute top-0 left-0 w-full h-full bg-[#eaeaea9c] backdrop-blur z-20 flex flex-col justify-center items-center">
           <img
             src="/icons/under-construction.png"
             alt=""
@@ -93,43 +96,47 @@ const Timeline = () => {
               Flaticon
             </a>
           </p>
-        </div>
-        <WrapVerticalBar>
-          <VerticalBar />
-        </WrapVerticalBar>
-        <Content>
-          {timeline.map((item, index: number) => (
-            <Section key={`timeline-${index}`}>
-              <Article>
-                <Title>{item.title}</Title>
-                <Date>{item.period}</Date>
-                <Role>{item.role}</Role>
-                <Body>
-                  <p>{item.description}</p>
-                  <p>what I Did</p>
-                  <ul>
-                    {item.whatIDid?.map((li, index: number) => (
-                      <li key={`list-${index}`}>{li}</li>
+        </div> */}
+          <WrapVerticalBar>
+            <VerticalBar />
+          </WrapVerticalBar>
+          <Content>
+            {timeline.map((item, index: number) => (
+              <Section key={`timeline-${index}`}>
+                <Article onClick={() => navigate(item.path)}>
+                  <Title>{item.title}</Title>
+                  <Date>{item.period}</Date>
+                  <Role>{item.role}</Role>
+                  <Body>
+                    <p className="subTitle">Description</p>
+                    <p>{item.description}</p>
+                    <p className="subTitle">what I Did</p>
+                    <ul>
+                      {item.whatIDid?.map((li, index: number) => (
+                        <li key={`list-${index}`}>{li}</li>
+                      ))}
+                    </ul>
+                    <p className="subTitle">tech</p>
+                    {item.tech.map((t, index: number) => (
+                      <span className="techItem" key={`tech-${index}`}>
+                        {t}
+                      </span>
                     ))}
-                  </ul>
-                  <p>tech</p>
-                  {item.tech.map((t, index: number) => (
-                    <span key={`tech-${index}`}>{t}</span>
-                  ))}
-                </Body>
-              </Article>
-            </Section>
-          ))}
-        </Content>
-      </WrapBar>
-    </WrapTimeline>
+                  </Body>
+                </Article>
+              </Section>
+            ))}
+          </Content>
+        </WrapBar>
+      </WrapTimeline>
+    </div>
   );
 };
 export default Timeline;
 
 const WrapTimeline = styled.div`
   display: flex;
-  // padding: 0 2rem;
+  padding: 0 2rem;
   flex-direction: column;
   align-items: center;
 }
@@ -138,8 +145,10 @@ const WrapTimeline = styled.div`
 const WrapBar = styled.div`
   position: relative;
   margin-bottom: 2rem;
+
   @media screen and (min-width: 640px) {
     width: 100%;
+    max-width: 1000px;
   }
 `;
 const WrapVerticalBar = styled.div`
@@ -158,7 +167,7 @@ const WrapVerticalBar = styled.div`
 const VerticalBar = styled.div`
   width: 40px;
   height: 100%;
-  background: #c6c6c6;
+  background: rgb(211 211 211);
   border-radius: 25px;
 `;
 
@@ -201,8 +210,10 @@ const Section = styled.div`
   gap: 20px;
   align-items: flex-start;
   letter-spacing: -0.3px;
+  margin-bottom: 1rem;
 
   &::before {
+    transition: all 0.2s;
     content: "";
     display: block;
     width: 30px;
@@ -213,18 +224,30 @@ const Section = styled.div`
     z-index: 1;
     flex: none;
   }
+
+  &:hover > article {
+    transform: scale(1.01) translateY(-10px);
+    box-shadow: 0px 13px 10px -10px #0000006e;
+  }
+  &:hover::before {
+    transform: scale(1.01) translateY(-10px);
+    box-shadow: #00000033 1px 5px 5px;
+  }
 `;
 
 const Article = styled.article`
   width: 100%;
-  background: #d9d9d9;
-  border-radius: 30px;
-  padding: 15px 25px;
+  background: rgb(255 255 255 / 50%);
+  border-radius: 15px 15px 30px 30px;
+  padding: 10px 25px 25px 25px;
+  box-shadow: 0px 5px 10px -7px #0000006e;
+  transition: all 0.2s;
+  cursor: pointer;
 `;
 
 const Title = styled.h1`
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 900;
 `;
 const Date = styled.h2`
   font-size: 0.9rem;
@@ -233,4 +256,28 @@ const Date = styled.h2`
 const Role = styled.p`
   font-size: 0.9rem;
 `;
-const Body = styled.div``;
+const Body = styled.div`
+  margin-top: 0.5rem;
+
+  & > .subTitle {
+    margin-top: 1rem;
+    font-weight: 900;
+    font-size: 1.125rem;
+  }
+
+  & > .techItem::after {
+    display: inline-block;
+    content: ",";
+    margin-right: 0.2rem;
+  }
+  & > .techItem:last-child::after {
+    display: inline-block;
+    content: "";
+  }
+
+  & li::before {
+    display: inline-block;
+    content: "•";
+    margin-right: 0.3rem;
+  }
+`;
