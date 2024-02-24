@@ -66,7 +66,7 @@ const timeline = [
 const Timeline = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="mt-[5rem]">
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center">
         career timeline
       </h1>
@@ -111,7 +111,7 @@ export default Timeline;
 
 const WrapTimeline = styled.div`
   display: flex;
-  padding: 0 2rem;
+  padding: 0 1rem;
   flex-direction: column;
   align-items: center;
 }
@@ -140,10 +140,13 @@ const WrapVerticalBar = styled.div`
   }
 `;
 const VerticalBar = styled.div`
-  width: 40px;
   height: 100%;
   background: rgb(211 211 211);
   border-radius: 25px;
+  width: 30px;
+  @media (min-width: 640px) {
+    width: 40px;
+  }
 `;
 
 const Content = styled.section`
@@ -151,18 +154,20 @@ const Content = styled.section`
   overflow-wrap: anywhere;
   display: flex;
   flex-direction: column;
-  padding: 5px 0;
+  padding: 2.5px 0;
   & > div {
     width: 100%;
-    transform: translateX(5px);
+    transform: translateX(2.5px);
+  }
+  & > div:last-child {
+    margin-bottom: 0;
   }
   @media screen and (min-width: 640px) {
+    padding: 5px 0;
     & > div {
       width: 50%;
       margin-bottom: 25px;
-    }
-    & > div:last-child {
-      margin-bottom: 0;
+      transform: translateX(5px);
     }
     & > div:nth-child(even) {
       transform: translateX(calc(100% - 15px));
@@ -191,13 +196,18 @@ const Section = styled.div`
     transition: all 0.2s;
     content: "";
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     background: white;
     box-shadow: #00000033 1px 2px 5px;
     z-index: 1;
     flex: none;
+
+    @media (min-width: 640px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   &:hover > article {
