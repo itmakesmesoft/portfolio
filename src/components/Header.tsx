@@ -1,5 +1,4 @@
 import { HashLink } from "react-router-hash-link";
-import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50 text-sm sm:text-base backdrop-blur-lg bg-[#eaeaea70]">
@@ -42,7 +41,13 @@ export const Header = () => {
               </HashLink>
             </li>
             <li className="mr-6 cursor-pointer">
-              <HashLink to="/#project" className="hover:text-[#45c0bb]">
+              <HashLink
+                to="/#project"
+                scroll={(el) =>
+                  el.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+                className="hover:text-[#45c0bb]"
+              >
                 PROJECTS
               </HashLink>
             </li>
