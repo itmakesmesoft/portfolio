@@ -199,5 +199,26 @@ export const PROJECTS_INFO = {
         ],
       },
     },
+    {
+      summary: {
+        src: "/images/salarytimer.png",
+        alt: "Salary Timer",
+        path: "/project/5",
+        description: "",
+      },
+      detail: {
+        title: "",
+        thumbnail: "",
+        lowThumbnail: "",
+        description: "",
+        period: "",
+        memberInfo: "",
+        mainFunction: [],
+        gitHub: "",
+        link: "",
+        tech: [],
+        whatIDid: [],
+      },
+    },
   ],
 };

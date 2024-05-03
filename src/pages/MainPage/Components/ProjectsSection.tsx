@@ -91,6 +91,7 @@ const ProjectImage = styled.div<{ src: string }>`
   width: 100%;
   background-image: url(${(props) => props.src});
   background-position: center;
+  background-size: auto;
 `;
 
 const ProjectInfo = styled.div`

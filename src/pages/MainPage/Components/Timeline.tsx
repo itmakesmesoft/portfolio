@@ -2,6 +2,20 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const timeline = [
   {
+    title: "Salary Timer",
+    period: "2024.03 ~ 2024.05 (10주)",
+    role: "frontEnd Developer, UI/UX designer",
+    description: "직장인을 위한 실시간 급여 타이머",
+    whatIDid: [
+      "ContextAPI를 이용해 합성 컴포넌트 UI를 제작하였습니다.",
+      "timer 모듈을 제작하고, 사용하기 쉽도록 다양한 상태 정보를 Status객체에 담아 반환하도록 하였습니다.",
+      "반환된 Status 객체를 이용해, 다양한 테마를 동적으로 불러와 적용하도록 구현하였습니다.",
+      "로컬 스토리지를 이용하여 사용자의 프리셋 정보를 저장하였습니다.",
+    ],
+    tech: ["React", "TypeScript", "ContextAPI"],
+    path: "/project/5",
+  },
+  {
     title: "OPENER",
     period: "2023.04 ~ 2023.05 (6주)",
     role: "frontEnd Developer, UI/UX designer",
