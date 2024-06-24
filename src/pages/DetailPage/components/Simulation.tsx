@@ -1,13 +1,22 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useObserver from "components/useObserver";
 
 let simTimer: NodeJS.Timeout;
 
 const Simulation = (props: { data: string[][] }) => {
   const imageSrcs: string[][] = props.data;
+  const timerRef = useRef<NodeJS.Timer>();
+  const cardRef = useRef<{
+    currentIndex: number;
+    hoverIndex: number;
+    clickIndex: number;
+  }>({
+    currentIndex: -1,
+    hoverIndex: -1,
+    clickIndex: -1,
+  });
   const [card, setCard] = useState<number>(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
-  const [isClicked, setIsClicked] = useState<boolean>(false);
   const { target: targetRef, isIntersecting } = useObserver(0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
 
   useEffect(() => {
@@ -16,8 +25,21 @@ const Simulation = (props: { data: string[][] }) => {
   }, []);
 
   useEffect(() => {
-    if (isIntersecting) setCurrentCard(0);
-    else setCurrentCard(-1);
+    if (isIntersecting) {
+      if (!timerRef.current) {
+        setCurrentCard(0);
+        timerRef.current = setInterval(() => {
+          const index = cardRef.current.currentIndex;
+          const next = index + 1 >= imageSrcs.length ? 0 : index + 1;
+          setCurrentCard(next);
+        }, 3000);
+      }
+    } else {
+      setCurrentCard(-1);
+      handleOnBgClick();
+      timerRef.current && clearInterval(timerRef.current);
+      timerRef.current = undefined;
+    }
   }, [isIntersecting]);
 
   const loadAllImages = (imageList: string[][]) => {
@@ -28,8 +50,11 @@ const Simulation = (props: { data: string[][] }) => {
   };
 
   const setCurrentCard = (index: number) => {
+    if (cardRef.current.hoverIndex > -1 || cardRef.current.clickIndex > -1)
+      return;
     const target = document.querySelector(`#sim-${index}`) as HTMLImageElement;
     if (target) {
+      cardRef.current.currentIndex = index;
       handleOnBgClick();
       changeImgPath(target, target.dataset.src);
       setCard(index);
@@ -43,6 +68,8 @@ const Simulation = (props: { data: string[][] }) => {
       changeImgPath(target, target.dataset.thumbnail);
     });
     setCard(-1);
+    cardRef.current.hoverIndex = -1;
+    // cardRef.current.clickIndex = -1;
   };
 
   const changeImgPath = (
@@ -61,19 +88,20 @@ const Simulation = (props: { data: string[][] }) => {
   };
 
   const handleOnMouseOver = (index: number) => {
-    if (isClicked) return;
+    if (cardRef.current.clickIndex > -1) return;
     setCurrentCard(index);
+    cardRef.current.hoverIndex = index;
   };
 
   const handleOnMouseLeave = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    if (isClicked) return;
+    if (cardRef.current.clickIndex > -1) return;
     unSetCardAll();
   };
 
   const handleOnBgClick = () => {
-    setIsClicked(false);
+    cardRef.current.clickIndex = -1;
     const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
     bg.style.opacity = "";
     bg.style.zIndex = "";
@@ -93,8 +121,11 @@ const Simulation = (props: { data: string[][] }) => {
     unSetCardAll();
   };
 
-  const handleOnClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setIsClicked(true);
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    cardRef.current.clickIndex = index;
     const child = getElementOffset(e.currentTarget);
     const parent = getElementOffset(
       document.querySelector("#container-wrapcards") as HTMLElement
@@ -115,13 +146,11 @@ const Simulation = (props: { data: string[][] }) => {
 
   const eventHandler = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index?: number
+    index: number
   ) => {
-    const targetClass = (e.currentTarget as HTMLElement).classList;
-    if (targetClass.contains("hover")) {
-      console.log("????");
-      handleOnClick(e);
-    } else if (index !== undefined) {
+    if (cardRef.current.hoverIndex === index) {
+      handleOnClick(e, index);
+    } else {
       handleOnMouseOver(index);
     }
   };
@@ -140,7 +169,7 @@ const Simulation = (props: { data: string[][] }) => {
                 card === index ? " hover" : ""
               }`}
               key={`${src}-${index}`}
-              onClick={(e) => eventHandler(e)}
+              onClick={(e) => eventHandler(e, index)}
               onMouseLeave={handleOnMouseLeave}
               onMouseOver={(e) => eventHandler(e, index)}
             >

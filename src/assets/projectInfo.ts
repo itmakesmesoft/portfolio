@@ -204,7 +204,7 @@ export const PROJECTS_INFO = {
         src: "/images/salarytimer.png",
         alt: "Salary Timer",
         path: "/project/5",
-        description: "",
+        description: "상세페이지를 준비중입니다.",
       },
       detail: {
         title: "",
