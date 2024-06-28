@@ -7,18 +7,18 @@ import { useNavigate } from "react-router-dom";
 const ProjectsSection = () => {
   const navigate = useNavigate();
   return (
-    <Section id="project" className="w-full h-screen">
+    <Section id="project" className="w-full h-full sm:h-screen">
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center">
         Projects
       </h1>
-      <div className="w-full sm:w-[90%] lg:w-[90%] max-w-[1000px] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0 h-[50vh]">
+      <div className="w-full sm:w-[90%] lg:w-[90%] max-w-[1000px] flex flex-col sm:flex-row justify-center items-center relative px-4 lg:p-0 sm:h-[50vh]">
         {PROJECTS_INFO.list.map((content: ContentType, index: number) => {
           const summary = content.summary;
           return (
             <Link
               key={index}
               onClick={() => navigate(summary.path)}
-              className="sm:mr-2 mb-2 sm:mb-0 last:mr-0 min-h-[100px]"
+              className="sm:mr-2 mb-2 sm:mb-0 last:mr-0"
             >
               <ProjectImage className="projectImage" src={summary.src}>
                 <p className="absolute top-4 left-4 text-[5rem] sm:text-[8rem] lg:text-[10rem] leading-none font-['Montserrat_Alternates'] font-[200] drop-shadow-lg text-white z-10">
@@ -88,6 +88,7 @@ const Link = styled.button`
 const ProjectImage = styled.div<{ src: string }>`
   position: relative;
   height: 100%;
+  min-height: 100px;
   width: 100%;
   background-image: url(${(props) => props.src});
   background-position: center;
