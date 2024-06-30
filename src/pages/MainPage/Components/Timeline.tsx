@@ -99,7 +99,7 @@ const timeline = [
 const Timeline = () => {
   const navigate = useNavigate();
   return (
-    <div className="mt-[5rem]">
+    <div className="mt-[5rem]" id="timeline">
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center">
         career timeline
       </h1>
