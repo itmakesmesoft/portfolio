@@ -2,7 +2,7 @@ import "./App.css";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { Signature } from "./components/Signature";
 
 function App() {
   // 메인화면에서 screen height 만큼 스크롤 시 --scrolled css변수 변경
@@ -51,7 +51,7 @@ function App() {
           <Route path="/project/:id" element={<DetailPage />} />
         </Routes>
       </Suspense>
-      <Footer />
+      <Signature />
     </div>
   );
 }
