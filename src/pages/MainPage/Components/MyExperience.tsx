@@ -83,7 +83,7 @@ const INFORMATION = {
 
 export const MyExperience = () => {
   return (
-    <div className="h-[77%] w-full">
+    <div className="h-full w-full">
       <h1 className="text-[3.5rem] sm:text-[4.5rem] mb-5 font-bold font-['Bangers'] text-center sm:text-left leading-none">
         Summary
       </h1>
