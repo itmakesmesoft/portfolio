@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./timeline.css";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 const timeline = [
   {
     type: "project",
@@ -15,7 +16,7 @@ const timeline = [
       "별도의 참조 없이 컴포넌트 외부의 가장 가까운 form을 찾도록 하여, 유효성 검사 기능 구현",
       "Git과 Jira 협업 툴을 통한 태스크 및 스케쥴 관리",
     ],
-    path: "",
+    path: "https://github.com/Lees-ui-lab",
   },
   {
     type: "project",
@@ -26,7 +27,7 @@ const timeline = [
       "ContextAPI를 이용한 합성 컴포넌트 UI 구현",
       "로컬 스토리지 이용하여 사용자 정보 저장",
     ],
-    path: "/project/5",
+    path: "",
   },
   {
     type: "story",
@@ -115,18 +116,29 @@ const Timeline = () => {
                     <div className="wrap-dot">
                       <div className="dot big" />
                     </div>
-                    <Article>
-                      <Title>{item.title}</Title>
-                      <Date>{item.period}</Date>
-                      <Body>
+                    <div className="article">
+                      <h3 className="article-title">{item.title}</h3>
+                      <p className="article-date">{item.period}</p>
+                      <div className="article-content">
                         <p className="desc">{item.description}</p>
                         <ul>
                           {item.whatIDid?.map((li, index: number) => (
                             <li key={`list-${index}`}>{li}</li>
                           ))}
                         </ul>
-                      </Body>
-                    </Article>
+                      </div>
+                      {item.path && (
+                        <Link
+                          to={item.path}
+                          className="article-link"
+                          {...(item.path.slice(0, 4) === "http" && {
+                            target: "_blank",
+                          })}
+                        >
+                          <img src="/icons/link.png" alt="link" />
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 );
               if (item.type === "story")
@@ -135,10 +147,13 @@ const Timeline = () => {
                     <div className="wrap-dot">
                       <div className="dot small" />
                     </div>
-                    <Article onClick={() => item.path && navigate(item.path)}>
+                    <div
+                      className="article"
+                      onClick={() => item.path && navigate(item.path)}
+                    >
                       <p className="title">{item.title}</p>
-                      <Date>{item.period}</Date>
-                    </Article>
+                      <p className="article-date">{item.period}</p>
+                    </div>
                   </div>
                 );
               return "";
@@ -150,37 +165,3 @@ const Timeline = () => {
   );
 };
 export default Timeline;
-
-const Article = styled.article`
-  width: 100%;
-  border-radius: 10px;
-  transition: all 0.2s;
-  // cursor: pointer;
-  position: relative;
-`;
-
-const Title = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 900;
-`;
-const Date = styled.h2`
-  font-size: 0.9rem;
-  line-height: 1.15;
-`;
-
-const Body = styled.div`
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-
-  & > .desc {
-    margin: 0.85rem 0;
-    font-weight: medium;
-    font-size: 0.95rem;
-  }
-
-  & li::before {
-    display: inline-block;
-    content: "•";
-    margin-right: 0.3rem;
-  }
-`;

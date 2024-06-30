@@ -8,6 +8,7 @@
 .timeline {
   position: relative;
   margin-bottom: 2rem;
+  padding-bottom: 30px;
 }
 
 .wrap-verticalbar {
@@ -24,10 +25,36 @@
 
 .verticalbar {
   height: 100%;
-  background: #d2d2d2;
+  background: #d6d6d6;
   border-radius: 25px;
-  width: 2px;
-  margin: 0 12.5px;
+  width: 5px;
+  margin: 0 10px;
+}
+
+.verticalbar::after {
+  content: "";
+  position: absolute;
+  bottom: -27px;
+  left: -2.5px;
+  background: transparent;
+  border: 5px solid #d6d6d6;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .timeline {
+    padding-bottom: 50px;
+  }
+
+  .verticalbar::after {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: calc(50% - 15px);
+  }
 }
 
 .content {
@@ -45,16 +72,16 @@
   margin-bottom: 0;
 }
 
-.project {
+.project, .story {
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 20px;
   align-items: flex-start;
   letter-spacing: -0.3px;
-  margin: 0.7rem 0;
+  margin: 0.3rem 0;
 }
 
-.project > article::before, .story > article::before {
+.project > .article::before, .story > .article::before {
   content: "";
   display: block;
   width: 15px;
@@ -63,41 +90,89 @@
   z-index: 0;
   position: absolute;
 }
-.project > article::before {
+.project > .article::before {
   background: white;
   top: 35px;
 }
 
-.story > article::before {
-  background: #d5d5d5;
+.story > .article::before {
+  background: #c8d8db;
   top: 17px;
 }
 
-.project > article {
+.project > .article {
   background: white;
-  padding: 10px 25px 25px 25px;
+  padding: 10px 20px 10px 20px;
   box-shadow: rgb(0 0 0 / 15%) 0px 5px 10px -7px;
 }
 
-.story {
-  display: flex;
-  align-items: center;
-  gap: 35px;
-  align-items: flex-start;
-  letter-spacing: -0.3px;
-  margin: 0.3rem 0;
-}
 
-.story > article {
-  background: #d5d5d5;
+
+.story > .article {
+  background: #c8d8db;
   color: #3e3e3e;
   padding: 10px 20px;
   box-shadow: rgb(0 0 0 / 15%) 0px 5px 10px -7px;
   width: auto;
 }
 
+.article {
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 0.875rem;
+  position: relative;
+}
+.article-link {
+  visibility: hidden;
+  position: absolute;
+  padding: 3px;
+  top: 10px;
+  right: 10px;
+  background: #bfbfbf;
+  color: white;
+  border-radius: 5px;
+}
+.article-link > img {
+  width: 20px;
+  height: 20px;
+}
+.article:hover > .article-link {
+  visibility: visible;
+}
+.article-link:hover {
+  background: #59a09c;
+}
+.article-link:active {
+  background: #4b8581;
+}
+.article-title {
+  font-size: 1.125rem;
+  font-weight: 900;
+}
+
+.article-date {
+  line-height: 1.15;
+}
+
+.article-content {
+  margin-top: 0.5rem;
+}
+
+.article-content > .desc {
+  margin: 0.85rem 0;
+  font-weight: medium;
+}
+
+.article-content li::before {
+  display: inline-block;
+  content: "•";
+  margin-right: 0.3rem;
+}
+
 @media screen and (max-width: 639px) {
-  .project > article::before, .story > article::before {
+  .project > .article::before, .story > .article::before {
     left: -7.5px;
   }
 }
@@ -113,6 +188,9 @@
   .content > div {
     width: 50%;
   }
+  .project, .story {
+    gap: 35px;
+  }
   .project:nth-child(odd), .story:nth-child(odd) {
     transform: translateX(12.5px);
     flex-direction: row-reverse;
@@ -124,19 +202,45 @@
     transform: translateX(calc(100% - 12.5px));
     flex-direction: row;
   }
-  .content > .project:nth-child(odd) > article::before, .content > .story:nth-child(odd) > article::before {
+  .content > .project:nth-child(odd) > .article::before, .content > .story:nth-child(odd) > .article::before {
     right: -7.5px;
   }
-  .content > .project:nth-child(even) > article::before, .content > .story:nth-child(even) > article::before {
+  .content > .project:nth-child(even) > .article::before, .content > .story:nth-child(even) > .article::before {
     left: -7.5px;
   }
-  .project:hover > article, .story:hover > article {
+  .project:hover > .article, .story:hover > .article {
     transform: scale(1.01) translateY(-10px);
     box-shadow: 0px 13px 10px -10px #0000006e;
   }
   .project:hover .dot, .story:hover .dot {
     transform: scale(1.01) translateY(-10px);
     box-shadow: #00000033 1px 5px 5px;
+  }
+  .article {
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 0.95rem;
+  }
+
+  .project > .article {
+    padding: 10px 25px 25px 25px;
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  .article-date {
+    line-height: 1.15;
+    font-size: 0.85rem;
+  }
+
+  .article-content > .desc {
+    margin: 0.85rem 0;
+    font-weight: medium;
   }
 }
 
@@ -149,7 +253,7 @@
   position: relative;
   transition: all 0.2s;
   border-radius: 100%;
-  box-shadow: rgb(0 0 0 / 70%) 0px 5px 10px -7px;
+  box-shadow: rgb(0 0 0 / 15%) 0px 4px 4px 0px;
   margin: 0 auto;
 }
 .dot.big {
@@ -160,8 +264,8 @@
 }
 
 .dot.small {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   top: 20px;
-  background: #bbbbbb;
+  background: white;
 }
