@@ -25,7 +25,7 @@ const useModal = () => {
   const Modal = ({ children }: { children: ReactNode }) => {
     return (
       <ModalPortal>
-        <ModalOverlay isOpen={isOpen} />
+        <ModalBackground isOpen={isOpen} />
         <ModalWrapper
           isOpen={isOpen}
           ref={modal}
@@ -49,14 +49,15 @@ const ModalWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  display: flex;
+  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 `;
 
-const ModalOverlay = styled.div<{ isOpen: boolean }>`
+const ModalBackground = styled.div<{ isOpen: boolean }>`
   width: 100vw;
   height: 150vh;
   z-index: 100;
@@ -65,7 +66,7 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   position: fixed;
   background-color: #00000090;
   backdrop-filter: blur(10px);
-  display: ${(props) => (props.isOpen ? "block" : "none")};
+  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
 `;
 
 export default useModal;
