@@ -101,23 +101,21 @@ const Simulation = (props: { data: string[][] }) => {
   };
 
   const handleOnBgClick = () => {
-    cardRef.current.clickIndex = -1;
-    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
-    bg.style.opacity = "";
-    bg.style.zIndex = "";
     const images = document.querySelectorAll(".animatedImage");
     images.forEach((target: any) => {
       target.parentNode.style.transform = "";
       target.parentNode.style.opacity = "";
       changeImgPath(target, target.dataset.thumbnail);
-      if (target.parentNode.style.zIndex) {
+      if (target.parentNode.dataset.isActive === "true") {
         setTimeout(() => {
-          if (target.parentNode.style.zIndex) {
-            target.parentNode.style.zIndex = "";
-          }
+          target.parentNode.dataset.isActive = "false";
         }, 500);
       }
     });
+    cardRef.current.clickIndex = -1;
+    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
+    bg.style.opacity = "";
+    bg.style.zIndex = "";
     unSetCardAll();
   };
 
@@ -134,11 +132,11 @@ const Simulation = (props: { data: string[][] }) => {
     const py = parent.top + parent.height / 2;
     const cx = parent.left + child.left + child.width / 2;
     const cy = parent.top + child.top + child.height / 2;
-
-    e.currentTarget.style.transform = `translateX(${px - cx}px) translateY(${
+    const target = e.currentTarget;
+    target.dataset.isActive = "true";
+    target.style.transform = `translateX(${px - cx}px) translateY(${
       py - cy
     }px) scale(2)`;
-    e.currentTarget.style.zIndex = "2";
     const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
     bg.style.opacity = "1";
     bg.style.zIndex = "1";
@@ -175,16 +173,16 @@ const Simulation = (props: { data: string[][] }) => {
             >
               {/* Img 태그가 하나 더 존재하는 이유는 opacity를 통한 페이드 인 효과를 위함 */}
               <Img
-                className="thumbnail"
-                src={src[0]}
-                alt={`simulationImage_${index + 1}`}
-              />
-              <Img
                 id={`sim-${index}`}
                 className="animatedImage"
                 src={src[0]}
                 data-src={src[1]}
                 data-thumbnail={src[0]}
+                alt={`simulationImage_${index + 1}`}
+              />
+              <Img
+                className="thumbnail"
+                src={src[0]}
                 alt={`simulationImage_${index + 1}`}
               />
             </WrapCard>
@@ -204,15 +202,13 @@ const Background = styled.div`
   opacity: 0;
   z-index: -1;
   backdrop-filter: blur(10px);
+  transition: all 0.1s;
 `;
 const Img = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
-  transition: 300ms;
-  &.animatedImage {
-    opacity: 0;
-  }
+  transition: opacity 300ms;
 `;
 
 const WrapCard = styled.div`
@@ -224,13 +220,16 @@ const WrapCard = styled.div`
   box-shadow: #00000069 0 5px 15px -5px;
   transition: all 0.5s;
   cursor: pointer;
-  &.hover > .animatedImage {
-    opacity: 1;
+
+  &[data-is-active="true"] {
+    z-index: 2;
+  }
+  &[data-is-active="false"] {
+    z-index: 0;
   }
   &.hover > .thumbnail {
     opacity: 0;
   }
-
   &:nth-child(even).hover {
     transform: scale(1.12) translateY(-15%) translateX(12%);
     box-shadow: #00000050 -10px 10px 30px -10px;

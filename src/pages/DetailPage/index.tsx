@@ -20,7 +20,7 @@ const DetailPage = () => {
         )}
       </Suspense>
 
-      <div className="min-h-[50vh] w-full p-4 flex flex-col justify-center items-center bg-[#fbfbfb] border-t border-[#d2d2d2]">
+      <div className="min-h-[50vh] w-full p-4 flex flex-col justify-center items-center bg-[var(--secondary-bgColor)] border-t border-[#d2d2d2]">
         <div className="inline-block ">
           <h1 className="text-2xl sm:text-[2rem] text-start sm:text-center font-extralight">
             방문해주셔서 감사합니다.

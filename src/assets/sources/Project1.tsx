@@ -17,7 +17,7 @@ const Project = (props: { info: ContentType }) => {
           className="w-full h-full max-w-[1200px]"
         />
       </section>
-      <section className="w-full h-full py-20 px-4 border bg-[#fbfbfb]">
+      <section className="w-full h-full py-20 px-4 border bg-[var(--secondary-bgColor)]">
         <iframe
           className="w-full aspect-video mx-auto max-w-[1000px]"
           src="https://www.youtube.com/embed/e5zKhZFMLA4"
@@ -26,7 +26,7 @@ const Project = (props: { info: ContentType }) => {
           allowFullScreen
         ></iframe>
       </section>
-      <section className="w-full bg-[#fbfbfb]">
+      <section className="w-full bg-[var(--secondary-bgColor)]">
         <UsedTech tech={info.detail.tech} />
         <WhatIDid info={info.detail.whatIDid} />
       </section>

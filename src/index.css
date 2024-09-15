@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --primary-bgColor: #eaeaea;
+  --primary-fontColor: #373737;
+  --secondary-bgColor: #fbfbfb;
+  --secondary-fontColor: #515151;
+  position: relative;
+  background-color: #eaeaea;
+  color: #373737;
+  font-weight: 100;
+  font-family: Pretendard-Regular;
+}
+
 *::selection {
   background: rgb(87 176 172);
 }

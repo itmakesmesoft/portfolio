@@ -30,7 +30,7 @@ const Project = (props: { info: ContentType }) => {
           <Simulation data={info.detail.simImageSrc} />
         )}
       </section>
-      <section className="w-full bg-[#fbfbfb]">
+      <section className="w-full bg-[var(--secondary-bgColor)]">
         <UsedTech tech={info.detail.tech} />
         <WhatIDid info={info.detail.whatIDid} />
       </section> */}

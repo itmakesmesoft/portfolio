@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const timeline = [
   {
     type: "project",
-    title: "Lee's UI Library",
-    period: "2024.03 ~ 2024.07(예정)",
+    title: "elast UI Library",
+    period: "2024.03 ~ 2024.07",
     description: "개발자가 자유자재로 커스텀할 수 있는 UI 라이브러리 제작",
     whatIDid: [
       "프로젝트 기획, 주도적으로 진행",
@@ -16,7 +16,7 @@ const timeline = [
       "별도의 참조 없이 컴포넌트 외부의 가장 가까운 form을 찾도록 하여, 유효성 검사 기능 구현",
       "Git과 Jira 협업 툴을 통한 태스크 및 스케쥴 관리",
     ],
-    path: "https://github.com/Lees-ui-lab",
+    path: "https://elast-ui.vercel.app/",
   },
   {
     type: "project",

@@ -1,8 +1,8 @@
-import "./App.css";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Signature } from "./components/Signature";
+import styled from "styled-components";
 
 function App() {
   // 메인화면에서 screen height 만큼 스크롤 시 --scrolled css변수 변경
@@ -43,7 +43,7 @@ function App() {
   const DetailPage = lazy(() => import("./pages/DetailPage/index"));
 
   return (
-    <div className="root">
+    <Container>
       <Header />
       <Suspense fallback={<div className="w-screen h-screen">Loading...</div>}>
         <Routes>
@@ -52,8 +52,17 @@ function App() {
         </Routes>
       </Suspense>
       <Signature />
-    </div>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  position: relative;
+  background-color: var(--primary-bgColor);
+  color: var(--primary-fontColor);
+  font-weight: 100;
+  font-family: Pretendard-Regular;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+`;

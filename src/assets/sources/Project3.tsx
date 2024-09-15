@@ -31,7 +31,7 @@ const Project = (props: { info: ContentType }) => {
           className="w-full h-full max-w-[700px] sm:rounded-xl sm:mb-10"
         />
       </section>
-      <section className="w-full bg-[#fbfbfb]">
+      <section className="w-full bg-[var(--secondary-bgColor)]">
         <UsedTech tech={info.detail.tech} />
         <WhatIDid info={info.detail.whatIDid} />
       </section>
