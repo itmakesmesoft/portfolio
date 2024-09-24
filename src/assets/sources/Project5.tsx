@@ -1,41 +1,66 @@
-import WhatIDid from "pages/DetailPage/components/WhatIDid";
-import UsedTech from "pages/DetailPage/components/UsedTech";
 import { ContentType } from "types/common";
 import { ProjectIntro } from "pages/DetailPage/components/ProjectIntro";
-import Simulation from "pages/DetailPage/components/Simulation";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import WhatIDid from "pages/DetailPage/components/WhatIDid";
+import UsedTech from "pages/DetailPage/components/UsedTech";
+import DropdownSection from "./components/DropdownSection";
+import SwitchSection from "./components/SwitchSection";
+import ModalSection from "./components/ModalSection";
+import SelectSection from "./components/SelectSection";
+import ComboBoxSection from "./components/ComboBoxSection";
+import TabsSection from "./components/TabsSection";
+import styled from "styled-components";
 
 const Project = (props: { info: ContentType }) => {
-  // const info = props.info;
-  const navigate = useNavigate();
-  useEffect(() => {
-    alert("지금 상세 페이지를 제작하고 있어요. 조금만 기다려주세요!");
-    navigate(-1);
-  }, []);
+  const info = props.info;
   return (
     <div className="w-full flex flex-col items-center">
-      {/* <ProjectIntro info={info.detail} />
-      <section className="w-full flex flex-col items-center border-y border-[#d2d2d2]">
-        <img
-          src=""
-          alt=""
-          width="1300"
-          height="1000"
-          className="w-[1000px] h-auto"
-        />
-      </section>
-      <section className="w-full">
-        {info.detail.simImageSrc && (
-          <Simulation data={info.detail.simImageSrc} />
-        )}
+      <ProjectIntro info={info?.detail} />
+      <section className="w-full bg-[#fbfbfb] border-[#d2d2d2] lg:py-10">
+        <div className="w-full max-w-[1000px] mx-auto bg-white flex flex-col items-start lg:border lg:rounded-lg lg:shadow-xl p-8 text-sm md:text-base">
+          <SelectSection />
+          <ComboBoxSection />
+          <DropdownSection />
+          <SwitchSection />
+          <TabsSection />
+          <ModalSection />
+        </div>
       </section>
       <section className="w-full bg-[var(--secondary-bgColor)]">
-        <UsedTech tech={info.detail.tech} />
-        <WhatIDid info={info.detail.whatIDid} />
-      </section> */}
+        <UsedTech tech={info?.detail.tech} />
+        <WhatIDid info={info?.detail.whatIDid} />
+      </section>
     </div>
   );
 };
 
 export default Project;
+
+export const Title = ({ children }: { children: React.ReactNode }) => (
+  <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-black mb-2">
+    {children}
+  </h1>
+);
+
+export const Container = ({ children }: { children: React.ReactNode }) => (
+  <div className="py-10 first:pt-0 last:pb-0 border-b last:border-none w-full">
+    {children}
+  </div>
+);
+
+export const SubTitle = ({ children }: { children: React.ReactNode }) => (
+  <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mt-4 mb-2">
+    {children}
+  </h1>
+);
+
+export const Arrow = styled.span`
+  position: absolute;
+  top: 22px;
+  right: 13px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #999999;
+  border-bottom: none;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+`;

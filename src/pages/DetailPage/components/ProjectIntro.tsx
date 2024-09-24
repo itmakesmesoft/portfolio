@@ -19,8 +19,8 @@ export const ProjectIntro = (props: { info: ContentDetailType }) => {
         <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
           <img
             ref={imgRef}
-            src={props.info.lowThumbnail}
-            data-src={props.info.thumbnail}
+            src={props.info?.lowThumbnail}
+            data-src={props.info?.thumbnail}
             alt="thumbnail"
             width="770px"
             height="592.3px"

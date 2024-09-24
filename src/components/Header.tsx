@@ -22,8 +22,11 @@ export const Header = () => {
         </HashLink>
         <div>
           <ul className="flex flex-row">
-            {menuList.map((menu) => (
-              <li className="mr-3 sm:mr-6 last:mr-0 cursor-pointer first:hidden first:sm:block">
+            {menuList.map((menu, index) => (
+              <li
+                key={`${menu}-${index}`}
+                className="mr-3 sm:mr-6 last:mr-0 cursor-pointer first:hidden first:sm:block"
+              >
                 <HashLink
                   to={menu.to}
                   scroll={scrollTo}

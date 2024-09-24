@@ -66,6 +66,10 @@ const FILES_NAME: { [skill: string]: { src: string; info: string } } = {
     src: "Swr.svg",
     info: "SWR은 React 컴포넌트에서 사용할 수 있는 훅 형태의 데이터 페칭을 위한 SWR 라이브러리입니다.",
   },
+  NPM: {
+    src: "NPM.svg",
+    info: "Node.js의 패키지를 관리할 수 있는 도구입니다.",
+  },
 };
 
 const UsedTech = (props: { tech: string[] }) => {

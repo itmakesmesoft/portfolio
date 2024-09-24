@@ -15,6 +15,7 @@ const timeline = [
       "KeyEvent 객체를 만들어 키보드를 통한 이벤트 조작 기능 구현",
       "별도의 참조 없이 컴포넌트 외부의 가장 가까운 form을 찾도록 하여, 유효성 검사 기능 구현",
       "Git과 Jira 협업 툴을 통한 태스크 및 스케쥴 관리",
+      "소개페이지 제작 및 npm 배포",
     ],
     path: "https://elast-ui.vercel.app/",
   },
