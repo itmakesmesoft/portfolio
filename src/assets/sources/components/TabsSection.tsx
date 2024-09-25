@@ -25,16 +25,19 @@ export default function TabsSection() {
       <Title>Tabs</Title>
       <Tabs className="mt-4">
         <Tabs.TabsWrapper className="flex flex-row">
-          {tabList.map((tab) => (
-            <Tabs.Tab className="rounded data-[selected]:bg-black/10 cursor-pointer px-2 py-1 mb-2">
+          {tabList.map((tab, index) => (
+            <Tabs.Tab
+              key={`${tab}-${index}`}
+              className="rounded data-[selected]:bg-black/10 cursor-pointer px-2 py-1 mb-2"
+            >
               {tab.name}
             </Tabs.Tab>
           ))}
         </Tabs.TabsWrapper>
         <Tabs.ContentWrapper>
-          {tabList.map(({ imgSrc }) => (
-            <Tabs.Content>
-              <p>첫 번째 탭의 내용입니다.</p>
+          {tabList.map(({ imgSrc }, index) => (
+            <Tabs.Content key={`${imgSrc}-${index}`}>
+              <p>{index + 1}번 탭의 내용입니다.</p>
               <img src={imgSrc} alt="사진" width={640} height={480} />
             </Tabs.Content>
           ))}

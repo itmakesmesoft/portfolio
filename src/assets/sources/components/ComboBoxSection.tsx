@@ -17,7 +17,7 @@ export default function ComboBoxSection() {
         <ComboBox.Input className="relative hover:bg-[white] focus:bg-[white] hover:text-[black] focus:text-[black] bg-[#f4f4f4] text-[black] rounded border py-3 px-4 h-[50px] cursor-pointer">
           <Arrow />
         </ComboBox.Input>
-        <ComboBox.OptionWrapper className="bg-[white] text-[black] rounded border z-50 absolute">
+        <ComboBox.OptionWrapper className="bg-[white] text-[black] rounded border z-50 absolute min-w-[150px]">
           {selectList.map((option: any, index: number) => (
             <ComboBox.Option
               className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"
@@ -41,7 +41,7 @@ export default function ComboBoxSection() {
           <ComboBox.Input className="relative hover:bg-[white] focus:bg-[white] hover:text-[black] focus:text-[black] bg-[rgb(244,244,244)] text-[black] rounded border py-3 px-4 h-[3rem] cursor-pointer">
             <Arrow />
           </ComboBox.Input>
-          <ComboBox.OptionWrapper className="bg-[white] text-[black] rounded border z-50 absolute">
+          <ComboBox.OptionWrapper className="bg-[white] text-[black] rounded border z-50 absolute min-w-[150px]">
             {selectList.map((option: any, index: number) => (
               <ComboBox.Option
                 className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"

@@ -19,14 +19,14 @@ export default function SelectSection() {
         value={selectValue}
         onChange={setSelectValue}
       >
-        <Select.Trigger className="relative hover:bg-[white] focus:bg-[white] hover:text-[black] focus:text-[black] bg-[rgb(244,244,244)] text-[black] rounded border py-3 px-4 h-[3rem]">
+        <Select.Trigger className="relative hover:bg-[white] focus:bg-[white] hover:text-[black] focus:text-[black] bg-[rgb(244,244,244)] text-[black] rounded border py-3 px-4 h-[3rem] cursor-pointer">
           {selectValue ? "" : "Select"}
           <Arrow />
         </Select.Trigger>
-        <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute">
+        <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute min-w-[150px]">
           {selectList.map((option: any, index: number) => (
             <Select.Option
-              className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7]"
+              className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"
               key={`${option.name}-${index}`}
               value={option.value}
             >
@@ -47,7 +47,7 @@ export default function SelectSection() {
             {selectValue ? "" : "Select"}
             <Arrow />
           </Select.Trigger>
-          <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute">
+          <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute min-w-[150px]">
             {selectList.map((option: any, index: number) => (
               <Select.Option
                 className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"

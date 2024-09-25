@@ -16,7 +16,7 @@ export const ProjectIntro = (props: { info: ContentDetailType }) => {
   return (
     <section className="flex flex-col justify-center min-h-[calc(100vh-45px)] pb-10">
       <div className="flex flex-col sm:flex-row max-w-[1300px]">
-        <div className="px-[3rem] sm:px-[1.5rem] lg:px-[2.5rem]">
+        <div className="px-[3rem] sm:px-[1.7rem] lg:px-[2.7rem]">
           <img
             ref={imgRef}
             src={props.info?.lowThumbnail}

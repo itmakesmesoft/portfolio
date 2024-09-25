@@ -10,8 +10,8 @@ export default function ModalSection() {
       <button
         onClick={() => {
           setModalOpen(!modalOpen);
-          console.log(modalOpen);
         }}
+        className="inline-block border px-4 py-2 bg-black/10 hover:bg-black/5 rounded-lg"
       >
         {modalOpen ? "close" : "open"}
       </button>
@@ -24,14 +24,16 @@ export default function ModalSection() {
         className="flex flex-col w-full h-full justify-center items-center backdrop-blur-md"
       >
         <Modal.Container className="bg-white rounded-lg shadow-lg py-6 px-8">
-          <Modal.Title className="text-[1.5rem] mb-4">HI THERE</Modal.Title>
-          <Modal.Content className="bg-gray-100 h-[200px] w-[500px] rounded-md relative">
-            <div>Here is Content Section</div>
+          <Modal.Title className="text-[1.5rem] mb-4">
+            Modal Example
+          </Modal.Title>
+          <Modal.Content className="bg-gray-100 h-[200px] w-[500px] rounded-md relative p-2">
+            Here is Content Area
             <button
               onClick={() => {
                 setModalOpen(false);
               }}
-              className="inline-block bottom-0"
+              className="absolute bottom-2 right-2 inline-block border px-4 py-2 bg-gray-500 hover:bg-gray-400 rounded-lg text-white"
             >
               close
             </button>

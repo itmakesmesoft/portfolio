@@ -7,7 +7,7 @@ const Information = (props: { info: ContentDetailType }) => {
   return (
     <>
       <hr className="w-full border-[#00000020] block sm:hidden mb-10 sm:mb-0" />
-      <Title className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem]">
+      <Title className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] leading-[2rem] sm:leading-[2.5rem] lg:leading-[3rem]">
         {info.title}
       </Title>
       <Description>{info.description}</Description>
