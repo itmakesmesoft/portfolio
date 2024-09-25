@@ -33,9 +33,20 @@ const Information = (props: { info: ContentDetailType }) => {
             href={props.info.gitHub}
             target="_blank"
             rel="noopener noreferrer"
+            className="bg-[#50a78f] hover:bg-[#43b495]"
           >
             <SiGithub size={"2rem"} className="mr-2" /> 코드 보기
           </Button>
+          {props.info?.link && (
+            <Button
+              href={props.info.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#3a8ac3] hover:bg-[#439cdc]"
+            >
+              서비스 바로가기
+            </Button>
+          )}
         </ButtonGroup>
       </div>
     </>
@@ -71,19 +82,18 @@ const ButtonGroup = styled.div`
   margin-top: 2rem;
   padding: 1rem 0;
   border-top: 1px solid #00000020;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 const Button = styled.a`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0.9rem;
   border-radius: 0.6rem;
-  background: #50a78f;
   color: white;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  &:hover {
-    background: #43b495;
-  }
+  height: 2.75rem;
 `;
 export default Information;
