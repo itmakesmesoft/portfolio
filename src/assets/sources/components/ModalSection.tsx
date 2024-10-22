@@ -19,7 +19,7 @@ export default function ModalSection() {
         open={modalOpen}
         onClose={() => {
           setModalOpen(false);
-          console.log("closed");
+          // console.log("closed");
         }}
         className="flex flex-col w-full h-full justify-center items-center backdrop-blur-md"
       >

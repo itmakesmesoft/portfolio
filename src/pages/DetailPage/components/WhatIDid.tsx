@@ -17,8 +17,8 @@ const WhatIDid = (props: { info: string[] }) => {
             className="w-full h-[120px] sm:w-[50%] sm:h-[250px] px-4 py-2 sm:p-4 text-sm sm:text-[1.2rem] "
           >
             <div
-              className={`w-full h-full rounded-xl shadow-md sm:shadow-xl bg-[#fff] px-7 py-3 sm:p-7 flex flex-row items-center text-left break-words border ${
-                (index % 4 === 0 || index % 4 === 3) && "sm:bg-[#f4f4f4]"
+              className={`w-full h-full rounded-xl shadow-md sm:shadow-xl bg-white px-7 py-3 sm:p-7 flex flex-row items-center text-left break-words border ${
+                (index % 4 === 0 || index % 4 === 3) && "sm:bg-light-primary/50"
               }`}
             >
               <span className="sm:hidden text-2xl mr-5">{index + 1}</span>

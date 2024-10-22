@@ -1,6 +1,6 @@
 const InProcess = () => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full bg-[#eaeaea9c] backdrop-blur z-20 flex flex-col justify-center items-center">
+    <div className="absolute top-0 left-0 w-full h-full bg-light-primary/60 backdrop-blur z-20 flex flex-col justify-center items-center">
       <img
         src="/icons/under-construction.png"
         alt=""

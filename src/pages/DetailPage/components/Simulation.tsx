@@ -1,42 +1,54 @@
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useObserver from "components/useObserver";
 
 let simTimer: NodeJS.Timeout;
 
+interface CardRefInterface {
+  animatedIndex: number;
+  hoverIndex: number;
+  activeIndex: number;
+}
+const animDuration = 200;
+
 const Simulation = (props: { data: string[][] }) => {
   const imageSrcs: string[][] = props.data;
   const timerRef = useRef<NodeJS.Timer>();
-  const cardRef = useRef<{
-    currentIndex: number;
-    hoverIndex: number;
-    clickIndex: number;
-  }>({
-    currentIndex: -1,
-    hoverIndex: -1,
-    clickIndex: -1,
-  });
   const [card, setCard] = useState<number>(-1); // -1: standBy, 0~N: 호버링 인덱스 번호
+  const [isChanging, setIsChanging] = useState<boolean>(false);
   const { target: targetRef, isIntersecting } = useObserver(0.7); // 시뮬레이션 컴포넌트가 뷰포트에 교차되는 경우 작동
+  const cardRef = useRef<CardRefInterface>({
+    animatedIndex: -1,
+    hoverIndex: -1,
+    activeIndex: -1,
+  });
 
   useEffect(() => {
     loadAllImages(imageSrcs);
-    return () => simTimer && clearTimeout(simTimer);
+    return () => {
+      simTimer && clearTimeout(simTimer);
+    };
+  }, [imageSrcs]);
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickBackground);
+    return () => {
+      document.removeEventListener("click", handleClickBackground);
+    };
   }, []);
 
   useEffect(() => {
     if (isIntersecting) {
       if (!timerRef.current) {
-        setCurrentCard(0);
+        playCardAnimationByIndex(0);
         timerRef.current = setInterval(() => {
-          const index = cardRef.current.currentIndex;
+          const index = cardRef.current.animatedIndex;
           const next = index + 1 >= imageSrcs.length ? 0 : index + 1;
-          setCurrentCard(next);
+          playCardAnimationByIndex(next);
         }, 3000);
       }
     } else {
-      setCurrentCard(-1);
-      handleOnBgClick();
+      playCardAnimationByIndex(-1);
       timerRef.current && clearInterval(timerRef.current);
       timerRef.current = undefined;
     }
@@ -49,27 +61,32 @@ const Simulation = (props: { data: string[][] }) => {
     });
   };
 
-  const setCurrentCard = (index: number) => {
-    if (cardRef.current.hoverIndex > -1 || cardRef.current.clickIndex > -1)
-      return;
+  const playCardAnimationByIndex = (index: number) => {
     const target = document.querySelector(`#sim-${index}`) as HTMLImageElement;
-    if (target) {
-      cardRef.current.currentIndex = index;
-      handleOnBgClick();
-      changeImgPath(target, target.dataset.src);
-      setCard(index);
-    } else setCard(index);
+    const { hoverIndex, activeIndex } = cardRef.current;
+    if (!target) return setCard(index);
+    if (hoverIndex > -1 || activeIndex > -1) return;
+    cardRef.current.animatedIndex = index;
+    changeImgPath(target, target.dataset.src);
+    setCard(index);
   };
 
-  const unSetCardAll = () => {
+  const closeAllCards = () => {
     const targets: NodeListOf<HTMLImageElement> =
       document.querySelectorAll(`.sim`);
     targets.forEach((target: HTMLImageElement) => {
-      changeImgPath(target, target.dataset.thumbnail);
+      closeCard(target);
     });
     setCard(-1);
+    setUnBlurBackground();
     cardRef.current.hoverIndex = -1;
-    // cardRef.current.clickIndex = -1;
+    cardRef.current.activeIndex = -1;
+  };
+
+  const closeCard = (target: HTMLImageElement) => {
+    if (target.dataset.isActive === "false") return;
+    changeImgPath(target, target.dataset.thumbnail);
+    setTargetToDefault(target);
   };
 
   const changeImgPath = (
@@ -87,44 +104,33 @@ const Simulation = (props: { data: string[][] }) => {
     return { top, left, height, width };
   };
 
-  const handleOnMouseOver = (index: number) => {
-    if (cardRef.current.clickIndex > -1) return;
-    setCurrentCard(index);
+  const hoverCard = (index: number) => {
+    if (cardRef.current.activeIndex > -1) return;
+    playCardAnimationByIndex(index);
     cardRef.current.hoverIndex = index;
   };
 
   const handleOnMouseLeave = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    if (cardRef.current.clickIndex > -1) return;
-    unSetCardAll();
+    if (cardRef.current.activeIndex > -1) return;
+    cardRef.current.activeIndex = -1;
+    closeAllCards();
   };
 
-  const handleOnBgClick = () => {
-    const images = document.querySelectorAll(".animatedImage");
-    images.forEach((target: any) => {
-      target.parentNode.style.transform = "";
-      target.parentNode.style.opacity = "";
-      changeImgPath(target, target.dataset.thumbnail);
-      if (target.parentNode.dataset.isActive === "true") {
-        setTimeout(() => {
-          target.parentNode.dataset.isActive = "false";
-        }, 500);
-      }
-    });
-    cardRef.current.clickIndex = -1;
-    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
-    bg.style.opacity = "";
-    bg.style.zIndex = "";
-    unSetCardAll();
-  };
-
-  const handleOnClick = (
+  const activeCard = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
-    cardRef.current.clickIndex = index;
-    const child = getElementOffset(e.currentTarget);
+    cardRef.current.activeIndex = index;
+    const target = e.currentTarget;
+    setTargetToCenter(target);
+    setBlurBackground();
+  };
+
+  const setTargetToCenter = (target: HTMLElement) => {
+    setIsChanging(true);
+    const child = getElementOffset(target);
     const parent = getElementOffset(
       document.querySelector("#container-wrapcards") as HTMLElement
     );
@@ -132,24 +138,63 @@ const Simulation = (props: { data: string[][] }) => {
     const py = parent.top + parent.height / 2;
     const cx = parent.left + child.left + child.width / 2;
     const cy = parent.top + child.top + child.height / 2;
-    const target = e.currentTarget;
     target.dataset.isActive = "true";
-    target.style.transform = `translateX(${px - cx}px) translateY(${
-      py - cy
-    }px) scale(2)`;
-    const bg = document.querySelector("#blurbg-sim") as HTMLDivElement;
-    bg.style.opacity = "1";
-    bg.style.zIndex = "1";
+    Object.assign(target.style, {
+      transform: `translateX(${px - cx}px) translateY(${py - cy}px) scale(2)`,
+      "z-index": 50,
+    });
+    setIsChanging(false);
+  };
+
+  const setTargetToDefault = (target: HTMLElement) => {
+    setIsChanging(true);
+    if (target.dataset.isActive === "false") return;
+    target.dataset.isActive = "false";
+    Object.assign(target.style, {
+      transform: "",
+      "z-index": 1,
+    });
+    setTimeout(() => {
+      Object.assign(target.style, {
+        "z-index": 0,
+      });
+      setIsChanging(false);
+    }, animDuration);
+  };
+
+  const handleClickBackground = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest(".sim")) {
+      setUnBlurBackground();
+      closeAllCards();
+    }
+  };
+
+  const setBlurBackground = () => {
+    const background = document.querySelector("#blurbg-sim") as HTMLDivElement;
+    Object.assign(background.style, {
+      opacity: "1",
+      zIndex: "2",
+    });
+  };
+
+  const setUnBlurBackground = () => {
+    const background = document.querySelector("#blurbg-sim") as HTMLDivElement;
+    Object.assign(background.style, {
+      opacity: "0",
+      zIndex: "-1",
+    });
   };
 
   const eventHandler = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
+    if (isChanging) return;
     if (cardRef.current.hoverIndex === index) {
-      handleOnClick(e, index);
+      activeCard(e, index);
     } else {
-      handleOnMouseOver(index);
+      hoverCard(index);
     }
   };
 
@@ -189,7 +234,7 @@ const Simulation = (props: { data: string[][] }) => {
           );
         })}
       </div>
-      <Background id="blurbg-sim" onClick={handleOnBgClick} />
+      <Background id="blurbg-sim" />
     </div>
   );
 };
@@ -202,13 +247,13 @@ const Background = styled.div`
   opacity: 0;
   z-index: -1;
   backdrop-filter: blur(10px);
-  transition: all 0.1s;
+  transition: opacity ${animDuration}ms;
 `;
 const Img = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
-  transition: opacity 300ms;
+  transition: opacity ${animDuration}ms;
 `;
 
 const WrapCard = styled.div`
@@ -218,15 +263,8 @@ const WrapCard = styled.div`
   aspect-ratio: 16/10;
   overflow: hidden;
   box-shadow: #00000069 0 5px 15px -5px;
-  transition: all 0.5s;
+  transition: transform 0.5s;
   cursor: pointer;
-
-  &[data-is-active="true"] {
-    z-index: 2;
-  }
-  &[data-is-active="false"] {
-    z-index: 0;
-  }
   &.hover > .thumbnail {
     opacity: 0;
   }

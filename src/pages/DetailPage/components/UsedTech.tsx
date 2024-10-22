@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const FILES_NAME: { [skill: string]: { src: string; info: string } } = {
@@ -73,6 +74,13 @@ const FILES_NAME: { [skill: string]: { src: string; info: string } } = {
 };
 
 const UsedTech = (props: { tech: string[] }) => {
+  useEffect(() => {
+    document.addEventListener("click", handleClickBackground);
+    return () => {
+      document.removeEventListener("click", handleClickBackground);
+    };
+  }, []);
+
   const getMoveXY = (e: any) => {
     const target = e.currentTarget.children[0];
     const parent = document.querySelectorAll("#parent")[0];
@@ -108,7 +116,6 @@ const UsedTech = (props: { tech: string[] }) => {
 
   const handleClick = (e: any) => {
     const actives = document.querySelectorAll(".active");
-    cancelClick();
     if (actives.length < 1) {
       const target = e.currentTarget.children[0];
       const [moveX, moveY] = getMoveXY(e);
@@ -122,17 +129,22 @@ const UsedTech = (props: { tech: string[] }) => {
     }
   };
 
-  const cancelClick = () => {
-    removeClassName("active");
-    unSetBlurBackground();
+  const handleClickBackground = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest(".wrapitem")) {
+      removeClassName("active");
+      unSetBlurBackground();
+    }
   };
 
   const setBlurBackground = () => {
     const background: HTMLElement | null =
       document.querySelector("#blurbg-tech");
     if (background) {
-      background.style.opacity = "1";
-      background.style.zIndex = "0";
+      Object.assign(background.style, {
+        opacity: "1",
+        zIndex: "0",
+      });
     }
   };
 
@@ -140,8 +152,10 @@ const UsedTech = (props: { tech: string[] }) => {
     const background: HTMLElement | null =
       document.querySelector("#blurbg-tech");
     if (background) {
-      background.style.opacity = "";
-      background.style.zIndex = "";
+      Object.assign(background.style, {
+        opacity: "",
+        zIndex: "",
+      });
     }
   };
 
@@ -173,7 +187,7 @@ const UsedTech = (props: { tech: string[] }) => {
           );
         })}
       </div>
-      <Background id="blurbg-tech" onClick={cancelClick} />
+      <Background id="blurbg-tech" />
     </div>
   );
 };

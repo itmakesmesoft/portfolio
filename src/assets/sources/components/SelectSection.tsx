@@ -26,7 +26,7 @@ export default function SelectSection() {
         <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute min-w-[150px]">
           {selectList.map((option: any, index: number) => (
             <Select.Option
-              className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"
+              className="hover:bg-light-primary py-3 px-4 data-[focused]:bg-light-primary data-[selected]:bg-[#ddeef7] cursor-pointer"
               key={`${option.name}-${index}`}
               value={option.value}
             >
@@ -50,7 +50,7 @@ export default function SelectSection() {
           <Select.OptionWrapper className="bg-white text-[black] rounded border z-50 absolute min-w-[150px]">
             {selectList.map((option: any, index: number) => (
               <Select.Option
-                className="hover:bg-[#ededed] py-3 px-4 data-[focused]:bg-[#ededed] data-[selected]:bg-[#ddeef7] cursor-pointer"
+                className="hover:bg-light-primary py-3 px-4 data-[focused]:bg-light-primary data-[selected]:bg-[#ddeef7] cursor-pointer"
                 key={`${option.name}-${index}`}
                 value={option.value}
               >

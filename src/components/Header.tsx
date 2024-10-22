@@ -11,7 +11,7 @@ export const Header = () => {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
-    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50 text-sm sm:text-base backdrop-blur-lg bg-[#eaeaea70]">
+    <header className="fixed top-0 left-0 flex flex-col justify-center items-center w-full z-50 text-sm sm:text-base backdrop-blur-lg bg-light-primary">
       <div className="flex flex-row justify-between items-center w-full z-40 h-[45px] max-w-[1300px] px-4">
         <HashLink to="/#" scroll={scrollTo} className="flex-none">
           <img

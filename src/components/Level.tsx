@@ -17,7 +17,6 @@ const WrapGuage = styled.span`
   height: ${(props: { size?: number }) => props.size || "18px"};
   width: auto;
   display: inline-box;
-  float: right;
   position: relative;
   padding: 2px;
 `;

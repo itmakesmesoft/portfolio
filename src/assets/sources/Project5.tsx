@@ -15,7 +15,7 @@ const Project = (props: { info: ContentType }) => {
   return (
     <div className="w-full flex flex-col items-center">
       <ProjectIntro info={info?.detail} />
-      <section className="w-full bg-[#fbfbfb] border-[#d2d2d2] lg:py-10">
+      <section className="w-full bg-light-secondary border-[#d2d2d2] lg:py-10">
         <div className="w-full max-w-[1000px] mx-auto bg-white flex flex-col items-start lg:border lg:rounded-lg lg:shadow-xl p-8 text-sm md:text-base">
           <SelectSection />
           <ComboBoxSection />
@@ -25,7 +25,7 @@ const Project = (props: { info: ContentType }) => {
           <ModalSection />
         </div>
       </section>
-      <section className="w-full bg-[var(--secondary-bgColor)]">
+      <section className="w-full bg-light-secondary">
         <UsedTech tech={info?.detail.tech} />
         <WhatIDid info={info?.detail.whatIDid} />
       </section>

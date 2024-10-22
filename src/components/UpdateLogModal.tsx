@@ -3,7 +3,7 @@ import { UpdateInterface } from "types/common";
 
 const UpdateLogModal = ({ updates }: { updates: UpdateInterface[] }) => (
   <MyModal>
-    <H1 className="sticky top-0 text-lg font-bold py-4 px-[3rem] bg-[var(--secondary-bgColor)] z-10">
+    <H1 className="sticky top-0 text-lg font-bold py-4 px-[3rem] bg-light-secondary z-10">
       업데이트 기록
     </H1>
     <Div>
@@ -12,10 +12,10 @@ const UpdateLogModal = ({ updates }: { updates: UpdateInterface[] }) => (
         .reverse()
         .map((mylog: UpdateInterface, index: number) => (
           <div key={`${mylog.date}-${index}`}>
-            <p className="sticky top-[60px] font-[600] text-[var(--secondary-fontColor)] left-0 bg-[#eeeeee] border-y border-[gainsboro]">
+            <p className="sticky top-[60px] font-[600] text-dark-secondary left-0 bg-light-primary border-y border-[gainsboro]">
               {mylog.date}
             </p>
-            <div className="pt-2 pb-3 text-[var(--primary-fontColor)]">
+            <div className="pt-2 pb-3 text-dark-primary">
               {mylog.content.map((text: string, index: number) => (
                 <p key={`${text}-${index}`}>· {text}</p>
               ))}

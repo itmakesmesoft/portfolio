@@ -88,7 +88,7 @@ export const MyExperience = () => {
         Summary
       </h1>
       <div className="grid grid-flow-col grid-rows-2 gap-6">
-        <Box className="min-w-[165px] max-w-[270px]">
+        <Box className="min-w-[150px] max-w-[270px]">
           <H1>SKILLS</H1>
           {INFORMATION.skills.map((skill: SkillType, index: number) => (
             <Skill content={skill.content} key={index}>
@@ -130,30 +130,23 @@ export const MyExperience = () => {
     </div>
   );
 };
-const Skill = styled.p<{ content?: string }>`
-  margin-bottom: 0.25rem;
-  position: relative;
-  cursor: pointer;
-  transition: all ease 0.3s;
-  &:hover,
-  &.selected {
-    background-color: white;
-    padding: 0 10px;
-  }
-  &:hover:after {
-    content: "${(props) => props.content}";
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    width: 100%;
-    opacity: 90%;
-    z-index: 10;
-    background-color: #373737;
-    color: white;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-  }
-`;
+
+const Skill = ({
+  children,
+  content,
+}: {
+  children: React.ReactNode;
+  content?: string;
+}) => {
+  return (
+    <div className="relative group mb-2 cursor-default flex flex-row justify-between">
+      {children}
+      <div className="absolute top-8 left-0 opacity-0 bg-dark-primary text-light-primary p-2 z-10 transition duration-100 group-hover:opacity-100 rounded-br-lg rounded-bl-lg">
+        {content}
+      </div>
+    </div>
+  );
+};
 
 const Box = styled.div``;
 const H1 = styled.h1`

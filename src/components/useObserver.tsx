@@ -19,7 +19,7 @@ const useObserver = (threshold: number) => {
       observer.observe(target.current as Element);
       return () => {
         if (observer) {
-          console.log("observer 종료");
+          // console.log("observer 종료");
           observer && observer.disconnect(); // unmounted 시 IntersectionObserver 종료
         }
       };
