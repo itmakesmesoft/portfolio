@@ -1,0 +1,8 @@
+(self.webpackChunkportfolio=self.webpackChunkportfolio||[]).push([[436],{6436:(e,t,r)=>{"use strict";r.r(t),r.d(t,{default:()=>x});var s=r(7689),c=r(2791),l=r(6830),o=r(97),n=r(6444),i=r(184);const a=()=>(0,i.jsx)(d,{children:(0,i.jsx)("p",{className:"text-center",children:"Loading..."})}),d=n.ZP.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`,x=()=>{(0,c.useEffect)((()=>window.scrollTo(0,0)),[]);const e=(0,s.UO)().id,t=(0,c.lazy)((()=>r(1299)(`./Project${e}`)));return(0,i.jsxs)("div",{className:"w-full min-h-screen pt-[45px]",children:[(0,i.jsx)(c.Suspense,{fallback:(0,i.jsx)(a,{}),children:e&&(0,i.jsx)(t,{info:o.Z.list[parseInt(e)-1]})}),(0,i.jsx)("div",{className:"min-h-[50vh] w-full p-4 flex flex-col justify-center items-center bg-light-secondary border-t border-[#d2d2d2]",children:(0,i.jsxs)("div",{className:"inline-block ",children:[(0,i.jsx)("h1",{className:"text-2xl sm:text-[2rem] text-start sm:text-center font-extralight",children:"\ubc29\ubb38\ud574\uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4."}),(0,i.jsx)(l.Z,{})]})})]})}},1299:(e,t,r)=>{var s={"./Project1":[7705,705],"./Project1.tsx":[7705,705],"./Project2":[8149,863,149],"./Project2.tsx":[8149,863,149],"./Project3":[9992,992],"./Project3.tsx":[9992,992],"./Project4":[2828,863,825],"./Project4.tsx":[2828,863,825],"./Project5":[5034,549,34],"./Project5.tsx":[5034,549,34]};function c(e){if(!r.o(s,e))return Promise.resolve().then((()=>{var t=new Error("Cannot find module '"+e+"'");throw t.code="MODULE_NOT_FOUND",t}));var t=s[e],c=t[0];return Promise.all(t.slice(1).map(r.e)).then((()=>r(c)))}c.keys=()=>Object.keys(s),c.id=1299,e.exports=c}}]);
+//# sourceMappingURL=436.879d384c.chunk.js.map

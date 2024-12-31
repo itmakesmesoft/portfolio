@@ -1,0 +1,21 @@
+{
+  "short_name": "Portfolio",
+  "name": "Eunhyeok's Portfolio",
+  "icons": [
+    {
+      "src": "/icons/DanielLEE_192.webp",
+      "type": "image/webp",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/DanielLEE_512.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "author": "Eunhyeok Lee",
+  "display": "standalone",
+  "theme_color": "#373737",
+  "background_color": "#eaeaea"
+}
